@@ -61,8 +61,8 @@
 
     <dependencyManagement>
         <dependencies>
-            <!--子项目 S-->
 
+            <!--子项目 S-->
             <dependency>
                 <groupId>com.loyalove</groupId>
                 <artifactId>water-common</artifactId>
@@ -86,13 +86,6 @@
                 <artifactId>water-biz</artifactId>
                 <version>${water.biz.version}</version>
             </dependency>
-
-            <dependency>
-                <groupId>com.loyalove</groupId>
-                <artifactId>water-web</artifactId>
-                <version>${water.web.version}</version>
-            </dependency>
-
             <!--子项目 E-->
 
             <!--第三方依赖-->

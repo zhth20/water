@@ -1,6 +1,5 @@
 package com.loyalove.water.web.config;
 
-import com.loyalove.water.biz.auth.UserBiz;
 import com.loyalove.water.web.config.shiro.MyShiroRealm;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
@@ -14,8 +13,8 @@ import org.apache.shiro.web.servlet.SimpleCookie;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.boot.SpringBootConfiguration;
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -29,7 +28,7 @@ import java.util.Map;
  * @date: 2016-11-28 16:15
  */
 @SpringBootConfiguration
-@AutoConfigureAfter(UserBiz.class)
+@ComponentScan("com.loyalove.water")
 public class ShiroConfig {
     private static Map<String, String> filterChainDefinitionMap = new LinkedHashMap();
 
