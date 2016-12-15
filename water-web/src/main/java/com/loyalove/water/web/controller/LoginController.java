@@ -28,8 +28,8 @@ public class LoginController extends BaseController {
     private static final String FAIL_MARKER = "对用户[{}]进行登录验证..验证失败,{}";
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String toLogin(Model model) {
-        return "login";
+    public String toLogin() {
+        return "forward:/index.html";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)

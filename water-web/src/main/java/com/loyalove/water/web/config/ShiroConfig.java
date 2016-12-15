@@ -28,7 +28,7 @@ import java.util.Map;
  * @date: 2016-11-28 16:15
  */
 @SpringBootConfiguration
-@ComponentScan("com.loyalove.water")
+@ComponentScan({"com.loyalove.water.dao", "com.loyalove.water.biz", "com.loyalove.water.web"})
 public class ShiroConfig {
     private static Map<String, String> filterChainDefinitionMap = new LinkedHashMap();
 
@@ -36,6 +36,8 @@ public class ShiroConfig {
         //静态资源取消拦截
         filterChainDefinitionMap.put("/static/**", "anon");
         filterChainDefinitionMap.put("/login", "anon");
+        filterChainDefinitionMap.put("/*.html", "anon");
+        filterChainDefinitionMap.put("/**/*.html", "anon");
         filterChainDefinitionMap.put("/**", "authc");
     }
 

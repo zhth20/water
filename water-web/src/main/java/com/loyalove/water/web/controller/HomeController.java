@@ -25,10 +25,8 @@ public class HomeController extends BaseController {
     UserBiz userBiz;
 
     @RequestMapping(value = {"", "/"})
-    public String home(Model model) {
-        List<UserPO> userPOs = userBiz.queryUsers(new Pager());
-        model.addAttribute("users",userPOs);
-        return "home";
+    public String home() {
+        return "forward:/home.html";
     }
 
 }
