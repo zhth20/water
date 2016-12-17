@@ -14,7 +14,6 @@ import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -28,7 +27,6 @@ import java.util.Map;
  * @date: 2016-11-28 16:15
  */
 @SpringBootConfiguration
-@ComponentScan({"com.loyalove.water.dao", "com.loyalove.water.biz", "com.loyalove.water.web"})
 public class ShiroConfig {
     private static Map<String, String> filterChainDefinitionMap = new LinkedHashMap();
 
@@ -36,8 +34,8 @@ public class ShiroConfig {
         //静态资源取消拦截
         filterChainDefinitionMap.put("/static/**", "anon");
         filterChainDefinitionMap.put("/login", "anon");
-        filterChainDefinitionMap.put("/*.html", "anon");
-        filterChainDefinitionMap.put("/**/*.html", "anon");
+        filterChainDefinitionMap.put("/pages/index.html", "anon");
+        filterChainDefinitionMap.put("/pages/**", "authc");
         filterChainDefinitionMap.put("/**", "authc");
     }
 
@@ -49,8 +47,8 @@ public class ShiroConfig {
     public ShiroFilterFactoryBean getShiroFilterFactoryBean(org.apache.shiro.mgt.SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
-        shiroFilterFactoryBean.setLoginUrl("/login");
-        shiroFilterFactoryBean.setSuccessUrl("/");
+        shiroFilterFactoryBean.setLoginUrl("/login.html");
+        shiroFilterFactoryBean.setSuccessUrl("/home.html");
         shiroFilterFactoryBean.setUnauthorizedUrl("/403");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;

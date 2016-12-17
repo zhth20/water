@@ -1,27 +1,27 @@
 [{
-	"title": "会员管理",
+	"title": "账户管理",
 	"icon": "fa-users",
 	"spread": false,
 	"children": [{
-		"title": "门店会员",
+		"title": "管理员账户",
 		"icon": "&#xe641;",
-		"href": "#"
+		"href": "/pages/account/shopUser.html"
 	}, {
-		"title": "测试",
+		"title": "门店账户",
 		"icon": "&#xe63c;",
-		"href": "/layout.html"
+		"href": "/pages/account/supplierUser.html"
 	}]
 }, {
 	"title": "商品管理",
 	"icon": "fa-cogs",
 	"spread": false,
 	"children": [{
-		"title": "Datatable",
+		"title": "统一库商品管理",
 		"icon": "fa-table",
-		"href": "begtable.html"
+		"href": "#"
 	}, {
-		"title": "Navbar组件",
+		"title": "供应商商品管理",
 		"icon": "fa-navicon",
-		"href": "navbar.html"
+		"href": "#"
 	}]
 }]

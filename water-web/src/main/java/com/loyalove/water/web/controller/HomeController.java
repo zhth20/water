@@ -1,14 +1,9 @@
 package com.loyalove.water.web.controller;
 
 import com.loyalove.water.biz.auth.UserBiz;
-import com.loyalove.water.common.model.Pager;
-import com.loyalove.water.pojo.UserPO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
 
 /**
  * Title: HomeController.java
@@ -26,7 +21,7 @@ public class HomeController extends BaseController {
 
     @RequestMapping(value = {"", "/"})
     public String home() {
-        return "forward:/home.html";
+        return "forward:/pages/home.html";
     }
 
 }

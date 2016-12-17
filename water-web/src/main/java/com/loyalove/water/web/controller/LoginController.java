@@ -1,13 +1,12 @@
 package com.loyalove.water.web.controller;
 
 import com.loyalove.water.common.model.Result;
-import com.loyalove.water.web.config.shiro.NoActiveAccountException;
 import com.loyalove.water.pojo.UserPO;
+import com.loyalove.water.web.config.shiro.NoActiveAccountException;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,9 +26,9 @@ public class LoginController extends BaseController {
     private static final String SUCCESS_MARKER = "对用户[{}]进行登录验证..验证成功,{}";
     private static final String FAIL_MARKER = "对用户[{}]进行登录验证..验证失败,{}";
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/login.html", method = RequestMethod.GET)
     public String toLogin() {
-        return "forward:/index.html";
+        return "redirect:/pages/index.html";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)

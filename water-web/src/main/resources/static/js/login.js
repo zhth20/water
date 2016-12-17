@@ -7,7 +7,7 @@ layui.use(['element', 'form'], function () {
         element = layui.element(),
         form = layui.form(),
         layer = layui.layer;
-    form.on('submit(login-btn)', function (data) {
+    form.on('submit(login)', function (data) {
         $.post('/login', data.field, function (data) {
             layer.msg(data.message, {time: 1000}, function () {
                 if (data.status === 'OK') window.location.href = "/";

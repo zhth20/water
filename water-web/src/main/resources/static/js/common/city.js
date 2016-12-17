@@ -64,7 +64,7 @@ layui.define(['jquery'], function(exports) {
 						var updateData = function() {
 							province = {}, city = {}, area = {};
 							hasCity = false; //判断是非有地级城市
-							for(code in data) {
+							for(var code in data) {
 								if(!(code % 1e4)) { //获取所有的省级行政单位
 									province[code] = data[code];
 									if(options.required && !options.province) {
@@ -121,7 +121,7 @@ layui.define(['jquery'], function(exports) {
 								if(!options.required) {
 									$province.append('<option value=""> - 请选择 - </option>');
 								}
-								for(i in province) {
+								for(var i in province) {
 									$province.append('<option value="' + i + '">' + province[i] + '</option>');
 								}
 								if(options.province) {
@@ -139,7 +139,7 @@ layui.define(['jquery'], function(exports) {
 								} else if(options.nodata == 'hidden') {
 									$city.css('display', $.isEmptyObject(city) ? 'none' : '');
 								}
-								for(i in city) {
+								for(var i in city) {
 									$city.append('<option value="' + i + '">' + city[i] + '</option>');
 								}
 								if(options.city) {
@@ -161,7 +161,7 @@ layui.define(['jquery'], function(exports) {
 									} else if(options.nodata == 'hidden') {
 										$area.css('display', $.isEmptyObject(area) ? 'none' : '');
 									}
-									for(i in area) {
+									for(var i in area) {
 										$area.append('<option value="' + i + '">' + area[i] + '</option>');
 									}
 									if(options.area) {

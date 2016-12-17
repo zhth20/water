@@ -1,9 +1,19 @@
-.admin-main{
-	margin: 15px;
+.admin-main {
+    margin: 15px 15px;
 }
-.admin-main .layui-field-title .layui-field-box{
-	padding: 10px 30px;
+
+.admin-main .layui-field-title .layui-field-box {
+    padding: 10px 30px;
 }
-.admin-main .layui-field-title .layui-field-box p{
-	padding: 5px 0;
+
+.admin-main .layui-field-title .layui-field-box p {
+    padding: 5px 0;
+}
+
+.layui-form-item {
+    margin-bottom: 0;
+}
+
+.layui-table-tr-checked {
+    background-color: #EEE !important;
 }
