@@ -1,27 +1,14 @@
 [{
 	"title": "账户管理",
 	"icon": "fa-users",
-	"spread": false,
+	"spread": true,
 	"children": [{
 		"title": "管理员账户",
 		"icon": "&#xe641;",
 		"href": "/pages/account/shopUser.html"
 	}, {
-		"title": "门店账户",
+		"title": "客服账户",
 		"icon": "&#xe63c;",
 		"href": "/pages/account/supplierUser.html"
-	}]
-}, {
-	"title": "商品管理",
-	"icon": "fa-cogs",
-	"spread": false,
-	"children": [{
-		"title": "统一库商品管理",
-		"icon": "fa-table",
-		"href": "#"
-	}, {
-		"title": "供应商商品管理",
-		"icon": "fa-navicon",
-		"href": "#"
 	}]
 }]

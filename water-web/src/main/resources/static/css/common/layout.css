@@ -132,3 +132,14 @@
 	}
 	
 }
+
+.layui-nav-item a cite{padding: 0 10px;}
+
+.layui-layout-admin .layui-body{
+	overflow-y: hidden;
+}
+
+.layui-layout-admin .layui-body .layui-tab .layui-tab-content{
+	padding: 0;
+}
+
