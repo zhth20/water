@@ -49,8 +49,21 @@ public interface UserBiz {
     void addUser(UserPO userPO);
 
     /**
+     * 修改用户
+     * @param userPO
+     */
+    void update(UserPO userPO);
+
+    /**
      * 删除用户
      * @param userPO
      */
     void deleteUser(UserPO userPO);
+
+    /**
+     * 查询用户
+     * @param userPO
+     */
+    UserPO queryUser(UserPO userPO);
+
 }

@@ -10,9 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Title: UserController.java
@@ -35,6 +33,12 @@ public class UserController extends BaseController {
         return Result.getResultSuccess("查询成功", result, pager);
     }
 
+    @RequestMapping("/queryBy")
+    public Object queryBy(UserPO userPO) {
+        userPO = userBiz.queryUser(userPO);
+        return Result.getResultSuccess("查询用户成功", userPO);
+    }
+
     @RequestMapping("/add")
     public Object addUser(UserPO userPO) {
         PasswordUtils.encryptPassword(userPO);
@@ -43,9 +47,16 @@ public class UserController extends BaseController {
         return Result.getResultSuccess("新增用户成功");
     }
 
+    @RequestMapping("/update")
+    public Object updateUser(UserPO userPO) {
+        userBiz.update(userPO);
+        return Result.getResultSuccess("修改用户成功");
+    }
+
     @RequestMapping("/deleteBy")
     public Object deleteUser(UserPO userPO) {
         userBiz.deleteUser(userPO);
         return Result.getResultSuccess("删除用户成功");
     }
+
 }

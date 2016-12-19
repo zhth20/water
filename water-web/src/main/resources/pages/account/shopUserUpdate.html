@@ -1,0 +1,39 @@
+<form id="update-form" class="layui-form" action="/user/update">
+
+    <div class="layui-hide">
+        <input type="hidden" name="userId" value="{{d.userId}}">
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户名</label>
+        <div class="layui-form-mid">{{d.username}}</div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">昵称</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input"
+                   name="nickname" value="{{d.nickname}}"
+                   placeholder="昵称" autocomplete="off">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">邮箱</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input"
+                   name="email" value="{{d.email}}"
+                   placeholder="邮箱" autocomplete="off">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">手机号</label>
+        <div class="layui-input-inline">
+            <input type="text" class="layui-input"
+                   name="phoneNum" value="{{d.phoneNum}}"
+                   placeholder="手机号" autocomplete="off">
+        </div>
+    </div>
+
+</form>

@@ -113,10 +113,11 @@
             <tbody>
             </tbody>
         </table>
+
+        <!--分页-->
+        <div id="pager" class="layui-box"></div>
     </div>
 
-    <!--分页-->
-    <div id="pager" class="layui-box"></div>
 
     <template id="query-table">
         {{# layui.each(d.result, function(index, item){ }}
@@ -133,17 +134,17 @@
             <td>{{item.createTime}}</td>
             <td>{{item.updateTime}}</td>
             <td>
-                <a class="layui-btn layui-btn-normal layui-btn-mini detail-trigger"
+                <a class="layui-btn layui-btn-mini detail-trigger"
                    href="/pages/account/shopUserDetail.html"
                    data-href="/user/queryBy?userId={{item.userId}}">
                     <i class="fa fa-eye"></i> 详情
                 </a>
                 <a class="layui-btn layui-btn-mini update-trigger"
-                   href="/pages/account/shopUserEdit.html"
+                   href="/pages/account/shopUserUpdate.html"
                    data-href="/user/queryBy?userId={{item.userId}}">
                     <i class="fa fa-edit"></i> 编辑
                 </a>
-                <a class="layui-btn layui-btn-danger layui-btn-mini delete-trigger"
+                <a class="layui-btn layui-btn-mini delete-trigger"
                    href="javascript:;"
                    data-name="{{item.username}}"
                    data-href="/user/deleteBy?userId={{item.userId}}">

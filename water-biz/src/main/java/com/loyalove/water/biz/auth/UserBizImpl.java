@@ -92,6 +92,16 @@ public class UserBizImpl extends BaseBiz implements UserBiz {
     }
 
     /**
+     * 修改用户
+     *
+     * @param userPO
+     */
+    @Override
+    public void update(UserPO userPO) {
+        userMapper.updateByPrimaryKeySelective(userPO);
+    }
+
+    /**
      * 删除用户
      *
      * @param userPO
@@ -99,5 +109,15 @@ public class UserBizImpl extends BaseBiz implements UserBiz {
     @Override
     public void deleteUser(UserPO userPO) {
         userMapper.deleteByPrimaryKey(userPO.getUserId());
+    }
+
+    /**
+     * 查询用户
+     *
+     * @param userPO
+     */
+    @Override
+    public UserPO queryUser(UserPO userPO) {
+        return userMapper.selectByPrimaryKey(userPO.getUserId());
     }
 }

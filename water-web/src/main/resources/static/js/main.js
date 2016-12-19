@@ -21,6 +21,7 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], function 
             addTrigger: '#add-trigger',
             updateForm: '#update-form',
             updateTrigger: '.update-trigger',
+            detailForm: '#detail-form',
             detailTrigger: '.detail-trigger',
             deleteTrigger: '.delete-trigger',
             importTrigger: '#import-trigger',
@@ -74,10 +75,17 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], function 
             self.openPage({
                 url: $(this).attr('href'),
                 title: $(this).html(),
-                data: $(this).attr('data-href'),
                 callback: function () {
                     self.update();
                 }
+            });
+
+            self.get($(this).attr('data-href'), null, function (data) {
+                var template = $(self.config.updateForm).html();
+                laytpl(template).render(data.result, function (html) {
+                    $(self.config.updateForm).html(html);
+                    self.render();
+                });
             });
             return false;
         });
@@ -89,8 +97,15 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], function 
                 title: $(this).html(),
                 data: $(this).attr('data-href'),
                 callback: function () {
-
                 }
+            });
+
+            self.get($(this).attr('data-href'), null, function (data) {
+                var template = $(self.config.detailForm).html();
+                laytpl(template).render(data.result, function (html) {
+                    $(self.config.detailForm).html(html);
+                    self.render();
+                });
             });
             return false;
         });
@@ -214,7 +229,7 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], function 
                 btnAlign: 'l',
                 btn: [self.saveTitle, self.backTitle],
                 yes: config.callback,
-                end:function () {
+                end: function () {
                     self.pageIndex = 0;
                 }
             });
@@ -238,6 +253,7 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], function 
         self.post($addForm.attr('action'), $addForm.serialize(), function (data) {
             layer.msg(data.message);
             layer.close(self.pageIndex);
+            self.initFlag = true;
             self.query();
         });
     }
@@ -246,7 +262,13 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], function 
      * 数据修改
      */
     Base.fn.update = function () {
-        layer.msg('执行修改操作');
+        var self = this;
+        var $updateForm = $(self.config.updateForm);
+        self.post($updateForm.attr('action'), $updateForm.serialize(), function (data) {
+            layer.msg(data.message);
+            layer.close(self.pageIndex);
+            self.query();
+        });
     }
 
     /**
