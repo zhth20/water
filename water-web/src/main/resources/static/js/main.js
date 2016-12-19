@@ -5,35 +5,44 @@ layui.config({
     base: '/static/js/common/'
 });
 
-layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate'], function () {
+layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], function () {
     var $ = layui.jquery,
         pager = layui.laypage,
         form = layui.form(),
+        laytpl = layui.laytpl,
         layer = layui.layer,
         player = window.layer;
 
     var Base = function () {
         this.config = {
-            queryForm: 'query-form',
-            queryTrigger: 'query-trigger',
-            addUrl: 'add-url',
-            addForm: 'add-form',
-            addTrigger: 'add-trigger',
-            updateUrl: 'update-url',
-            updateForm: 'update-form',
-            updateTrigger: 'update-trigger',
-            deleteTrigger: 'delete-trigger',
-            importTrigger: 'import-trigger',
-            exportTrigger: 'export-trigger',
+            queryForm: '#query-form',
+            queryTrigger: '#query-trigger',
+            addForm: '#add-form',
+            addTrigger: '#add-trigger',
+            updateForm: '#update-form',
+            updateTrigger: '.update-trigger',
+            detailTrigger: '.detail-trigger',
+            deleteTrigger: '.delete-trigger',
+            importTrigger: '#import-trigger',
+            exportTrigger: '#export-trigger'
         };
+
+        this.saveTitle = '<i class="fa fa-save"></i> 保存';
+        this.backTitle = '<i class="fa fa-reply"></i> 返回';
+        this.pageIndex = 0;
+        this.loadIndex = 0;
+        this.initFlag = true;
     }
+
     Base.fn = Base.prototype;
 
     /**
      * 初始化操作
      */
     Base.fn.init = function () {
-        this.bindEvens();
+        var self = this;
+        self.bindEvens();
+        self.toPage(1);
     }
 
     /**
@@ -41,9 +50,70 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate'], function () {
      */
     Base.fn.bindEvens = function () {
         var self = this;
-        //添加按钮事件
+        //查询按钮事件
+        $(document).on('click', self.config.queryTrigger, function () {
+            self.query();
+            return false;
+        });
+
+        //新增页面打开事件
         $(document).on('click', self.config.addTrigger, function () {
-            self.toAdd();
+            self.openPage({
+                url: $(this).attr('href'),
+                title: $(this).html(),
+                callback: function () {
+                    self.add();
+                }
+            });
+
+            return false;
+        });
+
+        //修改页面打开事件
+        $(document).on('click', self.config.updateTrigger, function () {
+            self.openPage({
+                url: $(this).attr('href'),
+                title: $(this).html(),
+                data: $(this).attr('data-href'),
+                callback: function () {
+                    self.update();
+                }
+            });
+            return false;
+        });
+
+        //详情页面打开事件
+        $(document).on('click', self.config.detailTrigger, function () {
+            self.openPage({
+                url: $(this).attr('href'),
+                title: $(this).html(),
+                data: $(this).attr('data-href'),
+                callback: function () {
+
+                }
+            });
+            return false;
+        });
+
+        //删除按钮事件
+        $(document).on('click', self.config.deleteTrigger, function () {
+            self.delete({
+                url: $(this).attr('data-href'),
+                name: $(this).attr('data-name')
+            });
+            return false;
+        });
+
+        //导入按钮事件
+        $(document).on('click', self.config.importTrigger, function () {
+            self.import();
+            return false;
+        });
+
+        //导出按钮事件
+        $(document).on('click', self.config.exportTrigger, function () {
+            self.export();
+            return false;
         });
 
         //选择全部事件
@@ -54,17 +124,24 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate'], function () {
         });
 
         //列表选中事件
+        $(document).on('ifChecked', '.layui-table tbody tr input', function (event) {
+            $(this).parents('tr').addClass('layui-table-tr-checked');
+        });
+        //列表选中事件
+        $(document).on('ifUnchecked', '.layui-table tbody tr input', function (event) {
+            $(this).parents('tr').removeClass('layui-table-tr-checked');
+        });
         $(document).on('click', '.layui-table tbody tr', function (event) {
             var $this = $(this);
             var $input = $this.children('td').eq(0).find('input');
-            $input.on('ifChecked', function (e) {
-                $this.addClass('layui-table-tr-checked');
-            });
-            $input.on('ifUnchecked', function (e) {
-                $this.removeClass('layui-table-tr-checked');
-            });
             $input.iCheck('toggle');
         });
+
+        //页面尺寸发生改变事件
+        $(window).on('resize', function () {
+            self.pageIndex > 0 && layer.full(self.pageIndex);
+        });
+
     }
 
     /**
@@ -84,23 +161,40 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate'], function () {
      * 查询
      */
     Base.fn.query = function () {
+        var self = this;
+        self.get($(self.config.queryForm).attr('action'), $(self.config.queryForm).serialize(), function (data) {
+            var template = $('#query-table').html();
+            laytpl(template).render(data, function (html) {
+                $('table>tbody').html(html);
+                self.render();
+            });
 
+            if (self.initFlag) {
+                self.intPager(data.pager);
+                self.initFlag = false;
+            }
+        });
+    }
+
+    Base.fn.toPage = function (num) {
+        var self = this;
+        $(self.config.queryForm).find('input[name=pageNumber]').val(num);
+        $(self.config.queryTrigger).trigger('click');
     }
 
     /**
      * 分页插件
      */
-    Base.fn.intPager = function () {
+    Base.fn.intPager = function (config) {
+        var self = this;
         //page
         pager({
             cont: 'pager',
-            pages: 5, //总页数
+            pages: config.pageTotal, //总页数
             groups: 5, //连续显示分页数
             jump: function (obj, first) {
-                //得到了当前页，用于向服务端请求对应数据
-                var curr = obj.curr;
                 if (!first) {
-                    //layer.msg('第 '+ obj.curr +' 页');
+                    self.toPage(obj.curr)
                 }
             }
         });
@@ -109,72 +203,77 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate'], function () {
     /**
      * 全屏打开一个页面
      */
-    Base.fn.openPage = function (url, title, callback) {
-        var index = null;
-        $.get(url, function (form) {
-            index = layer.open({
-                type: 1,
-                title: title,
-                content: form,
-                btn: ['保存', '取消'],
-                yes: callback
-            });
-
-            layer.full(index);
-        });
-
-        var win = window.top === window.self ? window : parent.window;
-        $(win).on('resize', function () {
-            layer.full(index);
-        });
-    }
-
-    /**
-     * 数据添加页面加载
-     */
-    Base.fn.toAdd = function () {
+    Base.fn.openPage = function (config) {
         var self = this;
-        self.openPage(self.config.addUrl, function () {
-            self.add();
+        $.get(self.addTimestamp(config.url), function (data) {
+            self.pageIndex = layer.open({
+                id: 'page-content',
+                type: 1,
+                title: config.title,
+                content: data,
+                btnAlign: 'l',
+                btn: [self.saveTitle, self.backTitle],
+                yes: config.callback,
+                end:function () {
+                    self.pageIndex = 0;
+                }
+            });
+            form.render();
+            layer.full(self.pageIndex);
         });
-        //$.get('/pages/account/shopUserAdd.html', null, function (form) {
-        //    var index = layer.open({
-        //        type: 1,
-        //        title: '管理员新增',
-        //        content: form,
-        //        btn: ['保存', '取消'],
-        //        yes: function (index) {
-        //            console.log(index);
-        //        }
-        //    });
-        //
-        //    layer.full(index);
-        //
-        //    var win = window.top === window.self ? window : parent.window;
-        //    $(win).on('resize', function () {
-        //        layer.full(index);
-        //    });
-        //});
     }
+
+    Base.fn.addTimestamp = function (href) {
+        var now = new Date().getTime();
+        href += ('?timestamp=' + now);
+        return href;
+    };
 
     /**
      * 数据添加
      */
     Base.fn.add = function () {
-        layer.msg('执行添加');
+        var self = this;
+        var $addForm = $(self.config.addForm);
+        self.post($addForm.attr('action'), $addForm.serialize(), function (data) {
+            layer.msg(data.message);
+            layer.close(self.pageIndex);
+            self.query();
+        });
     }
 
     /**
-     * 数据更新页面加载
-     */
-    Base.fn.toUpdate = function () {
-
-    }
-    /**
-     * 数据更新
+     * 数据修改
      */
     Base.fn.update = function () {
+        layer.msg('执行修改操作');
+    }
 
+    /**
+     * 数据删除
+     */
+    Base.fn.delete = function (item) {
+        var self = this;
+        player.confirm('确认删除：' + item.name + ' ？', {icon: 7}, function () {
+            self.get(item.url, null, function (data) {
+                layer.msg(data.message);
+                self.query();
+            });
+        });
+    }
+
+    /**
+     * 数据导入
+     */
+    Base.fn.import = function () {
+        layer.msg('执行导入操作');
+    }
+
+    /**
+     * 数据导出
+     */
+    Base.fn.export = function () {
+        layer.msg('执行导出操作');
     }
 
     /**
@@ -182,10 +281,9 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate'], function () {
      * @param config
      */
     Base.fn.ajax = function (config) {
+        var self = this;
 
         config = config || {};
-
-        var index = null;
 
         $.ajax({
             url: config.url,
@@ -195,15 +293,16 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate'], function () {
             success: config.callback,
             //请求出错
             error: function () {
+                layer.close(self.loadIndex);
                 layer.msg('请求失败', {icon: 2});
             },
             //请求发送前
             beforeSend: function () {
-                index = layer.load();
+                self.loadIndex = layer.load(1);
             },
             //请求完成后
             complete: function () {
-                layer.close(index);
+                layer.close(self.loadIndex);
             }
         });
 
@@ -245,65 +344,5 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate'], function () {
         });
     }
 
-    $('#search').on('click', function () {
-        player.alert('你点击了搜索按钮')
-    });
-
-    $('#data-add').on('click', function () {
-
-    });
-
-    $('.data-edit').on('click', function () {
-        $.get('/pages/account/shopUserEdit.html', null, function (form) {
-            var index = layer.open({
-                type: 1,
-                title: '管理员修改',
-                content: form,
-                btn: ['保存', '取消'],
-                yes: function (index) {
-                    console.log(index);
-                }
-            });
-
-            layui.layer.full(index);
-
-            var win = window.top === window.self ? window : parent.window;
-            $(win).on('resize', function () {
-                layer.full(index);
-            });
-        });
-    });
-
-    $('.data-detail').on('click', function () {
-        $.get('/pages/account/shopUserDetail.html', null, function (form) {
-            var index = layui.layer.open({
-                type: 1,
-                title: '管理员详情',
-                content: form,
-                btn: ['保存', '取消'],
-                yes: function (index) {
-                    console.log(index);
-                }
-            });
-
-            layui.layer.full(index);
-
-            var win = window.top === window.self ? window : parent.window;
-            $(win).on('resize', function () {
-                layer.full(index);
-            });
-        });
-    });
-
-    $('.data-delete').on('click', function () {
-        player.confirm('确认删除？', {icon: 7});
-    });
-
-    $('#import').on('click', function () {
-        var that = this;
-        var index = layer.tips('只想提示地精准些', that, {tips: [1, 'white']});
-        $('#layui-layer' + index).children('div.layui-layer-content').css('color', '#000000');
-    });
-
-
+    new Base().init();
 });

@@ -62,7 +62,7 @@ public class Result implements Serializable {
 
     public static Result getResultSuccess(String message, Object obj, Pager pager) {
         Result result = getResultSuccess(message, obj);
-        result.setResult(pager);
+        result.setPager(pager);
         return result;
     }
 

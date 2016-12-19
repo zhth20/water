@@ -69,4 +69,35 @@ public class UserBizImpl extends BaseBiz implements UserBiz {
     public List<UserPO> queryUsers(Pager pager) {
         return userDAO.queryUsers(pager);
     }
+
+    /**
+     * 查询用户数量
+     *
+     * @return
+     */
+    @Override
+    public Integer queryCount() {
+        UserExample example = new UserExample();
+        return (int) userMapper.countByExample(example);
+    }
+
+    /**
+     * 新增用户
+     *
+     * @param userPO
+     */
+    @Override
+    public void addUser(UserPO userPO) {
+        userMapper.insertSelective(userPO);
+    }
+
+    /**
+     * 删除用户
+     *
+     * @param userPO
+     */
+    @Override
+    public void deleteUser(UserPO userPO) {
+        userMapper.deleteByPrimaryKey(userPO.getUserId());
+    }
 }

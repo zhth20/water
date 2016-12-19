@@ -1,5 +1,8 @@
 package com.loyalove.water.web.controller;
 
+import com.loyalove.water.pojo.UserPO;
+import com.loyalove.water.web.util.SessionKeys;
+import com.loyalove.water.web.util.SessionUtil;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.slf4j.Logger;
@@ -20,5 +23,10 @@ public class BaseController {
     //只获取当前的Session
     protected Session currSession() {
         return SecurityUtils.getSubject().getSession(false);
+    }
+
+    //只获取当前的登录用户
+    protected UserPO currUser() {
+        return (UserPO) SessionUtil.getAttribute(SessionKeys.CURR_USER);
     }
 }

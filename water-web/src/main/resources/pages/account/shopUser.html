@@ -9,6 +9,7 @@
     <meta http-equiv="expires" content="0">
     <link rel="stylesheet" href="/static/layui/css/layui.css" media="all"/>
     <link rel="stylesheet" href="/static/css/main.css"/>
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css"/>
 </head>
 
 <body>
@@ -17,7 +18,10 @@
     <!--查询条件-->
     <div class="layui-box">
         <blockquote class="layui-elem-quote">
-            <form id="query-form" class="layui-form">
+            <form id="query-form" class="layui-form" action="/user">
+                <div class="layui-hide">
+                    <input type="hidden" name="pageNumber" value="1">
+                </div>
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label">分类</label>
@@ -41,18 +45,18 @@
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">作者</label>
+                        <label class="layui-form-label">用户名</label>
                         <div class="layui-input-block">
-                            <input type="tel" name="url" lay-verify="url" autocomplete="off" class="layui-input">
+                            <input type="text" name="username" lay-verify="username" autocomplete="off"
+                                   class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
-                        <label class="layui-form-label">
-                            <a href="javascript:;" class="layui-btn layui-btn-small" id="search">
-                                <i class="layui-icon">&#xe615;</i> 搜索
-                            </a>
-                        </label>
+                        <label class="layui-form-label"></label>
                         <div class="layui-input-block">
+                            <a href="javascript:;" class="layui-btn layui-btn-small" id="query-trigger">
+                                <i class="fa fa-search"></i> 搜索
+                            </a>
                         </div>
                     </div>
 
@@ -65,14 +69,15 @@
     <div class="layui-box">
 
         <div class="layui-tool">
-            <a href="javascript:;" class="layui-btn layui-btn-small" id="data-add">
-                <i class="layui-icon">&#xe608;</i> 添加信息
+            <a id="add-trigger" class="layui-btn layui-btn-small"
+               href="/pages/account/shopUserAdd.html">
+                <i class="fa fa-plus"></i> 新增
             </a>
-            <a href="#" class="layui-btn layui-btn-small" id="import">
-                <i class="layui-icon">&#xe608;</i> 导入信息
+            <a id="import-trigger" class="layui-btn layui-btn-small" href="javascript:;">
+                <i class="fa fa-upload"></i> 导入数据
             </a>
-            <a href="#" class="layui-btn layui-btn-small" id="export">
-                <i class="fa fa-shopping-cart" aria-hidden="true"></i> 导出信息
+            <a id="export-trigger" class="layui-btn layui-btn-small" href="javascript:;">
+                <i class="fa fa-download"></i> 导出数据
             </a>
         </div>
 
@@ -94,38 +99,18 @@
             <thead>
             <tr>
                 <th><input id="selected-all" type="checkbox" name="close" title="全选"></th>
-                <th>所属分类</th>
-                <th>标题</th>
-                <th>作者</th>
-                <th>创建时间</th>
-                <th>浏览量</th>
+                <th>用户名</th>
+                <th>昵称</th>
+                <th>邮箱</th>
+                <th>手机号</th>
                 <th>状态</th>
-                <th>排序值</th>
-                <th>置顶</th>
+                <th>创建人</th>
+                <th>创建时间</th>
+                <th>更新时间</th>
                 <th>操作</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td><input type="checkbox"></td>
-                <td>Layui</td>
-                <td>
-                    <a href="/manage/article_edit_1">演示站点发布成功啦。</a>
-                </td>
-                <td>Beginner</td>
-                <td>2016-11-16 11:50</td>
-                <td>1298</td>
-                <td>正常</td>
-                <td>99</td>
-                <td style="text-align:center;"><i class="layui-icon" style="color:green;"></i></td>
-                <td>
-                    <a href="javascript:;" data-id="1"
-                       class="layui-btn layui-btn-normal layui-btn-mini data-detail">预览</a>
-                    <a href="javascript:;" class="layui-btn layui-btn-mini data-edit">编辑</a>
-                    <a href="javascript:;" data-id="1"
-                       class="layui-btn layui-btn-danger layui-btn-mini data-delete">删除</a>
-                </td>
-            </tr>
             </tbody>
         </table>
     </div>
@@ -134,27 +119,36 @@
     <div id="pager" class="layui-box"></div>
 
     <template id="query-table">
-        {{# layui.each(d.list, function(index, item){ }}
+        {{# layui.each(d.result, function(index, item){ }}
         <tr>
             <td><input type="checkbox"></td>
-            <td>{{item}}</td>
+            <td>{{item.username}}</td>
             <td>
-                {{item}}
+                {{item.nickname}}
             </td>
-            <td>{{item}}</td>
-            <td>{{item}}</td>
-            <td>{{item}}</td>
-            <td>{{item}}</td>
-            <td>{{item}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.phoneNum}}</td>
+            <td>{{item.status}}</td>
+            <td>{{item.createUser}}</td>
+            <td>{{item.createTime}}</td>
+            <td>{{item.updateTime}}</td>
             <td>
-                <i class="layui-icon" style="color:green;"></i>
-            </td>
-            <td>
-                <a href="javascript:;" data-id="1"
-                   class="layui-btn layui-btn-normal layui-btn-mini data-detail">预览</a>
-                <a href="javascript:;" class="layui-btn layui-btn-mini data-edit">编辑</a>
-                <a href="javascript:;" data-id="1"
-                   class="layui-btn layui-btn-danger layui-btn-mini data-delete">删除</a>
+                <a class="layui-btn layui-btn-normal layui-btn-mini detail-trigger"
+                   href="/pages/account/shopUserDetail.html"
+                   data-href="/user/queryBy?userId={{item.userId}}">
+                    <i class="fa fa-eye"></i> 详情
+                </a>
+                <a class="layui-btn layui-btn-mini update-trigger"
+                   href="/pages/account/shopUserEdit.html"
+                   data-href="/user/queryBy?userId={{item.userId}}">
+                    <i class="fa fa-edit"></i> 编辑
+                </a>
+                <a class="layui-btn layui-btn-danger layui-btn-mini delete-trigger"
+                   href="javascript:;"
+                   data-name="{{item.username}}"
+                   data-href="/user/deleteBy?userId={{item.userId}}">
+                    <i class="fa fa-trash"></i> 删除
+                </a>
             </td>
         </tr>
         {{# }); }}

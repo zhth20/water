@@ -34,4 +34,23 @@ public interface UserBiz {
      * @return
      */
     List<UserPO> queryUsers(Pager pager);
+
+    /**
+     * 查询用户数量
+     *
+     * @return
+     */
+    Integer queryCount();
+
+    /**
+     * 新增用户
+     * @param userPO
+     */
+    void addUser(UserPO userPO);
+
+    /**
+     * 删除用户
+     * @param userPO
+     */
+    void deleteUser(UserPO userPO);
 }
