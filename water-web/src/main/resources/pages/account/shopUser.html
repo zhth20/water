@@ -24,15 +24,13 @@
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-inline">
-                        <label class="layui-form-label">分类</label>
+                        <label class="layui-form-label">状态</label>
                         <div class="layui-input-block">
                             <select name="interest" lay-filter="aihao">
-                                <option value=""></option>
-                                <option value="0">写作</option>
-                                <option value="1" selected="">阅读</option>
-                                <option value="2">游戏</option>
-                                <option value="3">音乐</option>
-                                <option value="4">旅行</option>
+                                <option value="ALL">全部</option>
+                                <option value="ACTIVE">激活</option>
+                                <option value="INIT" selected="">初始化</option>
+                                <option value="DISABLED">禁用</option>
                             </select>
                         </div>
                     </div>
@@ -69,8 +67,7 @@
     <div class="layui-box">
 
         <div class="layui-tool">
-            <a id="add-trigger" class="layui-btn layui-btn-small"
-               href="/pages/account/shopUserAdd.html">
+            <a id="add-trigger" class="layui-btn layui-btn-small" href="javascript:;" template="#add-template">
                 <i class="fa fa-plus"></i> 新增
             </a>
             <a id="import-trigger" class="layui-btn layui-btn-small" href="javascript:;">
@@ -118,8 +115,8 @@
         <div id="pager" class="layui-box"></div>
     </div>
 
-
-    <template id="query-table">
+    <!--查询结果模版-->
+    <template id="table-template">
         {{# layui.each(d.result, function(index, item){ }}
         <tr>
             <td><input type="checkbox"></td>
@@ -135,13 +132,13 @@
             <td>{{item.updateTime}}</td>
             <td>
                 <a class="layui-btn layui-btn-mini detail-trigger"
-                   href="/pages/account/shopUserDetail.html"
-                   data-href="/user/queryBy?userId={{item.userId}}">
+                   data-href="/user/queryBy?userId={{item.userId}}"
+                   template="#detail-template">
                     <i class="fa fa-eye"></i> 详情
                 </a>
                 <a class="layui-btn layui-btn-mini update-trigger"
-                   href="/pages/account/shopUserUpdate.html"
-                   data-href="/user/queryBy?userId={{item.userId}}">
+                   data-href="/user/queryBy?userId={{item.userId}}"
+                   template="#update-template">
                     <i class="fa fa-edit"></i> 编辑
                 </a>
                 <a class="layui-btn layui-btn-mini delete-trigger"
@@ -154,6 +151,119 @@
         </tr>
         {{# }); }}
 
+    </template>
+
+    <!--新增数据模版-->
+    <template id="add-template">
+        <form id="add-form" class="layui-form" action="/user/add">
+            <div class="layui-form-item">
+                <label class="layui-form-label">角色</label>
+                <div class="layui-input-inline">
+                    <select name="roleId" readonly>
+                        <option value="1">管理员</option>
+                    </select>
+                </div>
+                <div class="layui-form-mid layui-word-aux">辅助文字</div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">用户名</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="username" lay-verify="required" placeholder="用户名" autocomplete="off"
+                           class="layui-input">
+                </div>
+                <div class="layui-form-mid layui-word-aux">辅助文字</div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">昵称</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="nickname" placeholder="昵称" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">邮箱</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="email" placeholder="邮箱" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">手机号</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="phoneNum" placeholder="手机号" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+        </form>
+
+    </template>
+
+    <!--修改数据模版-->
+    <template id="update-template">
+        <form id="update-form" class="layui-form" action="/user/update">
+
+            <div class="layui-hide">
+                <input type="hidden" name="userId" value="{{d.userId}}">
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">用户名</label>
+                <div class="layui-form-mid">{{d.username}}</div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">昵称</label>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input"
+                           name="nickname" value="{{d.nickname}}"
+                           placeholder="昵称" autocomplete="off">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">邮箱</label>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input"
+                           name="email" value="{{d.email}}"
+                           placeholder="邮箱" autocomplete="off">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">手机号</label>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input"
+                           name="phoneNum" value="{{d.phoneNum}}"
+                           placeholder="手机号" autocomplete="off">
+                </div>
+            </div>
+
+        </form>
+    </template>
+
+    <!--详情数据模版-->
+    <template id="detail-template">
+        <form id="detail-form" class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label">用户名</label>
+                <div class="layui-form-mid">{{d.username}}</div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">昵称</label>
+                <div class="layui-form-mid">{{d.nickname}}</div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">邮箱</label>
+                <div class="layui-form-mid">{{d.email}}</div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">手机号</label>
+                <div class="layui-form-mid">{{d.phoneNum}}</div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">状态</label>
+                <div class="layui-form-mid">{{d.status}}</div>
+            </div>
+
+        </form>
     </template>
 </div>
 <script type="text/javascript" src="/static/layui/layui.js"></script>

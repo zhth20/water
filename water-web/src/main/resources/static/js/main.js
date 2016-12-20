@@ -59,12 +59,10 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], function 
 
         //新增页面打开事件
         $(document).on('click', self.config.addTrigger, function () {
-            self.openPage({
-                url: $(this).attr('href'),
-                title: $(this).html(),
-                callback: function () {
-                    self.add();
-                }
+
+            self.toAdd({
+                template: $(this).attr('template'),
+                title: $(this).html()
             });
 
             return false;
@@ -72,41 +70,25 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], function 
 
         //修改页面打开事件
         $(document).on('click', self.config.updateTrigger, function () {
-            self.openPage({
-                url: $(this).attr('href'),
-                title: $(this).html(),
-                callback: function () {
-                    self.update();
-                }
+
+            self.toUpdate({
+                url: $(this).attr('data-href'),
+                template: $(this).attr('template'),
+                title: $(this).html()
             });
 
-            self.get($(this).attr('data-href'), null, function (data) {
-                var template = $(self.config.updateForm).html();
-                laytpl(template).render(data.result, function (html) {
-                    $(self.config.updateForm).html(html);
-                    self.render();
-                });
-            });
             return false;
         });
 
         //详情页面打开事件
         $(document).on('click', self.config.detailTrigger, function () {
-            self.openPage({
-                url: $(this).attr('href'),
-                title: $(this).html(),
-                data: $(this).attr('data-href'),
-                callback: function () {
-                }
+
+            self.toDetail({
+                url: $(this).attr('data-href'),
+                template: $(this).attr('template'),
+                title: $(this).html()
             });
 
-            self.get($(this).attr('data-href'), null, function (data) {
-                var template = $(self.config.detailForm).html();
-                laytpl(template).render(data.result, function (html) {
-                    $(self.config.detailForm).html(html);
-                    self.render();
-                });
-            });
             return false;
         });
 
@@ -178,7 +160,7 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], function 
     Base.fn.query = function () {
         var self = this;
         self.get($(self.config.queryForm).attr('action'), $(self.config.queryForm).serialize(), function (data) {
-            var template = $('#query-table').html();
+            var template = $('#table-template').html();
             laytpl(template).render(data, function (html) {
                 $('table>tbody').html(html);
                 self.render();
@@ -220,12 +202,12 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], function 
      */
     Base.fn.openPage = function (config) {
         var self = this;
-        $.get(self.addTimestamp(config.url), function (data) {
+        laytpl($(config.template).html()).render(config.data, function (html) {
             self.pageIndex = layer.open({
                 id: 'page-content',
                 type: 1,
                 title: config.title,
-                content: data,
+                content: html,
                 btnAlign: 'l',
                 btn: [self.saveTitle, self.backTitle],
                 yes: config.callback,
@@ -245,6 +227,20 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], function 
     };
 
     /**
+     * 数据添加页面
+     */
+    Base.fn.toAdd = function (config) {
+        var self = this;
+
+        config.callback = function () {
+            self.add();
+        }
+        config.data = {};
+
+        self.openPage(config);
+    }
+
+    /**
      * 数据添加
      */
     Base.fn.add = function () {
@@ -259,6 +255,24 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], function 
     }
 
     /**
+     * 数据修改页面
+     */
+    Base.fn.toUpdate = function (config) {
+        var self = this;
+        config.callback = function () {
+            self.update();
+        }
+        if (config.url && config.url != '') {
+            self.get(config.url, null, function (data) {
+                config.data = data.result;
+                self.openPage(config);
+            });
+        } else {
+            layer.msg('数据链接地址不能为空');
+        }
+    }
+
+    /**
      * 数据修改
      */
     Base.fn.update = function () {
@@ -269,6 +283,23 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], function 
             layer.close(self.pageIndex);
             self.query();
         });
+    }
+
+    /**
+     * 数据详情页面
+     */
+    Base.fn.toDetail = function (config) {
+        var self = this;
+        config.callback = function () {
+        }
+        if (config.url && config.url != '') {
+            self.get(config.url, null, function (data) {
+                config.data = data.result;
+                self.openPage(config);
+            });
+        } else {
+            layer.msg('数据链接地址不能为空');
+        }
     }
 
     /**
