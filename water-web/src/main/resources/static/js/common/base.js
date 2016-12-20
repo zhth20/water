@@ -10,7 +10,7 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
         player = window.layer;
 
     var Base = function () {
-        this.config = {
+        this.elems = {
             queryForm: '#query-form',
             queryTrigger: '#query-trigger',
             addForm: '#add-form',
@@ -21,14 +21,17 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
             detailTrigger: '.detail-trigger',
             deleteTrigger: '#delete-trigger',
             importTrigger: '#import-trigger',
-            exportTrigger: '#export-trigger'
+            exportTrigger: '#export-trigger',
+            selectedAll: '#selected-all'
         };
 
-        this.saveTitle = '<i class="fa fa-save"></i> 保存';
-        this.backTitle = '<i class="fa fa-reply"></i> 返回';
-        this.pageIndex = 0;
-        this.loadIndex = 0;
-        this.initFlag = true;
+        this.configs = {
+            saveTitle: '<i class="fa fa-save"></i> 保存',
+            backTitle: '<i class="fa fa-reply"></i> 返回',
+            pageIndex: 0,
+            loadIndex: 0,
+            initFlag: true
+        };
 
         this.init();
     }
@@ -52,13 +55,15 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
     Base.fn.bindEvents = function () {
         var self = this;
         //查询按钮事件
-        $(document).on('click', self.config.queryTrigger, function () {
-            self.query();
+        $(document).on('click', self.elems.queryTrigger, function () {
+            self.query({
+                template: $(this).attr('template')
+            });
             return false;
         });
 
         //新增页面打开事件
-        $(document).on('click', self.config.addTrigger, function () {
+        $(document).on('click', self.elems.addTrigger, function () {
 
             self.toAdd({
                 template: $(this).attr('template'),
@@ -69,7 +74,7 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
         });
 
         //修改页面打开事件
-        $(document).on('click', self.config.updateTrigger, function () {
+        $(document).on('click', self.elems.updateTrigger, function () {
 
             self.toUpdate({
                 url: $(this).attr('data-href'),
@@ -81,7 +86,7 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
         });
 
         //详情页面打开事件
-        $(document).on('click', self.config.detailTrigger, function () {
+        $(document).on('click', self.elems.detailTrigger, function () {
 
             self.toDetail({
                 url: $(this).attr('data-href'),
@@ -93,7 +98,7 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
         });
 
         //删除按钮事件
-        $(document).on('click', self.config.deleteTrigger, function () {
+        $(document).on('click', self.elems.deleteTrigger, function () {
             self.delete({
                 url: $(this).attr('data-href'),
                 name: $(this).attr('data-name')
@@ -102,19 +107,19 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
         });
 
         //导入按钮事件
-        $(document).on('click', self.config.importTrigger, function () {
+        $(document).on('click', self.elems.importTrigger, function () {
             self.import();
             return false;
         });
 
         //导出按钮事件
-        $(document).on('click', self.config.exportTrigger, function () {
+        $(document).on('click', self.elems.exportTrigger, function () {
             self.export();
             return false;
         });
 
         //选择全部事件
-        $(document).on('ifChanged', '#selected-all', function (event) {
+        $(document).on('ifChanged', self.elems.selectedAll, function (event) {
             var checked = $('#selected-all').prop('checked');
             var $input = $('.layui-table tbody tr td').find('input');
             $input.iCheck(event.currentTarget.checked ? 'check' : 'uncheck');
@@ -136,7 +141,7 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
 
         //页面尺寸发生改变事件
         $(window).on('resize', function () {
-            self.pageIndex > 0 && layer.full(self.pageIndex);
+            self.configs.pageIndex > 0 && layer.full(self.configs.pageIndex);
         });
 
     }
@@ -157,10 +162,11 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
     /**
      * 查询
      */
-    Base.fn.query = function () {
+    Base.fn.query = function (config) {
         var self = this;
-        self.get($(self.config.queryForm).attr('action'), $(self.config.queryForm).serialize(), function (data) {
-            var template = $('#table-template').html();
+        var $queryForm = $(self.elems.queryForm);
+        self.get($queryForm.attr('action'), $queryForm.serialize(), function (data) {
+            var template = $(config.template).html();
             laytpl(template).render(data, function (html) {
                 $('table>tbody').html(html);
                 self.render();
@@ -175,8 +181,8 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
 
     Base.fn.toPage = function (num) {
         var self = this;
-        $(self.config.queryForm).find('input[name=pageNumber]').val(num);
-        $(self.config.queryTrigger).trigger('click');
+        $(self.elems.queryForm).find('input[name=pageNumber]').val(num);
+        $(self.elems.queryTrigger).trigger('click');
     }
 
     /**
@@ -203,20 +209,20 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
     Base.fn.openPage = function (config) {
         var self = this;
         laytpl($(config.template).html()).render(config.data, function (html) {
-            self.pageIndex = layer.open({
+            self.configs.pageIndex = layer.open({
                 id: 'page-content',
                 type: 1,
                 title: config.title,
                 content: html,
                 btnAlign: 'l',
-                btn: [self.saveTitle, self.backTitle],
+                btn: [self.configs.saveTitle, self.configs.backTitle],
                 yes: config.callback,
                 end: function () {
-                    self.pageIndex = 0;
+                    self.configs.pageIndex = 0;
                 }
             });
             form.render();
-            layer.full(self.pageIndex);
+            layer.full(self.configs.pageIndex);
         });
     }
 
@@ -245,10 +251,10 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
      */
     Base.fn.add = function () {
         var self = this;
-        var $addForm = $(self.config.addForm);
+        var $addForm = $(self.elems.addForm);
         self.post($addForm.attr('action'), $addForm.serialize(), function (data) {
             layer.msg(data.message);
-            layer.close(self.pageIndex);
+            layer.close(self.configs.pageIndex);
             self.initFlag = true;
             self.query();
         });
@@ -277,10 +283,10 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
      */
     Base.fn.update = function () {
         var self = this;
-        var $updateForm = $(self.config.updateForm);
+        var $updateForm = $(self.elems.updateForm);
         self.post($updateForm.attr('action'), $updateForm.serialize(), function (data) {
             layer.msg(data.message);
-            layer.close(self.pageIndex);
+            layer.close(self.configs.pageIndex);
             self.query();
         });
     }
@@ -368,16 +374,16 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
             success: config.callback,
             //请求出错
             error: function () {
-                layer.close(self.loadIndex);
+                layer.close(self.configs.loadIndex);
                 layer.msg('请求失败', {icon: 2});
             },
             //请求发送前
             beforeSend: function () {
-                self.loadIndex = layer.load(1);
+                self.configs.loadIndex = layer.load(1);
             },
             //请求完成后
             complete: function () {
-                layer.close(self.loadIndex);
+                layer.close(self.configs.loadIndex);
             }
         });
 
