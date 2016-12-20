@@ -172,9 +172,9 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
                 self.render();
             });
 
-            if (self.initFlag) {
+            if (self.configs.initFlag) {
                 self.intPager(data.pager);
-                self.initFlag = false;
+                self.configs.initFlag = false;
             }
         });
     }
@@ -255,7 +255,7 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
         self.post($addForm.attr('action'), $addForm.serialize(), function (data) {
             layer.msg(data.message);
             layer.close(self.configs.pageIndex);
-            self.initFlag = true;
+            self.configs.initFlag = true;
             self.query();
         });
     }

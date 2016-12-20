@@ -19,7 +19,7 @@ layui.use('base', function () {
     }
     //初始化方法
     User.fn.ready = function () {
-        layer.msg(this.config.test);
+        //layer.msg(this.config.test);
     }
     //实例化
     new User();
