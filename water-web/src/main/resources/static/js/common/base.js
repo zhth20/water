@@ -165,24 +165,41 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
     Base.fn.query = function (config) {
         var self = this;
         var $queryForm = $(self.elems.queryForm);
+        //获取服务器数据
         self.get($queryForm.attr('action'), $queryForm.serialize(), function (data) {
             var template = $(config.template).html();
             laytpl(template).render(data, function (html) {
                 $('table>tbody').html(html);
+                //取消全选按钮选中效果
+                $(self.elems.selectedAll).prop('checked', false);
+                //组件渲染
                 self.render();
             });
 
-            if (self.configs.initFlag) {
+            //分页插件初始化
+            if (self.configs.initFlag &&　data.pager) {
                 self.intPager(data.pager);
                 self.configs.initFlag = false;
             }
+
+            //取消全选按钮选中效果
+            $(self.elems.selectedAll).prop('checked', false);
+            self.render();
+
         });
     }
 
+    //跳转到指定页数数据
     Base.fn.toPage = function (num) {
         var self = this;
-        $(self.elems.queryForm).find('input[name=pageNumber]').val(num);
+        num &&　$(self.elems.queryForm).find('input[name=pageNumber]').val(num);
         $(self.elems.queryTrigger).trigger('click');
+    }
+
+    //刷新当前页面数据
+    Base.fn.refresh = function () {
+        var self = this;
+        self.toPage();
     }
 
     /**
@@ -208,6 +225,7 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
      */
     Base.fn.openPage = function (config) {
         var self = this;
+        //页面渲染
         laytpl($(config.template).html()).render(config.data, function (html) {
             self.configs.pageIndex = layer.open({
                 id: 'page-content',
@@ -238,10 +256,10 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
     Base.fn.toAdd = function (config) {
         var self = this;
 
+        config.data = {};
         config.callback = function () {
             self.add();
         }
-        config.data = {};
 
         self.openPage(config);
     }
@@ -256,7 +274,7 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
             layer.msg(data.message);
             layer.close(self.configs.pageIndex);
             self.configs.initFlag = true;
-            self.query();
+            self.toPage(1);
         });
     }
 
@@ -265,10 +283,10 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
      */
     Base.fn.toUpdate = function (config) {
         var self = this;
-        config.callback = function () {
-            self.update();
-        }
         if (config.url && config.url != '') {
+            config.callback = function () {
+                self.update();
+            }
             self.get(config.url, null, function (data) {
                 config.data = data.result;
                 self.openPage(config);
@@ -287,7 +305,7 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
         self.post($updateForm.attr('action'), $updateForm.serialize(), function (data) {
             layer.msg(data.message);
             layer.close(self.configs.pageIndex);
-            self.query();
+            self.refresh();
         });
     }
 
@@ -321,7 +339,7 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
         player.confirm('确认删除：' + items.names + ' ？', {icon: 7}, function () {
             self.get(item.url, {ids: items.ids.join(',')}, function (data) {
                 layer.msg(data.message);
-                self.query();
+                self.refresh();
             });
         });
     }
