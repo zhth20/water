@@ -54,8 +54,13 @@ public class UserController extends BaseController {
     }
 
     @RequestMapping("/deleteBy")
-    public Object deleteUser(UserPO userPO) {
-        userBiz.deleteUser(userPO);
+    public Object deleteUser(Integer[] ids) {
+        UserPO userPO = new UserPO();
+        for (Integer id: ids) {
+            userPO.setUserId(id);
+            userBiz.deleteUser(userPO);
+        }
+
         return Result.getResultSuccess("删除用户成功");
     }
 

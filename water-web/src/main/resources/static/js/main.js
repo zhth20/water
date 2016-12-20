@@ -23,7 +23,7 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], function 
             updateTrigger: '.update-trigger',
             detailForm: '#detail-form',
             detailTrigger: '.detail-trigger',
-            deleteTrigger: '.delete-trigger',
+            deleteTrigger: '#delete-trigger',
             importTrigger: '#import-trigger',
             exportTrigger: '#export-trigger'
         };
@@ -307,12 +307,33 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], function 
      */
     Base.fn.delete = function (item) {
         var self = this;
-        player.confirm('确认删除：' + item.name + ' ？', {icon: 7}, function () {
-            self.get(item.url, null, function (data) {
+        var items = self.getValuesByInputName('ids', '.layui-table tbody');
+        if (items.ids.length < 1) {
+            layer.msg('请选择要删除数据');
+            return false;
+        }
+        player.confirm('确认删除：' + items.names + ' ？', {icon: 7}, function () {
+            self.get(item.url, {ids: items.ids.join(',')}, function (data) {
                 layer.msg(data.message);
                 self.query();
             });
         });
+    }
+
+    /**
+     * 数据删除
+     */
+    Base.fn.getValuesByInputName = function (name, context) {
+        var self = this;
+        var items = {
+            ids: [],
+            names: []
+        };
+        $('input:checkbox[name=' + name + ']:checked:not(disabled)', context || document).each(function (index, item) {
+            items.ids.push($(item).val());
+            items.names.push($(item).attr('data-name'));
+        });
+        return items;
     }
 
     /**
@@ -337,12 +358,13 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], function 
         var self = this;
 
         config = config || {};
-
+        config.timestamp = new Date().getTime();
         $.ajax({
             url: config.url,
             type: config.type,
             data: config.data,
             dataType: 'json',
+            cache: false,
             success: config.callback,
             //请求出错
             error: function () {
