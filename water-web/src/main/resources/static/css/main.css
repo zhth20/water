@@ -18,6 +18,15 @@
     background-color: #EEE !important;
 }
 
-.layui-layer .layui-layer-content{
+.layui-layer .layui-layer-content {
     padding: 15px;
+}
+
+.layui-btn + .layui-btn {
+    margin-left: 0;
+}
+
+.layui-box-scroll{
+    max-width: 100%;
+    overflow-x: auto;
 }
