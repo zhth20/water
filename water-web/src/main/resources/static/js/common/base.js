@@ -1,11 +1,7 @@
 /**
  * Created by Loyal on 2016/12/16.
  */
-layui.config({
-    base: '/static/js/common/'
-});
-
-layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], function () {
+layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], function (exports) {
     var $ = layui.jquery,
         pager = layui.laypage,
         form = layui.form(),
@@ -33,6 +29,8 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], function 
         this.pageIndex = 0;
         this.loadIndex = 0;
         this.initFlag = true;
+
+        this.init();
     }
 
     Base.fn = Base.prototype;
@@ -42,14 +40,16 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], function 
      */
     Base.fn.init = function () {
         var self = this;
-        self.bindEvens();
+        self.bindEvents();
+        self.events();
+        self.ready();
         self.toPage(1);
     }
 
     /**
      * 事件绑定
      */
-    Base.fn.bindEvens = function () {
+    Base.fn.bindEvents = function () {
         var self = this;
         //查询按钮事件
         $(document).on('click', self.config.queryTrigger, function () {
@@ -419,5 +419,19 @@ layui.use(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], function 
         });
     }
 
-    new Base().init();
+    /**
+     * 页面初始化完成执行方法
+     */
+    Base.fn.ready = function () {
+
+    }
+
+    /**
+     * 事件绑定
+     */
+    Base.fn.events = function () {
+
+    }
+
+    exports('base', Base);
 });

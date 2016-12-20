@@ -4,7 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.web.SpringServletContainerInitializer;
 
 /**
  * Title: WebApiStart.java
@@ -15,9 +18,14 @@ import org.springframework.context.ConfigurableApplicationContext;
  * @date: 2016-11-28 17:21
  */
 @SpringBootApplication
-public class WebStart {
+public class WebStart extends SpringBootServletInitializer {
 
     private static final Logger logger = LoggerFactory.getLogger(WebStart.class);
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(WebStart.class);
+    }
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(WebStart.class, args);

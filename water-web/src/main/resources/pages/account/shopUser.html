@@ -27,7 +27,7 @@
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label">状态</label>
-                        <div class="layui-input-block">
+                        <div class="layui-input-inline">
                             <select name="interest" lay-filter="aihao">
                                 <option value="ALL">全部</option>
                                 <option value="ACTIVE">激活</option>
@@ -38,7 +38,7 @@
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">创建日期</label>
-                        <div class="layui-input-block">
+                        <div class="layui-input-inline">
                             <input type="tel" name="url" lay-verify="url" readonly placeholder="yy-MM-dd"
                                    autocomplete="off"
                                    class="layui-input" onclick="layui.laydate({elem: this})">
@@ -46,14 +46,14 @@
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label">用户名</label>
-                        <div class="layui-input-block">
+                        <div class="layui-input-inline">
                             <input type="text" name="username" lay-verify="username" autocomplete="off"
                                    class="layui-input">
                         </div>
                     </div>
                     <div class="layui-inline">
                         <label class="layui-form-label"></label>
-                        <div class="layui-input-block">
+                        <div class="layui-input-inline">
                             <a href="javascript:;" class="layui-btn layui-btn-small" id="query-trigger">
                                 <i class="fa fa-search"></i> 搜索
                             </a>
@@ -70,7 +70,7 @@
 
         <div class="layui-tool">
             <a id="add-trigger" class="layui-btn layui-btn-small" href="javascript:;" template="#add-template">
-                <i class="fa fa-plus"></i> 新增
+                <i class="fa fa-plus"></i> 新增aa
             </a>
 
             <a id="delete-trigger" class="layui-btn layui-btn-small" href="javascript:;"
@@ -280,7 +280,7 @@
 </script>
 
 <script type="text/javascript" src="/static/layui/layui.js"></script>
-<script type="text/javascript" src="/static/js/main.js"></script>
+<script type="text/javascript" src="/static/js/user/index.js"></script>
 </body>
 
 </html>

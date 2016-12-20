@@ -29,10 +29,7 @@ layui.config({
 			var url;
 			switch(id) {
 				case 1:
-					url = '/static/datas/nav_content.json';
-					break;
-				case 3:
-					url = '/static/datas/nav_member.json';
+					url = '/static/datas/nav.json';
 					break;
 				default:
 					break;
@@ -72,7 +69,7 @@ layui.config({
 			navbar.render();
 			//监听点击事件
 			navbar.on('click(side)', function(data) {
-				layer.msg(data.field.href);
+				var href = data.field.href;
 				tab.tabAdd(data.field);
 			});
 		});
