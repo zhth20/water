@@ -27,7 +27,7 @@ public class LoginController extends BaseController {
     private static final String FAIL_MARKER = "对用户[{}]进行登录验证..验证失败,{}";
 
     @RequestMapping(value = "/login.html", method = RequestMethod.GET)
-    public String toLogin() {
+    public Object toLogin() {
         return "redirect:/pages/index.html";
     }
 
@@ -71,6 +71,6 @@ public class LoginController extends BaseController {
     @ResponseBody
     public Object logout() {
         SecurityUtils.getSubject().logout();
-        return Result.getResultSuccess("安全退出");
+        return Result.getResultExpired("安全退出");
     }
 }

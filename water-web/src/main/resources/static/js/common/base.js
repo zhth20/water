@@ -398,7 +398,9 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
             //请求出错
             error: function () {
                 layer.close(self.configs.loadIndex);
-                layer.msg('请求失败', {icon: 2});
+                layer.msg('会话已过期，请重新登录', {icon: 2, time: 500},function(){
+                    window.location.reload();
+                });
             },
             //请求发送前
             beforeSend: function () {

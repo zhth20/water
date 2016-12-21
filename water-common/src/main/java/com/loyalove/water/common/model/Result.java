@@ -21,6 +21,8 @@ public class Result implements Serializable {
     private static final String STATUS_FAIL = "FAIL";
     //错误
     private static final String STATUS_ERROR = "ERROR";
+    //错误
+    private static final String STATUS_EXPIRED = "EXPIRED";
 
     //状态
     private String status;
@@ -73,6 +75,11 @@ public class Result implements Serializable {
 
     public static Result getResultError(String message) {
         Result result = new Result(STATUS_ERROR, message);
+        return result;
+    }
+
+    public static Result getResultExpired(String message) {
+        Result result = new Result(STATUS_EXPIRED, message);
         return result;
     }
 
