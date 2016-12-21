@@ -120,11 +120,16 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
 
         //选择全部事件
         $(document).on('ifChanged', self.elems.selectedAll, function (event) {
-            var checked = $('#selected-all').prop('checked');
+            // var checked = $(self.elems.selectedAll).prop('checked');
             var $input = $('.layui-table tbody tr td').find('input');
             $input.iCheck(event.currentTarget.checked ? 'check' : 'uncheck');
         });
-
+        //列表选中事件
+        $(document).on('ifChanged', '.layui-table tbody tr input', function (event) {
+            if (event.currentTarget.checked
+                && $('.layui-table tbody tr td input:checkbox:checked').length == 10)
+                $(self.elems.selectedAll).iCheck('check');
+        });
         //列表选中事件
         $(document).on('ifChecked', '.layui-table tbody tr input', function (event) {
             $(this).parents('tr').addClass('layui-table-tr-checked');
@@ -177,7 +182,7 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
             });
 
             //分页插件初始化
-            if (self.configs.initFlag &&　data.pager) {
+            if (self.configs.initFlag && data.pager) {
                 self.intPager(data.pager);
                 self.configs.initFlag = false;
             }
@@ -192,7 +197,7 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
     //跳转到指定页数数据
     Base.fn.toPage = function (num) {
         var self = this;
-        num &&　$(self.elems.queryForm).find('input[name=pageNumber]').val(num);
+        num && $(self.elems.queryForm).find('input[name=pageNumber]').val(num);
         $(self.elems.queryTrigger).trigger('click');
     }
 
@@ -336,7 +341,7 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
             layer.msg('请选择要删除数据');
             return false;
         }
-        player.confirm('确认删除：' + items.names + ' ？', {icon: 7}, function () {
+        player.confirm('确认删除：[ ' + items.names.join('，') + ' ]？', {icon: 7}, function () {
             self.get(item.url, {ids: items.ids.join(',')}, function (data) {
                 layer.msg(data.message);
                 self.refresh();
