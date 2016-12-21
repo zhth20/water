@@ -33,6 +33,16 @@ layui.config({
         layui.data('tab_show_index', data.field.href);
     });
 
+    $('#logout').on('click', function () {
+        $.get('/logout', function (data) {
+            layer.msg(data.message, {
+                time: 500
+            }, function () {
+                window.location.reload();
+            });
+        });
+    });
+
     $('.admin-side-toggle').on('click', function () {
         var sideWidth = $('#admin-side').width();
         if (sideWidth === 200) {
