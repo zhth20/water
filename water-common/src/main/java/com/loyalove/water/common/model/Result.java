@@ -21,7 +21,7 @@ public class Result implements Serializable {
     private static final String STATUS_FAIL = "FAIL";
     //错误
     private static final String STATUS_ERROR = "ERROR";
-    //错误
+    //过期
     private static final String STATUS_EXPIRED = "EXPIRED";
 
     //状态

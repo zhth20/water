@@ -1,9 +1,12 @@
 package com.loyalove.water.web.controller.auth;
 
 import com.loyalove.water.biz.auth.UserBiz;
+import com.loyalove.water.common.enums.UserStatusEnum;
+import com.loyalove.water.common.enums.UserTypeEnum;
 import com.loyalove.water.common.model.Pager;
 import com.loyalove.water.common.model.Result;
 import com.loyalove.water.pojo.UserPO;
+import com.loyalove.water.query.auth.UserQuery;
 import com.loyalove.water.web.controller.BaseController;
 import com.loyalove.water.web.util.PasswordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,20 +30,20 @@ public class UserController extends BaseController {
     UserBiz userBiz;
 
     @RequestMapping("")
-    public Object queryUsers(Pager pager) {
-        List<UserPO> result = userBiz.queryUsers(pager);
-        pager.setRecordTotal(userBiz.queryCount());
+    public Result queryUsers(UserQuery query, Pager pager) {
+        List<UserPO> result = userBiz.queryUsers(query, pager);
+        pager.setRecordTotal(userBiz.queryCount(query));
         return Result.getResultSuccess("查询成功", result, pager);
     }
 
     @RequestMapping("/queryBy")
-    public Object queryBy(UserPO userPO) {
+    public Result queryBy(UserPO userPO) {
         userPO = userBiz.queryUser(userPO);
         return Result.getResultSuccess("查询用户成功", userPO);
     }
 
     @RequestMapping("/add")
-    public Object addUser(UserPO userPO) {
+    public Result addUser(UserPO userPO) {
         PasswordUtils.encryptPassword(userPO);
         userPO.setCreateUser(currUser().getUserId());
         userBiz.addUser(userPO);
@@ -48,13 +51,13 @@ public class UserController extends BaseController {
     }
 
     @RequestMapping("/update")
-    public Object updateUser(UserPO userPO) {
+    public Result updateUser(UserPO userPO) {
         userBiz.update(userPO);
         return Result.getResultSuccess("修改用户成功");
     }
 
     @RequestMapping("/deleteBy")
-    public Object deleteUser(Integer[] ids) {
+    public Result deleteUser(Integer[] ids) {
         UserPO userPO = new UserPO();
         for (Integer id: ids) {
             userPO.setUserId(id);
@@ -62,6 +65,16 @@ public class UserController extends BaseController {
         }
 
         return Result.getResultSuccess("删除用户成功");
+    }
+
+    @RequestMapping("/status")
+    public Result status() {
+        return Result.getResultSuccess("用户状态查询成功", UserStatusEnum.getAllMapList());
+    }
+
+    @RequestMapping("/type")
+    public Result type() {
+        return Result.getResultSuccess("用户类型查询成功", UserTypeEnum.getAllMapList());
     }
 
 }

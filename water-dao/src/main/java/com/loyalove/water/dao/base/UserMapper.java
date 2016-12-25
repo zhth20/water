@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 /**
  * 该接口（类）由系统生成，请勿修改
  *
- 生成时间 2016/12/02
+ 生成时间 2016/12/25
  */
 @Mapper
 @Repository

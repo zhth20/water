@@ -56,9 +56,8 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
         var self = this;
         //查询按钮事件
         $(document).on('click', self.elems.queryTrigger, function () {
-            self.query({
-                template: $(this).attr('template')
-            });
+            self.configs.initFlag = true;
+            self.toPage(1);
             return false;
         });
 
@@ -167,12 +166,12 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
     /**
      * 查询
      */
-    Base.fn.query = function (config) {
+    Base.fn.query = function () {
         var self = this;
         var $queryForm = $(self.elems.queryForm);
         //获取服务器数据
         self.get($queryForm.attr('action'), $queryForm.serialize(), function (data) {
-            var template = $(config.template).html();
+            var template = $($(self.elems.queryTrigger).attr('template')).html();
             laytpl(template).render(data, function (html) {
                 $('table>tbody').html(html);
                 //取消全选按钮选中效果
@@ -198,7 +197,7 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
     Base.fn.toPage = function (num) {
         var self = this;
         num && $(self.elems.queryForm).find('input[name=pageNumber]').val(num);
-        $(self.elems.queryTrigger).trigger('click');
+        self.query();
     }
 
     //刷新当前页面数据

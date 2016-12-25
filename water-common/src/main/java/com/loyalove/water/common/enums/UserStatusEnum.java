@@ -102,6 +102,23 @@ public enum UserStatusEnum {
         return list;
     }
 
+
+    /**
+     * 获取全部枚举Map
+     *
+     * @return List<Map<String, String>>
+     */
+    public static java.util.List<java.util.Map<String, String>> getAllMapList() {
+        java.util.List<java.util.Map<String, String>> mapList = new java.util.ArrayList<>();
+        for (UserStatusEnum _enum : values()) {
+            java.util.Map<String, String> map = new java.util.HashMap<>();
+            map.put("code", _enum.code);
+            map.put("message", _enum.message);
+            mapList.add(map);
+        }
+        return mapList;
+    }
+
     /**
      * 获取全部枚举值
      *

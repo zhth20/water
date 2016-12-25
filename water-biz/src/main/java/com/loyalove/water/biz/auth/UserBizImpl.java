@@ -7,7 +7,8 @@ import com.loyalove.water.dao.auth.UserDAO;
 import com.loyalove.water.dao.base.UserMapper;
 import com.loyalove.water.pojo.UserExample;
 import com.loyalove.water.pojo.UserPO;
-import com.loyalove.water.vo.UserVO;
+import com.loyalove.water.query.auth.UserQuery;
+import com.loyalove.water.vo.auth.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -66,8 +67,19 @@ public class UserBizImpl extends BaseBiz implements UserBiz {
      * @return
      */
     @Override
-    public List<UserPO> queryUsers(Pager pager) {
-        return userDAO.queryUsers(pager);
+    public List<UserPO> queryUsers(UserQuery query, Pager pager) {
+        return userDAO.queryUsers(query, pager);
+    }
+
+    /**
+     * 查询用户数量
+     *
+     * @param query
+     * @return
+     */
+    @Override
+    public Integer queryCount(UserQuery query) {
+        return userDAO.queryCount(query);
     }
 
     /**

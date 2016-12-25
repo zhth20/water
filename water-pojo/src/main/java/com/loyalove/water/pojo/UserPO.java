@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * 该实体由系统生成，请勿修改
  *
- * 生成时间 2016/12/02
+ * 生成时间 2016/12/25
  */
 public class UserPO implements Serializable {
     /** 自增主键 */
@@ -29,6 +29,9 @@ public class UserPO implements Serializable {
 
     /** 手机号码 */
     private String phoneNum;
+
+    /** 用户类型 */
+    private String type;
 
     /** 用户状态 */
     private String status;
@@ -100,6 +103,14 @@ public class UserPO implements Serializable {
         this.phoneNum = phoneNum;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -145,6 +156,7 @@ public class UserPO implements Serializable {
         sb.append(", nickname=").append(nickname);
         sb.append(", email=").append(email);
         sb.append(", phoneNum=").append(phoneNum);
+        sb.append(", type=").append(type);
         sb.append(", status=").append(status);
         sb.append(", createUser=").append(createUser);
         sb.append(", createTime=").append(createTime);

@@ -5,10 +5,10 @@
 	"children": [{
 		"title": "管理员账户",
 		"icon": "&#xe641;",
-		"href": "/pages/account/shopUser.html"
+		"href": "/pages/auth/user.html"
 	}, {
-		"title": "客服账户",
+		"title": "角色管理",
 		"icon": "&#xe63c;",
-		"href": "/pages/account/supplierUser.html"
+		"href": "/pages/auth/role.html"
 	}]
 }]

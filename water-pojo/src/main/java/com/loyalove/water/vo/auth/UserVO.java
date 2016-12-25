@@ -1,6 +1,7 @@
-package com.loyalove.water.vo;
+package com.loyalove.water.vo.auth;
 
 import com.loyalove.water.pojo.UserPO;
+import com.loyalove.water.vo.BaseVO;
 
 import java.util.Set;
 
@@ -12,7 +13,7 @@ import java.util.Set;
  * @author: sailuo@yiji.com
  * @date: 2016-11-30 9:46
  */
-public class UserVO {
+public class UserVO extends BaseVO {
 
     private static final long serialVersionUID = 1L;
 

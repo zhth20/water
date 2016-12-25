@@ -1,0 +1,99 @@
+CREATE TABLE `pipe_line` (
+  `pipe_line_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `pipe_id` INT(11) COMMENT '管道ID',
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY(`pipe_line_id`),
+  KEY `pipe_id_index` (`pipe_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8 COMMENT '管段表';
+
+CREATE TABLE `pipe_line_points` (
+  `pipe_line_points_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `pipe_line_id` INT(11) COMMENT '管段ID',
+  `point_id` INT(11) COMMENT '点ID',
+  PRIMARY KEY(`pipe_line_points_id`),
+  KEY `pipe_line_id_index` (`pipe_line_id`) USING BTREE,
+  KEY `point_id_index` (`point_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8 COMMENT '管段点集表';
+
+CREATE TABLE `pipe` (
+  `pipe_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `pipe_material_id` INT(11) NOT NULL COMMENT '管道材质ID',
+  `pipe_type_id` INT(11) NOT NULL COMMENT '管道口径ID',
+  `pipe_firm_id` INT(11) NOT NULL COMMENT '管道生产厂商ID',
+  `pipe_color` VARCHAR(10) NOT NULL DEFAULT '#fff' COMMENT '管道颜色',
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY(`pipe_id`),
+  KEY `pipe_material_id_index` (`pipe_material_id`) USING BTREE,
+  KEY `pipe_type_id_index` (`pipe_type_id`) USING BTREE,
+  KEY `pipe_firm_id_index` (`pipe_firm_id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8 COMMENT '管道表';
+
+CREATE TABLE `pipe_type` (
+  `pipe_type_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `pipe_dn` VARCHAR(10) NOT NULL DEFAULT 'DN20' COMMENT '口径',
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY(`pipe_type_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8 COMMENT '管道口径表';
+
+CREATE TABLE `pipe_material` (
+  `pipe_material_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `pipe_material_name` VARCHAR(20) NOT NULL COMMENT '材质名称',
+  `pipe_material_code` VARCHAR(10) NOT NULL COMMENT '材质编码',
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY(`pipe_material_id`),
+  KEY `pipe_material_code_index` (`pipe_material_code`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8 COMMENT '管道材质表';
+
+CREATE TABLE `firm` (
+  `firm_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `firm_name` VARCHAR(20) NOT NULL COMMENT '厂商名称',
+  `firm_adress` VARCHAR(10) NOT NULL COMMENT '厂商地址',
+  `firm_tel` VARCHAR(10) NOT NULL COMMENT '厂商电话',
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY(`firm_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8 COMMENT '生产厂商表';
+
+CREATE TABLE `point` (
+  `point_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `location` POINT NOT NULL COMMENT '坐标',
+  `lng` DECIMAL NOT NULL COMMENT '经度(GIS)',
+  `lat` DECIMAL NOT NULL COMMENT '纬度(GIS)',
+  `x` DECIMAL NOT NULL COMMENT '经度(CAD)',
+  `y` DECIMAL NOT NULL COMMENT '纬度(CAD)',
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY(`point_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8 COMMENT '坐标表';
+
+CREATE TABLE `t_point` (
+  `point_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `map_id`  INT(11) NOT NULL COMMENT '所属地图ID',
+  `location` POINT DEFAULT NULL COMMENT '坐标',
+  `lng` DECIMAL DEFAULT NULL COMMENT '经度(GIS)',
+  `lat` DECIMAL DEFAULT NULL COMMENT '纬度(GIS)',
+  `x` DECIMAL NOT NULL COMMENT '经度(CAD)',
+  `y` DECIMAL NOT NULL COMMENT '纬度(CAD)',
+  `create_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY(`point_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8 COMMENT '坐标表';
+
+
+CREATE TABLE `line` (
+	`id`  int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键' ,
+	`map`  int(11) NULL DEFAULT NULL COMMENT '地图ID' ,
+	`material`  int(11) NULL DEFAULT 0 COMMENT '材质ID' ,
+	`dn`  int(11) NULL DEFAULT 0 COMMENT '类型ID' ,
+	`points`  text CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '点集合' ,
+	`meter`  int(11) NULL DEFAULT 0 COMMENT '长度' ,
+	`flag`  int(11) NULL DEFAULT 0 COMMENT '类型ID' ,
+	PRIMARY KEY (`id`)
+)
+ENGINE=InnoDB
+DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci
+COMMENT='管段表';

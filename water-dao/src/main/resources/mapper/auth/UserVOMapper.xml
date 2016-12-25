@@ -36,7 +36,24 @@
         SELECT
         *
         FROM
-        `user`
+        `user` AS u
+        <include refid="queryCondition"/>
         LIMIT #{pager.recordStart}, #{pager.pageSize}
     </select>
+
+    <select id="queryCount" resultType="java.lang.Integer">
+        SELECT
+        COUNT(*)
+        FROM
+        `user` AS u
+        <include refid="queryCondition"/>
+    </select>
+
+    <sql id="queryCondition">
+        <where>
+            <if test="query.username!=null and query.username!=''">
+                AND u.username LIKE CONCAT('%',#{query.username},'%')
+            </if>
+        </where>
+    </sql>
 </mapper>

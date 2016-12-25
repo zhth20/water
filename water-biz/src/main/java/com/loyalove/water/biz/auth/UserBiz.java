@@ -2,7 +2,8 @@ package com.loyalove.water.biz.auth;
 
 import com.loyalove.water.common.model.Pager;
 import com.loyalove.water.pojo.UserPO;
-import com.loyalove.water.vo.UserVO;
+import com.loyalove.water.query.auth.UserQuery;
+import com.loyalove.water.vo.auth.UserVO;
 
 import java.util.List;
 
@@ -33,7 +34,15 @@ public interface UserBiz {
      * 查询用户列表
      * @return
      */
-    List<UserPO> queryUsers(Pager pager);
+    List<UserPO> queryUsers(UserQuery query, Pager pager);
+
+
+    /**
+     * 查询用户数量
+     *
+     * @return
+     */
+    Integer queryCount(UserQuery query);
 
     /**
      * 查询用户数量

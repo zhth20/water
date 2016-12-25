@@ -4,7 +4,7 @@ import com.loyalove.water.biz.auth.UserBiz;
 import com.loyalove.water.common.enums.UserStatusEnum;
 import com.loyalove.water.common.util.StringUtils;
 import com.loyalove.water.pojo.UserPO;
-import com.loyalove.water.vo.UserVO;
+import com.loyalove.water.vo.auth.UserVO;
 import com.loyalove.water.web.util.SessionKeys;
 import com.loyalove.water.web.util.SessionUtil;
 import org.apache.shiro.authc.*;

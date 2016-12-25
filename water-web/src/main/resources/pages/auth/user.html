@@ -26,25 +26,6 @@
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-inline">
-                        <label class="layui-form-label">状态</label>
-                        <div class="layui-input-inline">
-                            <select name="status" lay-filter="aihao">
-                                <option value="ALL">全部</option>
-                                <option value="ACTIVE">激活</option>
-                                <option value="INIT" selected="">初始化</option>
-                                <option value="DISABLED">禁用</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="layui-inline">
-                        <label class="layui-form-label">创建日期</label>
-                        <div class="layui-input-inline">
-                            <input type="datetime" name="createTime" lay-verify="date" readonly placeholder="yy-MM-dd"
-                                   autocomplete="off"
-                                   class="layui-input" onclick="layui.laydate({elem: this})">
-                        </div>
-                    </div>
-                    <div class="layui-inline">
                         <label class="layui-form-label">用户名</label>
                         <div class="layui-input-inline">
                             <input type="text" name="username" lay-verify="username" autocomplete="off"
