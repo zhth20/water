@@ -29,6 +29,6 @@ public class WebStart extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(WebStart.class, args);
-        logger.info("Web服务启动成功，{}", context.getEnvironment().getActiveProfiles());
+        logger.info("Web服务启动成功");
     }
 }
