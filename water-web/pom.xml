@@ -80,7 +80,7 @@
     </dependencies>
 
     <build>
-        <finalName>water-web</finalName>
+        <finalName>ROOT</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
