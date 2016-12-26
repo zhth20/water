@@ -16,52 +16,52 @@ import java.util.List;
  */
 public interface RoleBiz {
     /**
-     * 根据用户名查询用户
+     * 根据角色名查询角色
      * @param roleName
      * @return
      */
     RolePO queryRoleByName(String roleName);
 
     /**
-     * 查询用户列表
+     * 查询角色列表
      * @return
      */
     List<RolePO> queryRoles(RoleQuery query, Pager pager);
 
     /**
-     * 查询用户数量
+     * 查询角色数量
      *
      * @return
      */
     Integer queryCount(RoleQuery query);
 
     /**
-     * 查询用户数量
+     * 查询角色数量
      *
      * @return
      */
     Integer queryCount();
 
     /**
-     * 新增用户
+     * 新增角色
      * @param rolePO
      */
     void addRole(RolePO rolePO);
 
     /**
-     * 修改用户
+     * 修改角色
      * @param rolePO
      */
     void update(RolePO rolePO);
 
     /**
-     * 删除用户
+     * 删除角色
      * @param rolePO
      */
     void deleteRole(RolePO rolePO);
 
     /**
-     * 查询用户
+     * 查询角色
      * @param rolePO
      */
     RolePO queryRole(RolePO rolePO);

@@ -99,4 +99,4 @@ CREATE TABLE `menu`(
   INDEX (`user_id`),
   INDEX (`permission_id`),
   INDEX (`create_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8 COMMENT '用户权限表';
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8 COMMENT '权限菜单表';

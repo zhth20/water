@@ -10,5 +10,9 @@
 		"title": "角色管理",
 		"icon": "&#xe63c;",
 		"href": "/pages/auth/role.html"
+	}, {
+		"title": "客户管理",
+		"icon": "&#xe63c;",
+		"href": "/pages/auth/customer.html"
 	}]
 }]

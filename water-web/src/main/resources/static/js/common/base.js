@@ -30,8 +30,18 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
             backTitle: '<i class="fa fa-reply"></i> 返回',
             pageIndex: 0,
             loadIndex: 0,
-            initFlag: true
+            initFlag: true,
+            cacheData: {}
         };
+
+        //jquery 序列化Form为json
+        $.fn.serializeJson = function () {
+            var serializeObj = {};
+            $(this.serializeArray()).each(function () {
+                serializeObj[this.name] = this.value;
+            });
+            return serializeObj;
+        }
 
         this.init();
     }
@@ -260,7 +270,7 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
     Base.fn.toAdd = function (config) {
         var self = this;
 
-        config.data = {};
+        config.data = self.configs.cacheData;
         config.callback = function () {
             self.add();
         }
@@ -274,6 +284,7 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
     Base.fn.add = function () {
         var self = this;
         var $addForm = $(self.elems.addForm);
+        self.configs.cacheData = $addForm.serializeJson();
         self.post($addForm.attr('action'), $addForm.serialize(), function (data) {
             layer.msg(data.message);
             layer.close(self.configs.pageIndex);
@@ -397,7 +408,7 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
             //请求出错
             error: function () {
                 layer.close(self.configs.loadIndex);
-                layer.msg('会话已过期，请重新登录', {icon: 2, time: 500},function(){
+                layer.msg('会话已过期，请重新登录', {icon: 2, time: 500}, function () {
                     window.location.reload();
                 });
             },
