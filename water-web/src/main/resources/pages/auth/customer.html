@@ -79,8 +79,8 @@
                     <col width="8%">
                     <col width="8%">
                     <col width="8%">
-                    <col width="15%">
-                    <col width="15%">
+                    <col width="12%">
+                    <col width="12%">
                     <col width="auto">
                 </colgroup>
 
@@ -113,7 +113,7 @@
 <script id="table-template" type="text/html">
     {{# layui.each(d.result, function(index, item){ }}
     <tr>
-        <td><input type="checkbox" name="ids" value="{{item.customerId}}" data-name="{{!item.name}}"></td>
+        <td><input type="checkbox" name="ids" value="{{item.customerId}}" data-name="{{item.name}}"></td>
         <td>{{item.name}}</td>
         <td>
             {{item.customerCode}}
