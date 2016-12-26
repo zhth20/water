@@ -4,15 +4,19 @@
 	"spread": true,
 	"children": [{
 		"title": "管理员账户",
-		"icon": "&#xe641;",
+		"icon": "fa-user",
 		"href": "/pages/auth/user.html"
 	}, {
 		"title": "角色管理",
-		"icon": "&#xe63c;",
+		"icon": "fa-user-o",
 		"href": "/pages/auth/role.html"
 	}, {
 		"title": "客户管理",
-		"icon": "&#xe63c;",
+		"icon": "fa-male",
 		"href": "/pages/auth/customer.html"
+	}, {
+		"title": "厂商管理",
+		"icon": "fa-building",
+		"href": "/pages/auth/firm.html"
 	}]
 }]

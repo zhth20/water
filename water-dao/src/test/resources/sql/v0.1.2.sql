@@ -19,3 +19,16 @@ CREATE TABLE `customer`(
   UNIQUE (`user_id`),
   INDEX (`create_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8 COMMENT '客户表';
+
+CREATE TABLE `firm` (
+  `firm_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `firm_code` varchar(20) NOT NULL COMMENT '厂商编码',
+  `firm_name` varchar(20) NOT NULL COMMENT '厂商名称',
+  `firm_adress` varchar(100) NOT NULL COMMENT '厂商地址',
+  `firm_tel` varchar(11) NOT NULL COMMENT '厂商电话',
+  `create_user` INT(11) NOT NULL COMMENT '创建人',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`firm_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='厂商表';
+

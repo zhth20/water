@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.loyalove.water.dao.base.FirmMapper">
+  <resultMap id="BaseResultMap" type="com.loyalove.water.pojo.FirmPO">
+    <id column="firm_id" jdbcType="INTEGER" property="firmId" />
+    <result column="firm_code" jdbcType="VARCHAR" property="firmCode" />
+    <result column="firm_name" jdbcType="VARCHAR" property="firmName" />
+    <result column="firm_adress" jdbcType="VARCHAR" property="firmAdress" />
+    <result column="firm_tel" jdbcType="VARCHAR" property="firmTel" />
+    <result column="create_user" jdbcType="INTEGER" property="createUser" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    firm_id, firm_code, firm_name, firm_adress, firm_tel, create_user, create_time, update_time
+  </sql>
+  <select id="selectByExample" parameterType="com.loyalove.water.pojo.FirmExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from firm
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limitStart > -1 and limit > -1">
+      limit ${limitStart} , ${limit}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from firm
+    where firm_id = #{firmId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from firm
+    where firm_id = #{firmId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.loyalove.water.pojo.FirmExample">
+    delete from firm
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.loyalove.water.pojo.FirmPO">
+    <selectKey keyProperty="firmId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into firm (firm_code, firm_name, firm_adress, 
+      firm_tel, create_user, create_time, 
+      update_time)
+    values (#{firmCode,jdbcType=VARCHAR}, #{firmName,jdbcType=VARCHAR}, #{firmAdress,jdbcType=VARCHAR}, 
+      #{firmTel,jdbcType=VARCHAR}, #{createUser,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.loyalove.water.pojo.FirmPO">
+    <selectKey keyProperty="firmId" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into firm
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="firmCode != null">
+        firm_code,
+      </if>
+      <if test="firmName != null">
+        firm_name,
+      </if>
+      <if test="firmAdress != null">
+        firm_adress,
+      </if>
+      <if test="firmTel != null">
+        firm_tel,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="firmCode != null">
+        #{firmCode,jdbcType=VARCHAR},
+      </if>
+      <if test="firmName != null">
+        #{firmName,jdbcType=VARCHAR},
+      </if>
+      <if test="firmAdress != null">
+        #{firmAdress,jdbcType=VARCHAR},
+      </if>
+      <if test="firmTel != null">
+        #{firmTel,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.loyalove.water.pojo.FirmExample" resultType="java.lang.Long">
+    select count(*) from firm
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update firm
+    <set>
+      <if test="record.firmId != null">
+        firm_id = #{record.firmId,jdbcType=INTEGER},
+      </if>
+      <if test="record.firmCode != null">
+        firm_code = #{record.firmCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.firmName != null">
+        firm_name = #{record.firmName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.firmAdress != null">
+        firm_adress = #{record.firmAdress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.firmTel != null">
+        firm_tel = #{record.firmTel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createUser != null">
+        create_user = #{record.createUser,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update firm
+    set firm_id = #{record.firmId,jdbcType=INTEGER},
+      firm_code = #{record.firmCode,jdbcType=VARCHAR},
+      firm_name = #{record.firmName,jdbcType=VARCHAR},
+      firm_adress = #{record.firmAdress,jdbcType=VARCHAR},
+      firm_tel = #{record.firmTel,jdbcType=VARCHAR},
+      create_user = #{record.createUser,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.loyalove.water.pojo.FirmPO">
+    update firm
+    <set>
+      <if test="firmCode != null">
+        firm_code = #{firmCode,jdbcType=VARCHAR},
+      </if>
+      <if test="firmName != null">
+        firm_name = #{firmName,jdbcType=VARCHAR},
+      </if>
+      <if test="firmAdress != null">
+        firm_adress = #{firmAdress,jdbcType=VARCHAR},
+      </if>
+      <if test="firmTel != null">
+        firm_tel = #{firmTel,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where firm_id = #{firmId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.loyalove.water.pojo.FirmPO">
+    update firm
+    set firm_code = #{firmCode,jdbcType=VARCHAR},
+      firm_name = #{firmName,jdbcType=VARCHAR},
+      firm_adress = #{firmAdress,jdbcType=VARCHAR},
+      firm_tel = #{firmTel,jdbcType=VARCHAR},
+      create_user = #{createUser,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where firm_id = #{firmId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByExampleWithRowbounds" parameterType="com.loyalove.water.pojo.FirmExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from firm
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>

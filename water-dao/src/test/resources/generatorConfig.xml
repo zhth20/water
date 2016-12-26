@@ -71,14 +71,21 @@
 
 
         <!--表配置-->
-        <table tableName="user">
-            <generatedKey column="user_id" sqlStatement="MySql" identity="true"/>
+        <!--<table tableName="user">-->
+            <!--<generatedKey column="user_id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="customer">-->
+            <!--<generatedKey column="customer_id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="role">-->
+            <!--<generatedKey column="role_id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <table tableName="firm">
+            <generatedKey column="firm_id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="customer">
-            <generatedKey column="customer_id" sqlStatement="MySql" identity="true"/>
+        <table tableName="menu">
+            <generatedKey column="menu_id" sqlStatement="MySql" identity="true"/>
         </table>
-        <table tableName="role">
-            <generatedKey column="role_id" sqlStatement="MySql" identity="true"/>
-        </table>
+
     </context>
 </generatorConfiguration>

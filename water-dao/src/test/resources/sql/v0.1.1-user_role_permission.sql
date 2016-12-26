@@ -95,8 +95,7 @@ CREATE TABLE `menu`(
   `create_user` INT(11) NOT NULL COMMENT '创建人',
   `create_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  PRIMARY KEY (`user_permission_id`),
-  INDEX (`user_id`),
-  INDEX (`permission_id`),
+  PRIMARY KEY (`menu_id`),
+  INDEX (`menu_name`),
   INDEX (`create_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8 COMMENT '权限菜单表';
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8 COMMENT '菜单表';
