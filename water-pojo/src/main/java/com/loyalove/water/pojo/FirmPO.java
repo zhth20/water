@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * 该实体由系统生成，请勿修改
  *
- * 生成时间 2016/12/26
+ * 生成时间 2016/12/29
  */
 public class FirmPO implements Serializable {
     /** 自增主键 */
@@ -19,7 +19,7 @@ public class FirmPO implements Serializable {
     private String firmName;
 
     /** 厂商地址 */
-    private String firmAdress;
+    private String firmAddress;
 
     /** 厂商电话 */
     private String firmTel;
@@ -59,12 +59,12 @@ public class FirmPO implements Serializable {
         this.firmName = firmName;
     }
 
-    public String getFirmAdress() {
-        return firmAdress;
+    public String getFirmAddress() {
+        return firmAddress;
     }
 
-    public void setFirmAdress(String firmAdress) {
-        this.firmAdress = firmAdress;
+    public void setFirmAddress(String firmAddress) {
+        this.firmAddress = firmAddress;
     }
 
     public String getFirmTel() {
@@ -108,7 +108,7 @@ public class FirmPO implements Serializable {
         sb.append(", firmId=").append(firmId);
         sb.append(", firmCode=").append(firmCode);
         sb.append(", firmName=").append(firmName);
-        sb.append(", firmAdress=").append(firmAdress);
+        sb.append(", firmAddress=").append(firmAddress);
         sb.append(", firmTel=").append(firmTel);
         sb.append(", createUser=").append(createUser);
         sb.append(", createTime=").append(createTime);

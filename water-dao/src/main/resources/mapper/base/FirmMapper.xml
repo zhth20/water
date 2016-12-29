@@ -5,7 +5,7 @@
     <id column="firm_id" jdbcType="INTEGER" property="firmId" />
     <result column="firm_code" jdbcType="VARCHAR" property="firmCode" />
     <result column="firm_name" jdbcType="VARCHAR" property="firmName" />
-    <result column="firm_adress" jdbcType="VARCHAR" property="firmAdress" />
+    <result column="firm_address" jdbcType="VARCHAR" property="firmAddress" />
     <result column="firm_tel" jdbcType="VARCHAR" property="firmTel" />
     <result column="create_user" jdbcType="INTEGER" property="createUser" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -70,7 +70,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    firm_id, firm_code, firm_name, firm_adress, firm_tel, create_user, create_time, update_time
+    firm_id, firm_code, firm_name, firm_address, firm_tel, create_user, create_time, 
+    update_time
   </sql>
   <select id="selectByExample" parameterType="com.loyalove.water.pojo.FirmExample" resultMap="BaseResultMap">
     select
@@ -109,10 +110,10 @@
     <selectKey keyProperty="firmId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into firm (firm_code, firm_name, firm_adress, 
+    insert into firm (firm_code, firm_name, firm_address, 
       firm_tel, create_user, create_time, 
       update_time)
-    values (#{firmCode,jdbcType=VARCHAR}, #{firmName,jdbcType=VARCHAR}, #{firmAdress,jdbcType=VARCHAR}, 
+    values (#{firmCode,jdbcType=VARCHAR}, #{firmName,jdbcType=VARCHAR}, #{firmAddress,jdbcType=VARCHAR}, 
       #{firmTel,jdbcType=VARCHAR}, #{createUser,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
@@ -128,8 +129,8 @@
       <if test="firmName != null">
         firm_name,
       </if>
-      <if test="firmAdress != null">
-        firm_adress,
+      <if test="firmAddress != null">
+        firm_address,
       </if>
       <if test="firmTel != null">
         firm_tel,
@@ -151,8 +152,8 @@
       <if test="firmName != null">
         #{firmName,jdbcType=VARCHAR},
       </if>
-      <if test="firmAdress != null">
-        #{firmAdress,jdbcType=VARCHAR},
+      <if test="firmAddress != null">
+        #{firmAddress,jdbcType=VARCHAR},
       </if>
       <if test="firmTel != null">
         #{firmTel,jdbcType=VARCHAR},
@@ -186,8 +187,8 @@
       <if test="record.firmName != null">
         firm_name = #{record.firmName,jdbcType=VARCHAR},
       </if>
-      <if test="record.firmAdress != null">
-        firm_adress = #{record.firmAdress,jdbcType=VARCHAR},
+      <if test="record.firmAddress != null">
+        firm_address = #{record.firmAddress,jdbcType=VARCHAR},
       </if>
       <if test="record.firmTel != null">
         firm_tel = #{record.firmTel,jdbcType=VARCHAR},
@@ -211,7 +212,7 @@
     set firm_id = #{record.firmId,jdbcType=INTEGER},
       firm_code = #{record.firmCode,jdbcType=VARCHAR},
       firm_name = #{record.firmName,jdbcType=VARCHAR},
-      firm_adress = #{record.firmAdress,jdbcType=VARCHAR},
+      firm_address = #{record.firmAddress,jdbcType=VARCHAR},
       firm_tel = #{record.firmTel,jdbcType=VARCHAR},
       create_user = #{record.createUser,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -229,8 +230,8 @@
       <if test="firmName != null">
         firm_name = #{firmName,jdbcType=VARCHAR},
       </if>
-      <if test="firmAdress != null">
-        firm_adress = #{firmAdress,jdbcType=VARCHAR},
+      <if test="firmAddress != null">
+        firm_address = #{firmAddress,jdbcType=VARCHAR},
       </if>
       <if test="firmTel != null">
         firm_tel = #{firmTel,jdbcType=VARCHAR},
@@ -251,7 +252,7 @@
     update firm
     set firm_code = #{firmCode,jdbcType=VARCHAR},
       firm_name = #{firmName,jdbcType=VARCHAR},
-      firm_adress = #{firmAdress,jdbcType=VARCHAR},
+      firm_address = #{firmAddress,jdbcType=VARCHAR},
       firm_tel = #{firmTel,jdbcType=VARCHAR},
       create_user = #{createUser,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},

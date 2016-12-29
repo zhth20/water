@@ -406,11 +406,16 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
             cache: false,
             success: config.callback,
             //请求出错
-            error: function () {
+            error: function (err) {
                 layer.close(self.configs.loadIndex);
-                layer.msg('会话已过期，请重新登录', {icon: 2, time: 500}, function () {
-                    window.location.reload();
-                });
+                var msg;
+                if (err.status === 500) {
+                    msg = '系统错误';
+                } else if (err.status < 200) {
+                    msg = '请求失败';
+                }
+                console.log(err.responseText)
+                layer.msg(msg, {icon: 2, time: 500});
             },
             //请求发送前
             beforeSend: function () {

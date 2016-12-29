@@ -24,7 +24,7 @@ CREATE TABLE `firm` (
   `firm_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
   `firm_code` varchar(20) NOT NULL COMMENT '厂商编码',
   `firm_name` varchar(20) NOT NULL COMMENT '厂商名称',
-  `firm_adress` varchar(100) NOT NULL COMMENT '厂商地址',
+  `firm_address` varchar(100) NOT NULL COMMENT '厂商地址',
   `firm_tel` varchar(11) NOT NULL COMMENT '厂商电话',
   `create_user` INT(11) NOT NULL COMMENT '创建人',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',

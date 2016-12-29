@@ -325,73 +325,73 @@ public class FirmExample {
             return (Criteria) this;
         }
 
-        public Criteria andFirmAdressIsNull() {
-            addCriterion("firm_adress is null");
+        public Criteria andFirmAddressIsNull() {
+            addCriterion("firm_address is null");
             return (Criteria) this;
         }
 
-        public Criteria andFirmAdressIsNotNull() {
-            addCriterion("firm_adress is not null");
+        public Criteria andFirmAddressIsNotNull() {
+            addCriterion("firm_address is not null");
             return (Criteria) this;
         }
 
-        public Criteria andFirmAdressEqualTo(String value) {
-            addCriterion("firm_adress =", value, "firmAdress");
+        public Criteria andFirmAddressEqualTo(String value) {
+            addCriterion("firm_address =", value, "firmAddress");
             return (Criteria) this;
         }
 
-        public Criteria andFirmAdressNotEqualTo(String value) {
-            addCriterion("firm_adress <>", value, "firmAdress");
+        public Criteria andFirmAddressNotEqualTo(String value) {
+            addCriterion("firm_address <>", value, "firmAddress");
             return (Criteria) this;
         }
 
-        public Criteria andFirmAdressGreaterThan(String value) {
-            addCriterion("firm_adress >", value, "firmAdress");
+        public Criteria andFirmAddressGreaterThan(String value) {
+            addCriterion("firm_address >", value, "firmAddress");
             return (Criteria) this;
         }
 
-        public Criteria andFirmAdressGreaterThanOrEqualTo(String value) {
-            addCriterion("firm_adress >=", value, "firmAdress");
+        public Criteria andFirmAddressGreaterThanOrEqualTo(String value) {
+            addCriterion("firm_address >=", value, "firmAddress");
             return (Criteria) this;
         }
 
-        public Criteria andFirmAdressLessThan(String value) {
-            addCriterion("firm_adress <", value, "firmAdress");
+        public Criteria andFirmAddressLessThan(String value) {
+            addCriterion("firm_address <", value, "firmAddress");
             return (Criteria) this;
         }
 
-        public Criteria andFirmAdressLessThanOrEqualTo(String value) {
-            addCriterion("firm_adress <=", value, "firmAdress");
+        public Criteria andFirmAddressLessThanOrEqualTo(String value) {
+            addCriterion("firm_address <=", value, "firmAddress");
             return (Criteria) this;
         }
 
-        public Criteria andFirmAdressLike(String value) {
-            addCriterion("firm_adress like", value, "firmAdress");
+        public Criteria andFirmAddressLike(String value) {
+            addCriterion("firm_address like", value, "firmAddress");
             return (Criteria) this;
         }
 
-        public Criteria andFirmAdressNotLike(String value) {
-            addCriterion("firm_adress not like", value, "firmAdress");
+        public Criteria andFirmAddressNotLike(String value) {
+            addCriterion("firm_address not like", value, "firmAddress");
             return (Criteria) this;
         }
 
-        public Criteria andFirmAdressIn(List<String> values) {
-            addCriterion("firm_adress in", values, "firmAdress");
+        public Criteria andFirmAddressIn(List<String> values) {
+            addCriterion("firm_address in", values, "firmAddress");
             return (Criteria) this;
         }
 
-        public Criteria andFirmAdressNotIn(List<String> values) {
-            addCriterion("firm_adress not in", values, "firmAdress");
+        public Criteria andFirmAddressNotIn(List<String> values) {
+            addCriterion("firm_address not in", values, "firmAddress");
             return (Criteria) this;
         }
 
-        public Criteria andFirmAdressBetween(String value1, String value2) {
-            addCriterion("firm_adress between", value1, value2, "firmAdress");
+        public Criteria andFirmAddressBetween(String value1, String value2) {
+            addCriterion("firm_address between", value1, value2, "firmAddress");
             return (Criteria) this;
         }
 
-        public Criteria andFirmAdressNotBetween(String value1, String value2) {
-            addCriterion("firm_adress not between", value1, value2, "firmAdress");
+        public Criteria andFirmAddressNotBetween(String value1, String value2) {
+            addCriterion("firm_address not between", value1, value2, "firmAddress");
             return (Criteria) this;
         }
 

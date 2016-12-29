@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * 该实体由系统生成，请勿修改
  *
- * 生成时间 2016/12/26
+ * 生成时间 2016/12/29
  */
 public class MenuPO implements Serializable {
     /** 自增主键 */

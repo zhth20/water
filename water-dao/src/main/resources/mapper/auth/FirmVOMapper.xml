@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.loyalove.water.dao.auth.FirmDAO">
+
+    <!--查询厂商列表-->
+    <select id="queryFirms" resultType="com.loyalove.water.pojo.FirmPO">
+        SELECT
+        f.*
+        FROM
+        `firm` as f
+        <include refid="queryCondition"/>
+        LIMIT #{pager.recordStart}, #{pager.pageSize}
+    </select>
+
+    <!--查询厂商数量-->
+    <select id="queryCount" resultType="java.lang.Integer">
+        SELECT
+        COUNT(*)
+        FROM
+        `firm` as f
+        <include refid="queryCondition"/>
+    </select>
+
+    <sql id="queryCondition">
+        <where>
+            <if test="query.firmName!=null and query.firmName!=''">
+            AND f.firm_name LIKE CONCAT('%',#{query.firmName},'%')
+            </if>
+        </where>
+    </sql>
+</mapper>

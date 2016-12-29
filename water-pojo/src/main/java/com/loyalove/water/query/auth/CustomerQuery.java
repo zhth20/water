@@ -1,14 +1,13 @@
 package com.loyalove.water.query.auth;
 
 import com.loyalove.water.pojo.CustomerPO;
-import com.loyalove.water.pojo.RolePO;
 import com.loyalove.water.query.BaseQuery;
 
 import java.util.Date;
 
 /**
- * Title: UserVO.java
- * Description: UserVO
+ * Title: CustomerQuery.java
+ * Description: CustomerQuery
  * Company: ysh
  *
  * @author: sailuo@yiji.com

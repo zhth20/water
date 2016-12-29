@@ -6,8 +6,8 @@ import com.loyalove.water.query.BaseQuery;
 import java.util.Date;
 
 /**
- * Title: UserVO.java
- * Description: UserVO
+ * Title: RoleQuery.java
+ * Description: RoleQuery
  * Company: ysh
  *
  * @author: sailuo@yiji.com
