@@ -35,10 +35,11 @@
                     <div class="layui-inline">
                         <label class="layui-form-label"></label>
                         <div class="layui-input-inline">
-                            <a id="query-trigger" class="layui-btn layui-btn-small" href="javascript:;"
-                               template="#table-template">
+                            <button id="query-trigger" class="layui-btn layui-btn-small" lay-submit
+                                    lay-filter="query-trigger" href="javascript:;"
+                                    template="#table-template">
                                 <i class="fa fa-search"></i> 搜索
-                            </a>
+                            </button>
                         </div>
                     </div>
 
@@ -48,7 +49,7 @@
     </div>
 
     <!--列表-->
-    <div class="layui-box">
+    <div class="layui-box layui-box-table">
 
         <div class="layui-tool">
             <a id="add-trigger" class="layui-btn layui-btn-small" href="javascript:;" template="#add-template">
@@ -68,7 +69,7 @@
             </a>
         </div>
 
-        <div class="layui-box  layui-box-scroll">
+        <div class="layui-box layui-box-scroll">
             <table class="layui-table" lay-even lay-skin="line" style="min-width: 1200px;">
                 <!--列样式控制-->
                 <colgroup>
@@ -102,10 +103,10 @@
                 </tbody>
             </table>
         </div>
-
-        <!--分页-->
-        <div id="pager" class="layui-box"></div>
     </div>
+
+    <!--分页-->
+    <div id="pager" class="layui-box layui-box-pager"></div>
 
 </div>
 
@@ -207,7 +208,17 @@
                 <input type="text" name="headPhone" placeholder="负责人电话" autocomplete="off" class="layui-input">
             </div>
         </div>
-
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <div class="layui-input-inline">
+                <button class="layui-btn layui-btn-small" lay-submit lay-filter="save-trigger">
+                    <i class="fa fa-save"></i> 保存
+                </button>
+                <button type="button" class="layui-btn layui-btn-primary layui-btn-small back-trigger">
+                    <i class="fa fa-reply"></i> 返回
+                </button>
+            </div>
+        </div>
     </form>
 
 </script>
@@ -279,6 +290,18 @@
             </div>
         </div>
 
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <div class="layui-input-inline">
+                <button class="layui-btn layui-btn-small" lay-submit lay-filter="save-trigger">
+                    <i class="fa fa-save"></i> 保存
+                </button>
+                <button type="button" class="layui-btn layui-btn-primary layui-btn-small back-trigger">
+                    <i class="fa fa-reply"></i> 返回
+                </button>
+            </div>
+        </div>
+
     </form>
 </script>
 
@@ -317,7 +340,14 @@
             <label class="layui-form-label">状态</label>
             <div class="layui-form-mid">{{d.status}}</div>
         </div>
-
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <div class="layui-input-inline">
+                <button type="button" class="layui-btn layui-btn-primary layui-btn-small back-trigger">
+                    <i class="fa fa-reply"></i> 返回
+                </button>
+            </div>
+        </div>
     </form>
 </script>
 

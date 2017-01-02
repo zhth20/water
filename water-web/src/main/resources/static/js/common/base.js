@@ -65,11 +65,32 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
     Base.fn.bindEvents = function () {
         var self = this;
         //查询按钮事件
-        $(document).on('click', self.elems.queryTrigger, function () {
+        form.on('submit(query-trigger)', function (data) {
             self.configs.initFlag = true;
             self.toPage(1);
             return false;
         });
+
+        //保存按钮事件
+        form.on('submit(save-trigger)', function (data) {
+            var formId = '#' + $(data.form).attr('id');
+            switch (formId) {
+                case self.elems.addForm :
+                    self.add();
+                case self.elems.updateForm :
+                    self.update();
+            }
+            return false;
+        });
+
+        //查询按钮事件
+        $(document).on('click', '.back-trigger', function (data) {
+            layer.close(self.configs.pageIndex);
+            return false;
+        });
+
+        //翻页快捷键
+        $('')
 
         //新增页面打开事件
         $(document).on('click', self.elems.addTrigger, function () {
@@ -247,8 +268,8 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
                 title: config.title,
                 content: html,
                 btnAlign: 'l',
-                btn: [self.configs.saveTitle, self.configs.backTitle],
-                yes: config.callback,
+                //btn: [self.configs.saveTitle, self.configs.backTitle],
+                //yes: config.callback,
                 end: function () {
                     self.configs.pageIndex = 0;
                 }
@@ -299,9 +320,6 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
     Base.fn.toUpdate = function (config) {
         var self = this;
         if (config.url && config.url != '') {
-            config.callback = function () {
-                self.update();
-            }
             self.get(config.url, null, function (data) {
                 config.data = data.result;
                 self.openPage(config);
@@ -329,8 +347,6 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
      */
     Base.fn.toDetail = function (config) {
         var self = this;
-        config.callback = function () {
-        }
         if (config.url && config.url != '') {
             self.get(config.url, null, function (data) {
                 config.data = data.result;

@@ -30,3 +30,15 @@
     max-width: 100%;
     overflow-x: auto;
 }
+
+.layui-box-table{
+    margin-bottom: 40px;
+}
+
+.layui-box-pager{
+    padding: 5px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #fff;
+}
