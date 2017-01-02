@@ -8,6 +8,7 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
         laytpl = layui.laytpl,
         layer = layui.layer,
         player = window.layer;
+    window.$ = $;
 
     var Base = function () {
         this.elems = {
@@ -77,8 +78,10 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
             switch (formId) {
                 case self.elems.addForm :
                     self.add();
+                    break;
                 case self.elems.updateForm :
                     self.update();
+                    break;
             }
             return false;
         });
@@ -90,7 +93,19 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
         });
 
         //翻页快捷键
-        $('')
+        //$(document).on('keyup', function (event) {
+        //    switch (event.keyCode) {
+        //        //右箭头
+        //        case 39:
+        //            $('a.layui-laypage-next').triggerHandler('click');
+        //            break;
+        //        //左箭头
+        //        case 37:
+        //            $('a.layui-laypage-prev').triggerHandler('click');
+        //            break;
+        //    }
+        //    return false;
+        //});
 
         //新增页面打开事件
         $(document).on('click', self.elems.addTrigger, function () {
@@ -229,6 +244,12 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
         var self = this;
         num && $(self.elems.queryForm).find('input[name=pageNumber]').val(num);
         self.query();
+    }
+
+    //获取当前页数
+    Base.fn.currPage = function () {
+        var self = this;
+        return $(self.elems.queryForm).find('input[name=pageNumber]').val()
     }
 
     //刷新当前页面数据
