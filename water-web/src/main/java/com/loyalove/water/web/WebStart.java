@@ -28,6 +28,6 @@ public class WebStart extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         EmbeddedWebApplicationContext context = (EmbeddedWebApplicationContext) SpringApplication.run(WebStart.class, args);
-        logger.info("Web服务启动成功，访问：http://localhost:{}",context.getEmbeddedServletContainer().getPort());
+        logger.info("Web服务启动成功：http://localhost:{}",context.getEmbeddedServletContainer().getPort());
     }
 }
