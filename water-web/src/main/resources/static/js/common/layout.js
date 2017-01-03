@@ -13,6 +13,14 @@ layui.config({
         $('#login-user').text(data.result.nickname);
     });
 
+    $(document).on('click', '#logout', function () {
+        var href = $(this).attr('href');
+        $.get('/logout',function(){
+            window.location.href = '/pages/index.html';
+        });
+        return false;
+    });
+
     //iframe自适应
     $(window).on('resize', function () {
         var $content = $('.layout-nav-card .layui-tab-content');
