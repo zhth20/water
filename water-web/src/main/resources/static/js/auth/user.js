@@ -6,22 +6,22 @@ layui.config({
 });
 
 layui.use('base', function () {
-    var Customer = layui.base;
+    var User = layui.base;
     //dom元素定义
-    Customer.fn.elem = {};
+    User.fn.elem = {};
     //全局参数定义
-    Customer.fn.config = {
-        test:'OK'
+    User.fn.config = {
+        test: 'OK'
     };
     //事件定义
-    Customer.fn.events = function () {
+    User.fn.events = function () {
 
     }
-    Customer.fn.toAdd = function (config) {
+    User.fn.toAdd = function (config) {
         var self = this;
 
-        this.queryUsers(function (data) {
-            config.data = {users: data.result};
+        this.queryRoles(function (data) {
+            config.data = {roles: data.result};
             config.callback = function () {
                 self.add();
             }
@@ -31,15 +31,15 @@ layui.use('base', function () {
         });
 
     }
-    Customer.fn.queryUsers = function (callback) {
-        this.get('/user/queryAll', null, function (data) {
+    User.fn.queryRoles = function (callback) {
+        this.get('/role/queryAll', null, function (data) {
             callback(data)
         });
     }
     //初始化方法
-    Customer.fn.ready = function () {
+    User.fn.ready = function () {
         //layer.msg(this.config.test);
     }
     //实例化
-    new Customer();
+    new User();
 });

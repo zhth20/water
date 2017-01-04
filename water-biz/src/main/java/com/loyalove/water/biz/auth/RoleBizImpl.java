@@ -116,4 +116,12 @@ public class RoleBizImpl extends BaseBiz implements RoleBiz {
     public RolePO queryRole(RolePO rolePO) {
         return roleMapper.selectByPrimaryKey(rolePO.getRoleId());
     }
+
+    /**
+     * 查询所有角色
+     */
+    @Override
+    public List<RolePO> queryAllRoles() {
+        return roleMapper.selectByExample(new RoleExample());
+    }
 }

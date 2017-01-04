@@ -75,4 +75,8 @@ public interface UserBiz {
      */
     UserPO queryUser(UserPO userPO);
 
+    /**
+     * 查询所有初始化用户
+     */
+    List<UserPO> queryAllUsers();
 }

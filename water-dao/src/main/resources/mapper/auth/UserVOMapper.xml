@@ -38,6 +38,7 @@
         FROM
         `user` AS u
         <include refid="queryCondition"/>
+        ORDER BY u.create_time DESC
         LIMIT #{pager.recordStart}, #{pager.pageSize}
     </select>
 

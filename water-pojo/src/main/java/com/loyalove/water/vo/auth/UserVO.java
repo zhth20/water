@@ -1,5 +1,6 @@
 package com.loyalove.water.vo.auth;
 
+import com.loyalove.water.pojo.RolePO;
 import com.loyalove.water.pojo.UserPO;
 import com.loyalove.water.vo.BaseVO;
 
@@ -18,6 +19,8 @@ public class UserVO extends BaseVO {
     private static final long serialVersionUID = 1L;
 
     private UserPO userPO;
+
+    private RolePO rolePO;
 
     private Set<String> roles;
 
@@ -45,5 +48,13 @@ public class UserVO extends BaseVO {
 
     public void setPermissions(Set<String> permissions) {
         this.permissions = permissions;
+    }
+
+    public RolePO getRolePO() {
+        return rolePO;
+    }
+
+    public void setRolePO(RolePO rolePO) {
+        this.rolePO = rolePO;
     }
 }

@@ -66,4 +66,8 @@ public interface RoleBiz {
      */
     RolePO queryRole(RolePO rolePO);
 
+    /**
+     * 查询所有角色
+     */
+    List<RolePO> queryAllRoles();
 }

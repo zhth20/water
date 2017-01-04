@@ -36,6 +36,12 @@ public class UserController extends BaseController {
         return Result.getResultSuccess("查询成功", result, pager);
     }
 
+    @RequestMapping("/queryAll")
+    public Result queryAllUsers() {
+        List<UserPO> result = userBiz.queryAllUsers();
+        return Result.getResultSuccess("查询成功", result);
+    }
+
     @RequestMapping("/queryBy")
     public Result queryBy(UserPO userPO) {
         userPO = userBiz.queryUser(userPO);

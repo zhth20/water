@@ -154,8 +154,10 @@
         <div class="layui-form-item">
             <label class="layui-form-label">角色</label>
             <div class="layui-input-inline">
-                <select name="roleId" readonly>
-                    <option value="1">管理员</option>
+                <select name="rolePO.roleId" readonly>
+                    {{# layui.each(d.roles, function(index, item){ }}
+                    <option value="{{=item.roleId}}">{{=item.roleAlias}}</option>
+                    {{# }); }}
                 </select>
             </div>
             <div class="layui-form-mid layui-word-aux">辅助文字</div>
@@ -289,7 +291,7 @@
 </script>
 
 <script type="text/javascript" src="/static/layui/layui.js"></script>
-<script type="text/javascript" src="/static/js/user/index.js"></script>
+<script type="text/javascript" src="/static/js/auth/user.js"></script>
 </body>
 
 </html>
