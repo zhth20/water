@@ -1,6 +1,6 @@
 [{
 	"title": "账户管理",
-	"icon": "fa-users",
+	"icon": "fa-users fa-fw",
 	"spread": true,
 	"children": [{
 		"title": "管理员账户",
@@ -14,13 +14,5 @@
 		"title": "菜单管理",
 		"icon": "fa-list fa-fw",
 		"href": "/pages/auth/menu.html"
-	}, {
-		"title": "客户管理",
-		"icon": "fa-male fa-fw",
-		"href": "/pages/auth/customer.html"
-	}, {
-		"title": "厂商管理",
-		"icon": "fa-building fa-fw",
-		"href": "/pages/auth/firm.html"
 	}]
 }]

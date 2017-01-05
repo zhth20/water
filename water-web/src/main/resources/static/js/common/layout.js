@@ -43,6 +43,12 @@ layui.config({
                 case 1:
                     url = '/static/datas/nav.json';
                     break;
+                case 2:
+                    url = '/static/datas/nav_customer.json';
+                    break;
+                case 3:
+                    url = '/static/datas/nav_firm.json';
+                    break;
                 default:
                     break;
             }
