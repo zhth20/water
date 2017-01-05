@@ -3,6 +3,7 @@
 <mapper namespace="com.loyalove.water.dao.base.MenuMapper">
   <resultMap id="BaseResultMap" type="com.loyalove.water.pojo.MenuPO">
     <id column="menu_id" jdbcType="INTEGER" property="menuId" />
+    <result column="pmenu_id" jdbcType="INTEGER" property="pmenuId" />
     <result column="menu_name" jdbcType="INTEGER" property="menuName" />
     <result column="menu_url" jdbcType="INTEGER" property="menuUrl" />
     <result column="menu_icon" jdbcType="INTEGER" property="menuIcon" />
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    menu_id, menu_name, menu_url, menu_icon, create_user, create_time, update_time
+    menu_id, pmenu_id, menu_name, menu_url, menu_icon, create_user, create_time, update_time
   </sql>
   <select id="selectByExample" parameterType="com.loyalove.water.pojo.MenuExample" resultMap="BaseResultMap">
     select
@@ -89,7 +90,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from menu
     where menu_id = #{menuId,jdbcType=INTEGER}
@@ -108,12 +109,12 @@
     <selectKey keyProperty="menuId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into menu (menu_name, menu_url, menu_icon, 
-      create_user, create_time, update_time
-      )
-    values (#{menuName,jdbcType=INTEGER}, #{menuUrl,jdbcType=INTEGER}, #{menuIcon,jdbcType=INTEGER}, 
-      #{createUser,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
-      )
+    insert into menu (pmenu_id, menu_name, menu_url,
+    menu_icon, create_user, create_time,
+    update_time)
+    values (#{pmenuId,jdbcType=INTEGER}, #{menuName,jdbcType=INTEGER}, #{menuUrl,jdbcType=INTEGER},
+    #{menuIcon,jdbcType=INTEGER}, #{createUser,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+    #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.loyalove.water.pojo.MenuPO">
     <selectKey keyProperty="menuId" order="AFTER" resultType="java.lang.Integer">
@@ -121,6 +122,9 @@
     </selectKey>
     insert into menu
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pmenuId != null">
+        pmenu_id,
+      </if>
       <if test="menuName != null">
         menu_name,
       </if>
@@ -141,6 +145,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pmenuId != null">
+        #{pmenuId,jdbcType=INTEGER},
+      </if>
       <if test="menuName != null">
         #{menuName,jdbcType=INTEGER},
       </if>
@@ -173,6 +180,9 @@
       <if test="record.menuId != null">
         menu_id = #{record.menuId,jdbcType=INTEGER},
       </if>
+      <if test="record.pmenuId != null">
+        pmenu_id = #{record.pmenuId,jdbcType=INTEGER},
+      </if>
       <if test="record.menuName != null">
         menu_name = #{record.menuName,jdbcType=INTEGER},
       </if>
@@ -199,12 +209,13 @@
   <update id="updateByExample" parameterType="map">
     update menu
     set menu_id = #{record.menuId,jdbcType=INTEGER},
-      menu_name = #{record.menuName,jdbcType=INTEGER},
-      menu_url = #{record.menuUrl,jdbcType=INTEGER},
-      menu_icon = #{record.menuIcon,jdbcType=INTEGER},
-      create_user = #{record.createUser,jdbcType=INTEGER},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+    pmenu_id = #{record.pmenuId,jdbcType=INTEGER},
+    menu_name = #{record.menuName,jdbcType=INTEGER},
+    menu_url = #{record.menuUrl,jdbcType=INTEGER},
+    menu_icon = #{record.menuIcon,jdbcType=INTEGER},
+    create_user = #{record.createUser,jdbcType=INTEGER},
+    create_time = #{record.createTime,jdbcType=TIMESTAMP},
+    update_time = #{record.updateTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -212,6 +223,9 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.loyalove.water.pojo.MenuPO">
     update menu
     <set>
+      <if test="pmenuId != null">
+        pmenu_id = #{pmenuId,jdbcType=INTEGER},
+      </if>
       <if test="menuName != null">
         menu_name = #{menuName,jdbcType=INTEGER},
       </if>
@@ -235,7 +249,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.loyalove.water.pojo.MenuPO">
     update menu
-    set menu_name = #{menuName,jdbcType=INTEGER},
+    set pmenu_id = #{pmenuId,jdbcType=INTEGER},
+      menu_name = #{menuName,jdbcType=INTEGER},
       menu_url = #{menuUrl,jdbcType=INTEGER},
       menu_icon = #{menuIcon,jdbcType=INTEGER},
       create_user = #{createUser,jdbcType=INTEGER},

@@ -87,7 +87,7 @@
             <!--<generatedKey column="menu_id" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
         <table tableName="role_menu">
-            <generatedKey column="menu_id" sqlStatement="MySql" identity="true"/>
+            <generatedKey column="role_menu_id" sqlStatement="MySql" identity="true"/>
         </table>
     </context>
 </generatorConfiguration>

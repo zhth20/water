@@ -185,6 +185,66 @@ public class MenuExample {
             return (Criteria) this;
         }
 
+        public Criteria andPmenuIdIsNull() {
+            addCriterion("pmenu_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmenuIdIsNotNull() {
+            addCriterion("pmenu_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmenuIdEqualTo(Integer value) {
+            addCriterion("pmenu_id =", value, "pmenuId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmenuIdNotEqualTo(Integer value) {
+            addCriterion("pmenu_id <>", value, "pmenuId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmenuIdGreaterThan(Integer value) {
+            addCriterion("pmenu_id >", value, "pmenuId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmenuIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("pmenu_id >=", value, "pmenuId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmenuIdLessThan(Integer value) {
+            addCriterion("pmenu_id <", value, "pmenuId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmenuIdLessThanOrEqualTo(Integer value) {
+            addCriterion("pmenu_id <=", value, "pmenuId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmenuIdIn(List<Integer> values) {
+            addCriterion("pmenu_id in", values, "pmenuId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmenuIdNotIn(List<Integer> values) {
+            addCriterion("pmenu_id not in", values, "pmenuId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmenuIdBetween(Integer value1, Integer value2) {
+            addCriterion("pmenu_id between", value1, value2, "pmenuId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPmenuIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("pmenu_id not between", value1, value2, "pmenuId");
+            return (Criteria) this;
+        }
+
         public Criteria andMenuNameIsNull() {
             addCriterion("menu_name is null");
             return (Criteria) this;

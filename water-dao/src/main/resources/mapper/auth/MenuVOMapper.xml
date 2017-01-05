@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.loyalove.water.dao.auth.MenuDAO">
+    <select id="queryMenus" resultType="com.loyalove.water.pojo.MenuPO">
+        SELECT
+        *
+        FROM
+        `menu` AS m
+        <where>
+            <if test="query.menuName!=null and query.menuName!=''">
+                AND m.menu_name LIKE CONCAT('%',#{query.menuName},'%')
+            </if>
+            <if test="query.pmenuId!=null and query.pmenuId!=''">
+                AND m.pmenu_id =#{query.pmenuId}
+            </if>
+            <if test="query.menuId!=null and query.menuId!=''">
+                AND m.menu_id =#{query.menuId}
+            </if>
+        </where>
+        LIMIT #{pager.recordStart}, #{pager.pageSize}
+    </select>
+
+    <!--查询角色数量-->
+    <select id="queryCount" resultType="java.lang.Integer">
+        SELECT
+        count(*)
+        FROM
+        `menu` AS m
+        <where>
+            <if test="query.menuName!=null and query.menuName!=''">
+                AND m.menu_name LIKE CONCAT('%',#{query.menuName},'%')
+            </if>
+            <if test="query.pmenuId!=null and query.pmenuId!=''">
+                AND m.pmenu_id =#{query.pmenuId}
+            </if>
+            <if test="query.menuId!=null and query.menuId!=''">
+                AND m.menu_id =#{query.menuId}
+            </if>
+        </where>
+    </select>
+</mapper>

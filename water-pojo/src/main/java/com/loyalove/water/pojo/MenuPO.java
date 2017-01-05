@@ -6,11 +6,14 @@ import java.util.Date;
 /**
  * 该实体由系统生成，请勿修改
  *
- * 生成时间 2016/12/29
+ * 生成时间 2017/01/05
  */
 public class MenuPO implements Serializable {
     /** 自增主键 */
     private Integer menuId;
+
+    /** 父级菜单ID */
+    private Integer pmenuId;
 
     /** 菜单名 */
     private Integer menuName;
@@ -38,6 +41,14 @@ public class MenuPO implements Serializable {
 
     public void setMenuId(Integer menuId) {
         this.menuId = menuId;
+    }
+
+    public Integer getPmenuId() {
+        return pmenuId;
+    }
+
+    public void setPmenuId(Integer pmenuId) {
+        this.pmenuId = pmenuId;
     }
 
     public Integer getMenuName() {
@@ -95,6 +106,7 @@ public class MenuPO implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", menuId=").append(menuId);
+        sb.append(", pmenuId=").append(pmenuId);
         sb.append(", menuName=").append(menuName);
         sb.append(", menuUrl=").append(menuUrl);
         sb.append(", menuIcon=").append(menuIcon);
