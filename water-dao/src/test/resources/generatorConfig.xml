@@ -80,12 +80,14 @@
         <!--<table tableName="role">-->
             <!--<generatedKey column="role_id" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
-        <table tableName="firm">
-            <generatedKey column="firm_id" sqlStatement="MySql" identity="true"/>
-        </table>
-        <table tableName="menu">
+        <!--<table tableName="firm">-->
+            <!--<generatedKey column="firm_id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <!--<table tableName="menu">-->
+            <!--<generatedKey column="menu_id" sqlStatement="MySql" identity="true"/>-->
+        <!--</table>-->
+        <table tableName="role_menu">
             <generatedKey column="menu_id" sqlStatement="MySql" identity="true"/>
         </table>
-
     </context>
 </generatorConfiguration>
