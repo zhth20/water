@@ -68,7 +68,7 @@ public class UserBizImpl extends BaseBiz implements UserBiz {
      * @return
      */
     @Override
-    public List<UserPO> queryUsers(UserQuery query, Pager pager) {
+    public List<UserVO> queryUsers(UserQuery query, Pager pager) {
         return userDAO.queryUsers(query, pager);
     }
 

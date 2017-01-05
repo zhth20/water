@@ -7,6 +7,7 @@ import com.loyalove.water.common.model.Pager;
 import com.loyalove.water.common.model.Result;
 import com.loyalove.water.pojo.UserPO;
 import com.loyalove.water.query.auth.UserQuery;
+import com.loyalove.water.vo.auth.UserVO;
 import com.loyalove.water.web.controller.BaseController;
 import com.loyalove.water.web.util.PasswordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,8 @@ public class UserController extends BaseController {
 
     @RequestMapping("")
     public Result queryUsers(UserQuery query, Pager pager) {
-        List<UserPO> result = userBiz.queryUsers(query, pager);
+        List<UserVO> result = userBiz.queryUsers(query, pager);
+        UserUtil.enumVOHandler(result);
         pager.setRecordTotal(userBiz.queryCount(query));
         return Result.getResultSuccess("查询成功", result, pager);
     }
@@ -39,12 +41,14 @@ public class UserController extends BaseController {
     @RequestMapping("/queryAll")
     public Result queryAllUsers() {
         List<UserPO> result = userBiz.queryAllUsers();
+        UserUtil.enumHandler(result);
         return Result.getResultSuccess("查询成功", result);
     }
 
     @RequestMapping("/queryBy")
     public Result queryBy(UserPO userPO) {
         userPO = userBiz.queryUser(userPO);
+        UserUtil.enumHandler(userPO);
         return Result.getResultSuccess("查询用户成功", userPO);
     }
 

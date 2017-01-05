@@ -34,7 +34,7 @@ public interface UserBiz {
      * 查询用户列表
      * @return
      */
-    List<UserPO> queryUsers(UserQuery query, Pager pager);
+    List<UserVO> queryUsers(UserQuery query, Pager pager);
 
 
     /**
