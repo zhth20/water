@@ -39,9 +39,14 @@ public class RoleMenuController extends BaseController {
     }
 
     @RequestMapping("/add")
-    public Result addRole(RoleMenuPO roleMenuPO) {
-        roleMenuPO.setCreateUser(currUser().getUserId());
-        roleMenuBiz.addRoleMenu(roleMenuPO);
+    public Result addRole(Integer roleId,Integer[] menuIds) {
+        for (Integer id: menuIds) {
+            RoleMenuPO roleMenuPO = new RoleMenuPO();
+            roleMenuPO.setCreateUser(currUser().getUserId());
+            roleMenuPO.setRoleId(roleId);
+            roleMenuPO.setMenuId(id);
+            roleMenuBiz.addRoleMenu(roleMenuPO);
+        }
         return Result.getResultSuccess("新增角色菜单关系成功");
     }
 
