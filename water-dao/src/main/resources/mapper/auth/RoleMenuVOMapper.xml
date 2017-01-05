@@ -1,12 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.loyalove.water.dao.auth.RoleMenuDAO">
-    <select id="queryMenus" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    <select id="queryMenus" resultType="com.loyalove.water.pojo.RoleMenuPO">
         SELECT
-        r.menu_id
+        *
         FROM
-        `role_menu` AS r
-        WHERE
-        r.role_id = #{roleId}
+        `role_menu` AS m
+        <where>
+            <if test="query.roleId!=null and query.roleId!=''">
+                AND m.role_id =#{query.roleId}
+            </if>
+            <if test="query.menuId!=null and query.menuId!=''">
+                AND m.menu_id =#{query.menuId}
+            </if>
+        </where>
+        LIMIT #{pager.recordStart}, #{pager.pageSize}
+    </select>
+
+    <!--查询角色数量-->
+    <select id="queryCount" resultType="java.lang.Integer">
+        SELECT
+        count(*)
+        FROM
+        `role_menu` AS m
+        <where>
+            <if test="query.roleId!=null and query.roleId!=''">
+                AND m.role_id =#{query.roleId}
+            </if>
+            <if test="query.menuId!=null and query.menuId!=''">
+                AND m.menu_id =#{query.menuId}
+            </if>
+        </where>
     </select>
 </mapper>

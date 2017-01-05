@@ -11,12 +11,16 @@
 package com.loyalove.water.web.controller.auth;
 
 import com.loyalove.water.biz.auth.RoleMenuBiz;
+import com.loyalove.water.common.model.Pager;
 import com.loyalove.water.common.model.Result;
 import com.loyalove.water.pojo.RoleMenuPO;
+import com.loyalove.water.query.auth.RoleMenuQuery;
 import com.loyalove.water.web.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @author lingfeng@yiji.com
@@ -26,6 +30,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class RoleMenuController extends BaseController {
     @Autowired
     private RoleMenuBiz roleMenuBiz;
+
+    @RequestMapping("")
+    public Result queryRoleMenus(RoleMenuQuery query, Pager pager) {
+        List<RoleMenuPO> result = roleMenuBiz.queryRoleMenus(query,pager);
+        pager.setRecordTotal(roleMenuBiz.queryCount(query));
+        return Result.getResultSuccess("查询成功", result, pager);
+    }
 
     @RequestMapping("/add")
     public Result addRole(RoleMenuPO roleMenuPO) {

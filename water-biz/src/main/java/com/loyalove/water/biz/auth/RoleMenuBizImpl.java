@@ -10,10 +10,13 @@
  */
 package com.loyalove.water.biz.auth;
 
+import com.loyalove.water.common.model.Pager;
+import com.loyalove.water.dao.auth.RoleMenuDAO;
 import com.loyalove.water.dao.base.MenuMapper;
 import com.loyalove.water.dao.base.RoleMenuMapper;
 import com.loyalove.water.pojo.RoleMenuExample;
 import com.loyalove.water.pojo.RoleMenuPO;
+import com.loyalove.water.query.auth.RoleMenuQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +31,8 @@ public class RoleMenuBizImpl implements RoleMenuBiz {
     private MenuMapper menuMapper;
     @Autowired
     private RoleMenuMapper roleMenuMapper;
+    @Autowired
+    private RoleMenuDAO roleMenuDAO;
     @Override
     public void addRoleMenu(RoleMenuPO roleMenuPO) {
         roleMenuMapper.insertSelective(roleMenuPO);
@@ -53,5 +58,15 @@ public class RoleMenuBizImpl implements RoleMenuBiz {
         if(list!=null&&list.size()>1){
             roleMenuMapper.deleteByPrimaryKey(roleMenuPO.getRoleMenuId());
         }
+    }
+
+    @Override
+    public List<RoleMenuPO> queryRoleMenus(RoleMenuQuery query, Pager pager) {
+        return roleMenuDAO.queryRoleMenus(query,pager);
+    }
+
+    @Override
+    public Integer queryCount(RoleMenuQuery query) {
+        return roleMenuDAO.queryCount(query);
     }
 }

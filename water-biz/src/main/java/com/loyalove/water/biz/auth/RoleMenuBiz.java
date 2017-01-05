@@ -10,7 +10,11 @@
  */
 package com.loyalove.water.biz.auth;
 
+import com.loyalove.water.common.model.Pager;
 import com.loyalove.water.pojo.RoleMenuPO;
+import com.loyalove.water.query.auth.RoleMenuQuery;
+
+import java.util.List;
 
 /**
  * @author lingfeng@yiji.com
@@ -28,5 +32,16 @@ public interface RoleMenuBiz {
      */
     void  deleteRoleMenu(RoleMenuPO roleMenuPO);
 
+    /**
+     * 查询菜单列表
+     * @return
+     */
+    public List<RoleMenuPO> queryRoleMenus(RoleMenuQuery query, Pager pager);
 
+    /**
+     * 查询总数
+     * @param query
+     * @return
+     */
+    Integer queryCount(RoleMenuQuery query);
 }

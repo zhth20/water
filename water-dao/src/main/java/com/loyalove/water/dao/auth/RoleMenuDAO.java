@@ -10,10 +10,14 @@
  */
 package com.loyalove.water.dao.auth;
 
+import com.loyalove.water.common.model.Pager;
+import com.loyalove.water.pojo.RoleMenuPO;
+import com.loyalove.water.query.auth.RoleMenuQuery;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * @author lingfeng@yiji.com
@@ -22,10 +26,17 @@ import java.util.Set;
 @Repository
 public interface RoleMenuDAO {
     /**
-     * 根据角色Id查询该角色下的所有菜单
-     * @param roleId
+     * 查询角色菜单关系列表
+     * @param query
+     * @param pager
      * @return
      */
-    Set<Integer> queryMenus(Integer roleId);
+    List<RoleMenuPO> queryRoleMenus(@Param("query") RoleMenuQuery query, @Param("pager") Pager pager);
 
+    /**
+     *查询菜单个数
+     * @param query
+     * @return
+     */
+    Integer queryCount(@Param("query") RoleMenuQuery query);
 }
