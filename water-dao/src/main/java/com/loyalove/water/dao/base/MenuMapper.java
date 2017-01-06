@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * 该接口（类）由系统生成，请勿修改
  *
- 生成时间 2017/01/05
+ 生成时间 2017/01/06
  */
 @Mapper
 @Repository

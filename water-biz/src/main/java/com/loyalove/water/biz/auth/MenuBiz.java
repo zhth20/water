@@ -50,4 +50,17 @@ public interface MenuBiz {
      * @return
      */
     Integer queryCount(MenuQuery query);
+
+    /**
+     * 查询菜单
+     * @param menuPO
+     * @return
+     */
+    MenuPO queryMenu(MenuPO menuPO);
+
+    /**
+     * 查询所有菜单
+     * @return
+     */
+    List<MenuPO> queryAllMenus();
 }

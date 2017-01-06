@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * 该实体由系统生成，请勿修改
  *
- * 生成时间 2017/01/05
+ * 生成时间 2017/01/06
  */
 public class MenuPO implements Serializable {
     /** 自增主键 */
@@ -16,13 +16,13 @@ public class MenuPO implements Serializable {
     private Integer pmenuId;
 
     /** 菜单名 */
-    private Integer menuName;
+    private String menuName;
 
     /** 菜单链接 */
-    private Integer menuUrl;
+    private String menuUrl;
 
     /** 菜单图标 */
-    private Integer menuIcon;
+    private String menuIcon;
 
     /** 创建人 */
     private Integer createUser;
@@ -51,27 +51,27 @@ public class MenuPO implements Serializable {
         this.pmenuId = pmenuId;
     }
 
-    public Integer getMenuName() {
+    public String getMenuName() {
         return menuName;
     }
 
-    public void setMenuName(Integer menuName) {
+    public void setMenuName(String menuName) {
         this.menuName = menuName;
     }
 
-    public Integer getMenuUrl() {
+    public String getMenuUrl() {
         return menuUrl;
     }
 
-    public void setMenuUrl(Integer menuUrl) {
+    public void setMenuUrl(String menuUrl) {
         this.menuUrl = menuUrl;
     }
 
-    public Integer getMenuIcon() {
+    public String getMenuIcon() {
         return menuIcon;
     }
 
-    public void setMenuIcon(Integer menuIcon) {
+    public void setMenuIcon(String menuIcon) {
         this.menuIcon = menuIcon;
     }
 

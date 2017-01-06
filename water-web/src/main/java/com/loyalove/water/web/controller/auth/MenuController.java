@@ -51,7 +51,7 @@ public class MenuController extends BaseController {
         return Result.getResultSuccess("修改菜单成功");
     }
 
-    @RequestMapping("/delete")
+    @RequestMapping("/deleteBy")
     public Result deleteRole(Integer[] ids) {
         MenuPO menuPO = new MenuPO();
         for (Integer id: ids) {
@@ -59,5 +59,17 @@ public class MenuController extends BaseController {
             menuBiz.deleteMenu(menuPO);
         }
         return Result.getResultSuccess("删除菜单成功");
+    }
+
+    @RequestMapping("/queryBy")
+    public Result queryBy(MenuPO menuPO) {
+        menuPO = menuBiz.queryMenu(menuPO);
+        return Result.getResultSuccess("查询菜单成功", menuPO);
+    }
+
+    @RequestMapping("/queryAll")
+    public Result queryAllMenus(MenuPO menuPO ) {
+        List<MenuPO> result = menuBiz.queryAllMenus();
+        return Result.getResultSuccess("查询成功", result);
     }
 }

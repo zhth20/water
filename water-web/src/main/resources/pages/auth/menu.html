@@ -77,6 +77,7 @@
                     <col width="8%">
                     <col width="8%">
                     <col width="8%">
+                    <col width="8%">
                     <col width="15%">
                     <col width="15%">
                     <col width="auto">
@@ -85,9 +86,10 @@
                 <thead>
                 <tr>
                     <th><input id="selected-all" type="checkbox" name="close" title="全选"></th>
+                    <th>菜单号</th>
                     <th>菜单名</th>
-                    <th>别名</th>
-                    <th>状态</th>
+                    <th>菜单链接</th>
+                    <th>菜单图标</th>
                     <th>创建人</th>
                     <th>创建时间</th>
                     <th>更新时间</th>
@@ -109,11 +111,12 @@
     {{# layui.each(d.result, function(index, item){ }}
     <tr>
         <td><input type="checkbox" name="ids" value="{{=item.menuId}}" data-name="{{=item.menuName}}"></td>
-        <td>{{=item.menuName}}</td>
+        <td>{{=item.menuId}}</td>
         <td>
-            {{=item.menuAlias}}
+            {{=item.menuName}}
         </td>
-        <td>{{=item.status}}</td>
+        <td>{{=item.menuUrl}}</td>
+        <td>{{=item.menuIcon}}</td>
         <td>{{=item.createUser}}</td>
         <td>{{=item.createTime}}</td>
         <td>{{=item.updateTime}}</td>
@@ -152,15 +155,15 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">别名</label>
+            <label class="layui-form-label">菜单路径</label>
             <div class="layui-input-inline">
-                <input type="text" name="menuAlias" placeholder="别名" autocomplete="off" class="layui-input">
+                <input type="text" name="menuUrl" placeholder="菜单路径" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">备注</label>
+            <label class="layui-form-label">菜单图标</label>
             <div class="layui-input-inline">
-                <input type="text" name="mark" placeholder="备注" autocomplete="off" class="layui-input">
+                <input type="text" name="menuIcon" placeholder="菜单图标" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
@@ -192,19 +195,19 @@
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">别名</label>
+            <label class="layui-form-label">菜单路径</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input"
-                       name="menuAlias" value="{{=d.menuAlias}}"
+                       name="menuUrl" value="{{=d.menuUrl}}"
                        placeholder="别名" autocomplete="off">
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">备注</label>
+            <label class="layui-form-label">菜单图标</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input"
-                       name="mark" value="{{=d.mark}}"
+                       name="menuIcon" value="{{=d.menuIcon}}"
                        placeholder="备注" autocomplete="off">
             </div>
         </div>
@@ -230,12 +233,12 @@
             <div class="layui-form-mid">{{=d.menuName}}</div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">别名</label>
-            <div class="layui-form-mid">{{=d.menuAlias}}</div>
+            <label class="layui-form-label">菜单路径</label>
+            <div class="layui-form-mid">{{=d.menuUrl}}</div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">状态</label>
-            <div class="layui-form-mid">{{=d.status}}</div>
+            <label class="layui-form-label">菜单图标</label>
+            <div class="layui-form-mid">{{=d.menuIcon}}</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label"></label>

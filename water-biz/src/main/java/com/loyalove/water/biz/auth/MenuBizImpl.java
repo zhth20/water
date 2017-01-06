@@ -13,6 +13,7 @@ package com.loyalove.water.biz.auth;
 import com.loyalove.water.common.model.Pager;
 import com.loyalove.water.dao.auth.MenuDAO;
 import com.loyalove.water.dao.base.MenuMapper;
+import com.loyalove.water.pojo.MenuExample;
 import com.loyalove.water.pojo.MenuPO;
 import com.loyalove.water.query.auth.MenuQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,16 @@ public class MenuBizImpl implements MenuBiz {
     @Override
     public Integer queryCount(MenuQuery query) {
         return menuDAO.queryCount(query);
+    }
+
+    @Override
+    public MenuPO queryMenu(MenuPO menuPO) {
+        return menuMapper.selectByPrimaryKey(menuPO.getMenuId());
+    }
+
+    @Override
+    public List<MenuPO> queryAllMenus() {
+        return menuMapper.selectByExample(new MenuExample());
     }
 
 }
