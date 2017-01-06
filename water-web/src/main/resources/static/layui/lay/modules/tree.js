@@ -6,6 +6,7 @@
 
  */
 
+
 layui.define('jquery', function (exports) {
     "use strict";
 
@@ -19,7 +20,8 @@ layui.define('jquery', function (exports) {
     //图标
     var icon = {
         arrow: ['&#xe623;', '&#xe625;'] //箭头
-        , checkbox: ['&#xe626;', '&#xe627;'] //复选框
+        // , checkbox: ['&#xe626;', '&#xe627;'] //复选框
+        , checkbox: ['fa-square-o', 'fa-check-square-o'] //复选框
         , radio: ['&#xe62b;', '&#xe62a;'] //单选框
         , branch: ['&#xe622;', '&#xe624;'] //父节点
         , leaf: '&#xe621;' //叶节点
@@ -55,11 +57,11 @@ layui.define('jquery', function (exports) {
                 //复选框/单选框
                 , function () {
                     return options.check ? (
-                            '<i class="layui-icon layui-tree-check">' + (
+                            '<i class="layui-tree-check fa ' + (
                                 options.check === 'checkbox' ? icon.checkbox[0] : (
                                         options.check === 'radio' ? icon.radio[0] : ''
                                     )
-                            ) + '</i>'
+                            ) + '"></i>'
                         ) : '';
                 }()
 
@@ -115,10 +117,12 @@ layui.define('jquery', function (exports) {
         elem.children('i.layui-tree-check').on('click', function (e) {
             if (item.checked) {
                 item.checked = false;
-                $(this).html(icon.checkbox[0]);
+                $(this).removeClass(icon.checkbox[1]);
+                $(this).addClass(icon.checkbox[0]);
             } else {
                 item.checked = true;
-                $(this).html(icon.checkbox[1]);
+                $(this).removeClass(icon.checkbox[0]);
+                $(this).addClass(icon.checkbox[1]);
             }
         });
     }
