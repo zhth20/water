@@ -63,4 +63,10 @@ public interface MenuBiz {
      * @return
      */
     List<MenuPO> queryAllMenus();
+
+    /**
+     * 查询父菜单下的所有菜单
+     * @return
+     */
+    List<MenuPO> querySubMenus(MenuPO menuPO);
 }
