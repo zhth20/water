@@ -1,6 +1,7 @@
 package com.loyalove.water.biz.auth;
 
 import com.loyalove.water.biz.BaseBiz;
+import com.loyalove.water.common.enums.UserStatusEnum;
 import com.loyalove.water.common.model.Pager;
 import com.loyalove.water.common.util.CollectionUtils;
 import com.loyalove.water.dao.auth.UserDAO;
@@ -67,7 +68,7 @@ public class UserBizImpl extends BaseBiz implements UserBiz {
      * @return
      */
     @Override
-    public List<UserPO> queryUsers(UserQuery query, Pager pager) {
+    public List<UserVO> queryUsers(UserQuery query, Pager pager) {
         return userDAO.queryUsers(query, pager);
     }
 
@@ -131,5 +132,17 @@ public class UserBizImpl extends BaseBiz implements UserBiz {
     @Override
     public UserPO queryUser(UserPO userPO) {
         return userMapper.selectByPrimaryKey(userPO.getUserId());
+    }
+
+    /**
+     * 查询所有初始化用户
+     */
+    @Override
+    public List<UserPO> queryAllUsers() {
+        UserExample example = new UserExample();
+        example.createCriteria()
+                .andStatusEqualTo(UserStatusEnum.INIT.code())
+                .andTypeEqualTo("");
+        return userMapper.selectByExample(example);
     }
 }

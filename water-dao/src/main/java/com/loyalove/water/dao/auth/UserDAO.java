@@ -1,8 +1,8 @@
 package com.loyalove.water.dao.auth;
 
 import com.loyalove.water.common.model.Pager;
-import com.loyalove.water.pojo.UserPO;
 import com.loyalove.water.query.auth.UserQuery;
+import com.loyalove.water.vo.auth.UserVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -44,7 +44,7 @@ public interface UserDAO {
      * @param query,pager
      * @return
      */
-    List<UserPO> queryUsers(@Param("query") UserQuery query, @Param("pager") Pager pager);
+    List<UserVO> queryUsers(@Param("query") UserQuery query, @Param("pager") Pager pager);
 
     /**
      * 查询用户数量

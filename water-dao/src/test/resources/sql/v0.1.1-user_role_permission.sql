@@ -1,23 +1,23 @@
 
-CREATE TABLE `user`(
-  `user_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
-  `username` VARCHAR(20) NOT NULL COMMENT '用户名',
-  `password` VARCHAR(50) NOT NULL COMMENT '密码',
-  `salt` VARCHAR(50) NOT NULL COMMENT '盐值',
-  `nickname` VARCHAR(20) DEFAULT NULL COMMENT '用户昵称',
-  `email` VARCHAR(50) DEFAULT NULL COMMENT '用户邮箱',
-  `phone_num` VARCHAR(11) DEFAULT NULL COMMENT '手机号码',
-  `type` VARCHAR(20) NOT NULL COMMENT '用户类型',
-  `status` VARCHAR(20) NOT NULL DEFAULT 'INIT' COMMENT '用户状态',
-  `create_user` INT(11) NOT NULL COMMENT '创建人',
-  `create_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `update_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+CREATE TABLE `user` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `username` varchar(20) NOT NULL COMMENT '用户名',
+  `password` varchar(50) NOT NULL COMMENT '密码',
+  `salt` varchar(50) NOT NULL COMMENT '盐值',
+  `nickname` varchar(20) DEFAULT NULL COMMENT '用户昵称',
+  `email` varchar(50) DEFAULT NULL COMMENT '用户邮箱',
+  `phone_num` varchar(11) DEFAULT NULL COMMENT '手机号码',
+  `status` varchar(20) NOT NULL DEFAULT 'INIT' COMMENT '用户状态',
+  `type` varchar(20) NOT NULL DEFAULT '' COMMENT '用户类型',
+  `create_user` int(11) NOT NULL COMMENT '创建人',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`user_id`),
-  UNIQUE (`username`),
-  UNIQUE (`email`),
-  UNIQUE (`phone_num`),
-  INDEX (`create_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8 COMMENT '用户表';
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `phone_num` (`phone_num`),
+  KEY `create_user` (`create_user`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 CREATE TABLE `role`(
   `role_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',

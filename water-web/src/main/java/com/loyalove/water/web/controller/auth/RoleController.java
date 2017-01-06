@@ -25,13 +25,22 @@ public class RoleController extends BaseController {
     @RequestMapping("")
     public Result queryRoles(RoleQuery query, Pager pager) {
         List<RolePO> result = roleBiz.queryRoles(query, pager);
+        RoleUtil.enumHandler(result);
         pager.setRecordTotal(roleBiz.queryCount(query));
         return Result.getResultSuccess("查询成功", result, pager);
+    }
+
+    @RequestMapping("/queryAll")
+    public Result queryAllRoles(RoleQuery query, Pager pager) {
+        List<RolePO> result = roleBiz.queryAllRoles();
+        RoleUtil.enumHandler(result);
+        return Result.getResultSuccess("查询成功", result);
     }
 
     @RequestMapping("/queryBy")
     public Result queryBy(RolePO rolePO) {
         rolePO = roleBiz.queryRole(rolePO);
+        RoleUtil.enumHandler(rolePO);
         return Result.getResultSuccess("查询角色成功", rolePO);
     }
 
@@ -51,7 +60,7 @@ public class RoleController extends BaseController {
     @RequestMapping("/deleteBy")
     public Result deleteRole(Integer[] ids) {
         RolePO rolePO = new RolePO();
-        for (Integer id: ids) {
+        for (Integer id : ids) {
             rolePO.setRoleId(id);
             roleBiz.deleteRole(rolePO);
         }

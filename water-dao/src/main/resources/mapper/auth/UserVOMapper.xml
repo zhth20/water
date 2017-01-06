@@ -32,12 +32,18 @@
         )
     </select>
 
-    <select id="queryUsers" resultType="com.loyalove.water.pojo.UserPO">
+    <select id="queryUsers" resultType="com.loyalove.water.vo.auth.UserVO">
         SELECT
-        *
+        u.*,
+        u1.username AS create_username
         FROM
-        `user` AS u
+        `user` AS u,
+        `user` AS u1
+        <where>
+            u.create_user = u1.user_id
+        </where>
         <include refid="queryCondition"/>
+        ORDER BY u.create_time DESC
         LIMIT #{pager.recordStart}, #{pager.pageSize}
     </select>
 

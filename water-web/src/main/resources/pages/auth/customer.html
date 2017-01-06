@@ -155,8 +155,11 @@
         <div class="layui-form-item">
             <label class="layui-form-label">登录账号</label>
             <div class="layui-input-inline">
-                <input class="layui-input" type="text" name="userId" lay-verify="required" placeholder="登录账号"
-                       autocomplete="off">
+                <select name="userId" readonly>
+                    {{# layui.each(d.users, function(index, item){ }}
+                    <option value="{{=item.userId}}">{{=item.nickname}} [{{=item.username}}]</option>
+                    {{# }); }}
+                </select>
             </div>
             <div class="layui-form-mid layui-word-aux">登录账号</div>
         </div>

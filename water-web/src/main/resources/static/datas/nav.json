@@ -1,22 +1,18 @@
 [{
 	"title": "账户管理",
-	"icon": "fa-users",
+	"icon": "fa-users fa-fw",
 	"spread": true,
 	"children": [{
 		"title": "管理员账户",
-		"icon": "fa-user",
+		"icon": "fa-user fa-fw",
 		"href": "/pages/auth/user.html"
 	}, {
 		"title": "角色管理",
-		"icon": "fa-user-o",
+		"icon": "fa-user-o fa-fw",
 		"href": "/pages/auth/role.html"
 	}, {
-		"title": "客户管理",
-		"icon": "fa-male",
-		"href": "/pages/auth/customer.html"
-	}, {
-		"title": "厂商管理",
-		"icon": "fa-building",
-		"href": "/pages/auth/firm.html"
+		"title": "菜单管理",
+		"icon": "fa-list fa-fw",
+		"href": "/pages/auth/menu.html"
 	}]
 }]
