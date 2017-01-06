@@ -65,4 +65,11 @@ public class MenuBizImpl implements MenuBiz {
         return menuMapper.selectByExample(new MenuExample());
     }
 
+    @Override
+    public List<MenuPO> querySubMenus(MenuPO menuPO) {
+        MenuExample example = new MenuExample();
+        example.createCriteria().andPmenuIdEqualTo(menuPO.getPmenuId());
+        return menuMapper.selectByExample(example);
+    }
+
 }

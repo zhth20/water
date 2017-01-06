@@ -72,4 +72,15 @@ public class MenuController extends BaseController {
         List<MenuPO> result = menuBiz.queryAllMenus();
         return Result.getResultSuccess("查询成功", result);
     }
+
+    /**
+     * 查询父菜单下的子菜单
+     * @param menuPO
+     * @return
+     */
+    @RequestMapping("/querySubMenus")
+    public Result querySubMenus(MenuPO menuPO ) {
+        List<MenuPO> result = menuBiz.querySubMenus(menuPO);
+        return Result.getResultSuccess("查询成功", result);
+    }
 }
