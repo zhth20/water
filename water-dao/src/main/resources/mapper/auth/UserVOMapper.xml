@@ -41,8 +41,8 @@
         `user` AS u1
         <where>
             u.create_user = u1.user_id
+            <include refid="queryCondition"/>
         </where>
-        <include refid="queryCondition"/>
         ORDER BY u.create_time DESC
         LIMIT #{pager.recordStart}, #{pager.pageSize}
     </select>
@@ -52,14 +52,14 @@
         COUNT(*)
         FROM
         `user` AS u
-        <include refid="queryCondition"/>
+        <where>
+            <include refid="queryCondition"/>
+        </where>
     </select>
 
     <sql id="queryCondition">
-        <where>
-            <if test="query.username!=null and query.username!=''">
-                AND u.username LIKE CONCAT('%',#{query.username},'%')
-            </if>
-        </where>
+        <if test="query.username!=null and query.username!=''">
+            AND u.username LIKE CONCAT('%',#{query.username},'%')
+        </if>
     </sql>
 </mapper>
