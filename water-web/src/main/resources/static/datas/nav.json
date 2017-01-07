@@ -3,7 +3,7 @@
 	"icon": "fa-users fa-fw",
 	"spread": true,
 	"children": [{
-		"title": "管理员账户",
+		"title": "用户管理",
 		"icon": "fa-user fa-fw",
 		"href": "/pages/auth/user.html"
 	}, {
