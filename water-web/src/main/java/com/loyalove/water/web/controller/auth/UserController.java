@@ -46,17 +46,17 @@ public class UserController extends BaseController {
     }
 
     @RequestMapping("/queryBy")
-    public Result queryBy(UserPO userPO) {
-        userPO = userBiz.queryUser(userPO);
-        UserUtil.enumHandler(userPO);
-        return Result.getResultSuccess("查询用户成功", userPO);
+    public Result queryBy(UserQuery query) {
+        List<UserVO> userVOs = userBiz.queryUsers(query,null);
+        UserVO userVO = userVOs.get(0);
+        return Result.getResultSuccess("查询用户成功", userVO);
     }
 
     @RequestMapping("/add")
-    public Result addUser(UserPO userPO) {
-        PasswordUtils.encryptPassword(userPO);
-        userPO.setCreateUser(currUser().getUserId());
-        userBiz.addUser(userPO);
+    public Result addUser(UserVO userVO) {
+        PasswordUtils.encryptPassword(userVO.toUserPO());
+        userVO.setCreateUser(currUser().getUserId());
+        userBiz.addUser(userVO);
         return Result.getResultSuccess("新增用户成功");
     }
 

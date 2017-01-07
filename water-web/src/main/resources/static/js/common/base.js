@@ -112,7 +112,8 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
 
             self.toAdd({
                 template: $(this).attr('template'),
-                title: $(this).html()
+                title: $(this).html(),
+                data: {}
             });
 
             return false;
@@ -124,7 +125,8 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
             self.toUpdate({
                 url: $(this).attr('data-href'),
                 template: $(this).attr('template'),
-                title: $(this).html()
+                title: $(this).html(),
+                data: {}
             });
 
             return false;
@@ -136,7 +138,8 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
             self.toDetail({
                 url: $(this).attr('data-href'),
                 template: $(this).attr('template'),
-                title: $(this).html()
+                title: $(this).html(),
+                data: {}
             });
 
             return false;
@@ -216,27 +219,28 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
         var self = this;
         var $queryForm = $(self.elems.queryForm);
         //获取服务器数据
-        self.get($queryForm.attr('action'), $queryForm.serialize(), function (data) {
-            var template = $($(self.elems.queryTrigger).attr('template')).html();
-            laytpl(template).render(data, function (html) {
-                $('table>tbody').html(html);
+        self.get($queryForm.attr('action'), $queryForm.serialize())
+            .done(function (data) {
+                var template = $($(self.elems.queryTrigger).attr('template')).html();
+                laytpl(template).render(data, function (html) {
+                    $('table>tbody').html(html);
+                    //取消全选按钮选中效果
+                    $(self.elems.selectedAll).prop('checked', false);
+                    //组件渲染
+                    self.render();
+                });
+
+                //分页插件初始化
+                if (self.configs.initFlag && data.pager) {
+                    self.intPager(data.pager);
+                    self.configs.initFlag = false;
+                }
+
                 //取消全选按钮选中效果
                 $(self.elems.selectedAll).prop('checked', false);
-                //组件渲染
                 self.render();
+
             });
-
-            //分页插件初始化
-            if (self.configs.initFlag && data.pager) {
-                self.intPager(data.pager);
-                self.configs.initFlag = false;
-            }
-
-            //取消全选按钮选中效果
-            $(self.elems.selectedAll).prop('checked', false);
-            self.render();
-
-        });
     }
 
     //跳转到指定页数数据
@@ -313,9 +317,6 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
         var self = this;
 
         config.data = self.configs.cacheData;
-        config.callback = function () {
-            self.add();
-        }
 
         self.openPage(config);
     }
@@ -327,12 +328,13 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
         var self = this;
         var $addForm = $(self.elems.addForm);
         self.configs.cacheData = $addForm.serializeJson();
-        self.post($addForm.attr('action'), $addForm.serialize(), function (data) {
-            layer.msg(data.message);
-            layer.close(self.configs.pageIndex);
-            self.configs.initFlag = true;
-            self.toPage(1);
-        });
+        self.post($addForm.attr('action'), $addForm.serialize())
+            .done(function (data) {
+                layer.msg(data.message);
+                layer.close(self.configs.pageIndex);
+                self.configs.initFlag = true;
+                self.toPage(1);
+            });
     }
 
     /**
@@ -341,10 +343,11 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
     Base.fn.toUpdate = function (config) {
         var self = this;
         if (config.url && config.url != '') {
-            self.get(config.url, null, function (data) {
-                config.data = data.result;
-                self.openPage(config);
-            });
+            return self.get(config.url, null)
+                .done(function (data) {
+                    config.data.result = data.result;
+                    self.openPage(config);
+                });
         } else {
             layer.msg('数据链接地址不能为空');
         }
@@ -356,11 +359,12 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
     Base.fn.update = function () {
         var self = this;
         var $updateForm = $(self.elems.updateForm);
-        self.post($updateForm.attr('action'), $updateForm.serialize(), function (data) {
-            layer.msg(data.message);
-            layer.close(self.configs.pageIndex);
-            self.refresh();
-        });
+        self.post($updateForm.attr('action'), $updateForm.serialize())
+            .done(function (data) {
+                layer.msg(data.message);
+                layer.close(self.configs.pageIndex);
+                self.refresh();
+            });
     }
 
     /**
@@ -369,10 +373,11 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
     Base.fn.toDetail = function (config) {
         var self = this;
         if (config.url && config.url != '') {
-            self.get(config.url, null, function (data) {
-                config.data = data.result;
-                self.openPage(config);
-            });
+            self.get(config.url, null)
+                .done(function (data) {
+                    config.data = data.result;
+                    self.openPage(config);
+                });
         } else {
             layer.msg('数据链接地址不能为空');
         }
@@ -389,10 +394,11 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
             return false;
         }
         player.confirm('确认删除：[ ' + items.names.join('，') + ' ]？', {icon: 7}, function () {
-            self.get(item.url, {ids: items.ids.join(',')}, function (data) {
-                layer.msg(data.message);
-                self.refresh();
-            });
+            self.get(item.url, {ids: items.ids.join(',')})
+                .done(function (data) {
+                    layer.msg(data.message);
+                    self.refresh();
+                });
         });
     }
 
@@ -435,33 +441,29 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
 
         config = config || {};
         config.timestamp = new Date().getTime();
-        $.ajax({
+        return $.ajax({
             url: config.url,
             type: config.type,
             data: config.data,
             dataType: 'json',
             cache: false,
-            success: config.callback,
-            //请求出错
-            error: function (err) {
-                layer.close(self.configs.loadIndex);
-                var msg;
-                if (err.status === 500) {
-                    msg = '系统错误';
-                } else if (err.status < 200) {
-                    msg = '请求失败';
-                }
-                console.log(err.responseText)
-                layer.msg(msg, {icon: 2, time: 500});
-            },
             //请求发送前
             beforeSend: function () {
                 self.configs.loadIndex = layer.load(1);
-            },
-            //请求完成后
-            complete: function () {
-                layer.close(self.configs.loadIndex);
             }
+        }).fail(function (err) { //jqXHR, textStatus, errorThrown
+            //请求出错
+            layer.close(self.configs.loadIndex);
+            var msg;
+            if (err.status === 500) {
+                msg = '系统错误';
+            } else if (err.status < 200) {
+                msg = '请求失败';
+            }
+            console.log(err.responseText)
+            layer.msg(msg, {icon: 2, time: 500});
+        }).always(function () {  //请求完成后
+            layer.close(self.configs.loadIndex);
         });
 
     }
@@ -472,15 +474,14 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
      * @param data
      * @param callback
      */
-    Base.fn.get = function (url, data, callback) {
+    Base.fn.get = function (url, data) {
 
         var self = this;
 
-        self.ajax({
+        return self.ajax({
             url: url,
             type: 'GET',
-            data: data,
-            callback: callback
+            data: data
         });
     }
 
@@ -490,15 +491,14 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
      * @param data
      * @param callback
      */
-    Base.fn.post = function (url, data, callback) {
+    Base.fn.post = function (url, data) {
 
         var self = this;
 
-        self.ajax({
+        return self.ajax({
             url: url,
             type: 'POST',
-            data: data,
-            callback: callback
+            data: data
         });
     }
 

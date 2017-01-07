@@ -6,12 +6,15 @@ import com.loyalove.water.common.model.Pager;
 import com.loyalove.water.common.util.CollectionUtils;
 import com.loyalove.water.dao.auth.UserDAO;
 import com.loyalove.water.dao.base.UserMapper;
+import com.loyalove.water.dao.base.UserRoleMapper;
 import com.loyalove.water.pojo.UserExample;
 import com.loyalove.water.pojo.UserPO;
+import com.loyalove.water.pojo.UserRolePO;
 import com.loyalove.water.query.auth.UserQuery;
 import com.loyalove.water.vo.auth.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -28,6 +31,9 @@ public class UserBizImpl extends BaseBiz implements UserBiz {
 
     @Autowired
     UserMapper userMapper;
+
+    @Autowired
+    UserRoleMapper userRoleMapper;
 
     @Autowired
     UserDAO userDAO;
@@ -102,6 +108,33 @@ public class UserBizImpl extends BaseBiz implements UserBiz {
     @Override
     public void addUser(UserPO userPO) {
         userMapper.insertSelective(userPO);
+    }
+
+    /**
+     * 新增用户
+     *
+     * @param userVO
+     */
+    @Override
+    @Transactional
+    public void addUser(UserVO userVO) {
+        //新增用户
+        userMapper.insertSelective(userVO.toUserPO());
+        //新增用户角色关联
+        userRoleMapper.insertSelective(buildUserRolePO(userVO));
+    }
+
+    /**
+     * 构建用户角色关联对象
+     * @param userVO
+     * @return
+     */
+    private UserRolePO buildUserRolePO(UserVO userVO) {
+        UserRolePO userRolePO = new UserRolePO();
+        userRolePO.setUserId(userVO.getUserId());
+        userRolePO.setRoleId(userVO.getRoleId());
+        userRolePO.setCreateUser(userVO.getCreateUser());
+        return userRolePO;
     }
 
     /**

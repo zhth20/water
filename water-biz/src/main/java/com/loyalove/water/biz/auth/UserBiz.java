@@ -58,6 +58,12 @@ public interface UserBiz {
     void addUser(UserPO userPO);
 
     /**
+     * 新增用户
+     * @param userVO
+     */
+    void addUser(UserVO userVO);
+
+    /**
      * 修改用户
      * @param userPO
      */
@@ -79,4 +85,5 @@ public interface UserBiz {
      * 查询所有初始化用户
      */
     List<UserPO> queryAllUsers();
+
 }

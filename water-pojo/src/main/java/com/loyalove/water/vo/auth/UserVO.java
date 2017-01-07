@@ -31,6 +31,7 @@ public class UserVO extends BaseVO {
 
     public UserVO() {
         this.userPO = new UserPO();
+        this.rolePO = new RolePO();
     }
 
     public UserPO toUserPO() {
@@ -63,6 +64,38 @@ public class UserVO extends BaseVO {
 
     public void setRolePO(RolePO rolePO) {
         this.rolePO = rolePO;
+    }
+
+    public Integer getRoleId() {
+        return rolePO.getRoleId();
+    }
+
+    public String getMark() {
+        return rolePO.getMark();
+    }
+
+    public String getRoleAlias() {
+        return rolePO.getRoleAlias();
+    }
+
+    public void setRoleName(String roleName) {
+        rolePO.setRoleName(roleName);
+    }
+
+    public String getRoleName() {
+        return rolePO.getRoleName();
+    }
+
+    public void setRoleAlias(String roleAlias) {
+        rolePO.setRoleAlias(roleAlias);
+    }
+
+    public void setMark(String mark) {
+        rolePO.setMark(mark);
+    }
+
+    public void setRoleId(Integer roleId) {
+        rolePO.setRoleId(roleId);
     }
 
     public String getCreateUsername() {
