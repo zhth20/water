@@ -530,15 +530,15 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl', 'unders
     }
 
     Base.fn.fail = function(message){
-        layer.msg(message, {icon: 2, time: 500});
+        layer.msg(message, {icon: 2, time: 1500});
     }
 
     Base.fn.warn = function(message){
-        layer.msg(message, {icon: 0, time: 500});
+        layer.msg(message, {icon: 0, time: 1000});
     }
 
     Base.fn.info = function(message){
-        layer.msg(message, {time: 500});
+        layer.msg(message, {time: 1000});
     }
 
     /**
