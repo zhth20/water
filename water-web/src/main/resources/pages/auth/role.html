@@ -108,23 +108,21 @@
 <script id="table-template" type="text/html">
     {{# layui.each(d.result, function(index, item){ }}
     <tr>
-        <td><input type="checkbox" name="ids" value="{{item.roleId}}" data-name="{{item.roleName}}"></td>
-        <td>{{item.roleName}}</td>
-        <td>
-            {{item.roleAlias}}
-        </td>
-        <td>{{item.status}}</td>
-        <td>{{item.createUser}}</td>
-        <td>{{item.createTime}}</td>
-        <td>{{item.updateTime}}</td>
+        <td><input type="checkbox" name="ids" value="{{=item.roleId}}" data-name="{{=item.roleName}}"></td>
+        <td>{{=item.roleName}}</td>
+        <td>{{=item.roleAlias}}</td>
+        <td>{{=item.status}}</td>
+        <td>{{=item.createUser}}</td>
+        <td>{{=item.createTime}}</td>
+        <td>{{=item.updateTime}}</td>
         <td>
             <a class="layui-btn layui-btn-mini detail-trigger"
-               data-href="/role/queryBy?roleId={{item.roleId}}"
+               data-href="/role/queryBy?roleId={{=item.roleId}}"
                template="#detail-template">
                 <i class="fa fa-eye"></i>
             </a>
             <a class="layui-btn layui-btn-mini update-trigger"
-               data-href="/role/queryBy?roleId={{item.roleId}}"
+               data-href="/role/queryBy?roleId={{=item.roleId}}"
                template="#update-template">
                 <i class="fa fa-edit"></i>
             </a>
@@ -183,19 +181,19 @@
     <form id="update-form" class="layui-form" action="/role/update">
 
         <div class="layui-hide">
-            <input type="hidden" name="roleId" value="{{d.roleId}}">
+            <input type="hidden" name="roleId" value="{{=d.roleId}}">
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">角色名</label>
-            <div class="layui-form-mid">{{d.roleName}}</div>
+            <div class="layui-form-mid">{{=d.roleName}}</div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">别名</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input"
-                       name="roleAlias" value="{{d.roleAlias}}"
+                       name="roleAlias" value="{{=d.roleAlias}}"
                        placeholder="别名" autocomplete="off">
             </div>
         </div>
@@ -204,7 +202,7 @@
             <label class="layui-form-label">备注</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input"
-                       name="mark" value="{{d.mark}}"
+                       name="mark" value="{{=d.mark}}"
                        placeholder="备注" autocomplete="off">
             </div>
         </div>
@@ -227,15 +225,19 @@
     <form id="detail-form" class="layui-form">
         <div class="layui-form-item">
             <label class="layui-form-label">角色名</label>
-            <div class="layui-form-mid">{{d.roleName}}</div>
+            <div class="layui-form-mid">{{=d.roleName}}</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">别名</label>
-            <div class="layui-form-mid">{{d.roleAlias}}</div>
+            <div class="layui-form-mid">{{=d.roleAlias}}</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">状态</label>
-            <div class="layui-form-mid">{{d.status}}</div>
+            <div class="layui-form-mid">{{=d.status}}</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-form-mid">{{=d.mark}}</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label"></label>
