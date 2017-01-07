@@ -28,7 +28,7 @@ layui.use('base', function () {
             config.data.roles = self.data.roles;
             self.openPage(config);
         } else {
-            $.when(self.queryRoles()).done(function(){
+            $.when(self.queryRoles()).done(function () {
                 config.data.roles = self.data.roles;
                 self.openPage(config);
             });
@@ -46,7 +46,29 @@ layui.use('base', function () {
                 }),
                 self.queryRoles(),
                 self.queryStatus()
-            ).done(function(){
+            ).done(function () {
+                config.data.roles = self.data.roles;
+                config.data.statusAll = self.data.status;
+                self.openPage(config);
+            });
+        } else {
+            layer.msg('数据链接地址不能为空');
+        }
+
+    }
+
+    User.fn.toDetail = function (config) {
+
+        var self = this;
+        if (config.url && config.url != '') {
+            $.when(
+                self.get(config.url, null).done(function (data) {
+                    config.data = data.result;
+                }),
+                self.queryRoles(),
+                self.queryStatus()
+            ).done(function () {
+                config.data.status = self.findByCode(self.data.status, config.data.status);
                 config.data.roles = self.data.roles;
                 config.data.statusAll = self.data.status;
                 self.openPage(config);

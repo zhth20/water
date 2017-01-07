@@ -1,14 +1,14 @@
 /**
  * Created by Loyal on 2016/12/16.
  */
-layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], function (exports) {
+layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl', 'underscore'], function (exports) {
     var $ = layui.jquery,
+        _ = layui.underscore,
         pager = layui.laypage,
         form = layui.form(),
         laytpl = layui.laytpl,
         layer = layui.layer,
         player = window.layer;
-    window.$ = $;
 
     var Base = function () {
         this.elems = {
@@ -58,6 +58,12 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
         self.events();
         self.ready();
         self.toPage(1);
+    }
+
+    Base.fn.findByCode = function(arr, code){
+        return _.find(arr, function(item){
+            return item['code']==code;
+        })['message'];
     }
 
     /**
@@ -330,7 +336,7 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
         self.configs.cacheData = $addForm.serializeJson();
         self.post($addForm.attr('action'), $addForm.serialize())
             .done(function (data) {
-                layer.msg(data.message);
+                self.ok(data.message);
                 layer.close(self.configs.pageIndex);
                 self.configs.initFlag = true;
                 self.toPage(1);
@@ -349,7 +355,7 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
                     self.openPage(config);
                 });
         } else {
-            layer.msg('数据链接地址不能为空');
+            self.fail('数据链接地址不能为空');
         }
     }
 
@@ -361,7 +367,7 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
         var $updateForm = $(self.elems.updateForm);
         self.post($updateForm.attr('action'), $updateForm.serialize())
             .done(function (data) {
-                layer.msg(data.message);
+                self.ok(data.message);
                 layer.close(self.configs.pageIndex);
                 self.refresh();
             });
@@ -379,7 +385,7 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
                     self.openPage(config);
                 });
         } else {
-            layer.msg('数据链接地址不能为空');
+            self.fail('数据链接地址不能为空');
         }
     }
 
@@ -390,13 +396,13 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
         var self = this;
         var items = self.getValuesByInputName('ids', '.layui-table tbody');
         if (items.ids.length < 1) {
-            layer.msg('请选择要删除数据');
+            self.warn('请选择要删除数据');
             return false;
         }
         player.confirm('确认删除：[ ' + items.names.join('，') + ' ]？', {icon: 7}, function () {
             self.get(item.url, {ids: items.ids.join(',')})
                 .done(function (data) {
-                    layer.msg(data.message);
+                    self.ok(data.message);
                     self.refresh();
                 });
         });
@@ -422,14 +428,14 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
      * 数据导入
      */
     Base.fn.import = function () {
-        layer.msg('执行导入操作');
+        self.info('执行导入操作');
     }
 
     /**
      * 数据导出
      */
     Base.fn.export = function () {
-        layer.msg('执行导出操作');
+        self.info('执行导出操作');
     }
 
     /**
@@ -460,8 +466,8 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
             } else if (err.status < 200) {
                 msg = '请求失败';
             }
-            console.log(err.responseText)
-            layer.msg(msg, {icon: 2, time: 500});
+            console.log(err.responseText);
+            self.fail(msg);
         }).always(function () {  //请求完成后
             layer.close(self.configs.loadIndex);
         });
@@ -500,6 +506,39 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
             type: 'POST',
             data: data
         });
+    }
+
+    /**
+     * 封装Post请求
+     * @param url
+     * @param data
+     * @param callback
+     */
+    Base.fn.post = function (url, data) {
+
+        var self = this;
+
+        return self.ajax({
+            url: url,
+            type: 'POST',
+            data: data
+        });
+    }
+
+    Base.fn.ok = function(message){
+        layer.msg(message, {icon: 1, time: 1500});
+    }
+
+    Base.fn.fail = function(message){
+        layer.msg(message, {icon: 2, time: 500});
+    }
+
+    Base.fn.warn = function(message){
+        layer.msg(message, {icon: 0, time: 500});
+    }
+
+    Base.fn.info = function(message){
+        layer.msg(message, {time: 500});
     }
 
     /**
