@@ -109,31 +109,24 @@
 <script id="table-template" type="text/html">
     {{# layui.each(d.result, function(index, item){ }}
     <tr>
-        <td><input type="checkbox" name="ids" value="{{item.firmId}}" data-name="{{item.firmName}}"></td>
-        <td>{{item.firmName}}</td>
-        <td>{{item.firmCode}}</td>
-        <td>{{item.firmTel}}</td>
-        <td>{{item.createUser}}</td>
-        <td>{{item.createTime}}</td>
-        <td>{{item.updateTime}}</td>
+        <td><input type="checkbox" name="ids" value="{{=item.firmId}}" data-name="{{=item.firmName}}"></td>
+        <td>{{=item.firmName}}</td>
+        <td>{{=item.firmCode}}</td>
+        <td>{{=item.firmTel}}</td>
+        <td>{{=item.createUser}}</td>
+        <td>{{=item.createTime}}</td>
+        <td>{{=item.updateTime}}</td>
         <td>
             <a class="layui-btn layui-btn-mini detail-trigger"
-               data-href="/firm/queryBy?firmId={{item.firmId}}"
+               data-href="/firm/queryBy?firmId={{=item.firmId}}"
                template="#detail-template">
                 <i class="fa fa-eye"></i>
             </a>
             <a class="layui-btn layui-btn-mini update-trigger"
-               data-href="/firm/queryBy?firmId={{item.firmId}}"
+               data-href="/firm/queryBy?firmId={{=item.firmId}}"
                template="#update-template">
                 <i class="fa fa-edit"></i>
             </a>
-
-            <!--<a class="layui-btn layui-btn-mini delete-trigger"-->
-            <!--href="javascript:;"-->
-            <!--data-name="{{item.name}}"-->
-            <!--data-href="/firm/deleteBy?firmId={{item.firmId}}">-->
-            <!--<i class="fa fa-trash"></i>-->
-            <!--</a>-->
         </td>
     </tr>
     {{# }); }}
@@ -193,7 +186,7 @@
     <form id="update-form" class="layui-form" action="/firm/update">
 
         <div class="layui-hide">
-            <input type="hidden" name="firmId" value="{{d.firmId}}">
+            <input type="hidden" name="firmId" value="{{=d.firmId}}">
         </div>
 
         <div class="layui-form-item">
@@ -205,7 +198,7 @@
             <label class="layui-form-label">厂商名称</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input"
-                       name="firmName" value="{{d.firmName}}"
+                       name="firmName" value="{{=d.firmName}}"
                        placeholder="厂商名称" autocomplete="off">
             </div>
         </div>
@@ -214,7 +207,7 @@
             <label class="layui-form-label">厂商地址</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input"
-                       name="firmAddress" value="{{d.firmAddress}}"
+                       name="firmAddress" value="{{=d.firmAddress}}"
                        placeholder="厂商地址" autocomplete="off">
             </div>
         </div>
@@ -223,7 +216,7 @@
             <label class="layui-form-label">厂商电话</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input"
-                       name="tel" value="{{d.tel}}"
+                       name="tel" value="{{=d.firmTel}}"
                        placeholder="厂商电话" autocomplete="off">
             </div>
         </div>
@@ -247,19 +240,19 @@
     <form id="detail-form" class="layui-form">
         <div class="layui-form-item">
             <label class="layui-form-label">厂商名称</label>
-            <div class="layui-form-mid">{{d.firmName}}</div>
+            <div class="layui-form-mid">{{=d.firmName}}</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">厂商编码</label>
-            <div class="layui-form-mid">{{d.firmCode}}</div>
+            <div class="layui-form-mid">{{=d.firmCode}}</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">厂商地址</label>
-            <div class="layui-form-mid">{{d.firmAddress}}</div>
+            <div class="layui-form-mid">{{=d.firmAddress}}</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">厂商电话</label>
-            <div class="layui-form-mid">{{d.firmTel}}</div>
+            <div class="layui-form-mid">{{=d.firmTel}}</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label"></label>

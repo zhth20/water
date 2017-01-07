@@ -114,25 +114,23 @@
 <script id="table-template" type="text/html">
     {{# layui.each(d.result, function(index, item){ }}
     <tr>
-        <td><input type="checkbox" name="ids" value="{{item.customerId}}" data-name="{{item.name}}"></td>
-        <td>{{item.name}}</td>
-        <td>
-            {{item.customerCode}}
-        </td>
-        <td>{{item.email}}</td>
-        <td>{{item.tel}}</td>
-        <td>{{item.status}}</td>
-        <td>{{item.createUser}}</td>
-        <td>{{item.createTime}}</td>
-        <td>{{item.updateTime}}</td>
+        <td><input type="checkbox" name="ids" value="{{=item.customerId}}" data-name="{{=item.name}}"></td>
+        <td>{{=item.name}}</td>
+        <td>{{=item.customerCode}}</td>
+        <td>{{=item.email}}</td>
+        <td>{{=item.tel}}</td>
+        <td>{{=item.status}}</td>
+        <td>{{=item.createUser}}</td>
+        <td>{{=item.createTime}}</td>
+        <td>{{=item.updateTime}}</td>
         <td>
             <a class="layui-btn layui-btn-mini detail-trigger"
-               data-href="/customer/queryBy?customerId={{item.customerId}}"
+               data-href="/customer/queryBy?customerId={{=item.customerId}}"
                template="#detail-template">
                 <i class="fa fa-eye"></i>
             </a>
             <a class="layui-btn layui-btn-mini update-trigger"
-               data-href="/customer/queryBy?customerId={{item.customerId}}"
+               data-href="/customer/queryBy?customerId={{=item.customerId}}"
                template="#update-template">
                 <i class="fa fa-edit"></i>
             </a>
@@ -231,19 +229,19 @@
     <form id="update-form" class="layui-form" action="/customer/update">
 
         <div class="layui-hide">
-            <input type="hidden" name="customerId" value="{{d.customerId}}">
+            <input type="hidden" name="customerId" value="{{=d.customerId}}">
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">客户编码</label>
-            <div class="layui-form-mid">{{d.customerCode}}</div>
+            <div class="layui-form-mid">{{=d.customerCode}}</div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">客户名称</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input"
-                       name="name" value="{{d.name}}"
+                       name="name" value="{{=d.name}}"
                        placeholder="客户名称" autocomplete="off">
             </div>
         </div>
@@ -252,7 +250,7 @@
             <label class="layui-form-label">客户地址</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input"
-                       name="address" value="{{d.address}}"
+                       name="address" value="{{=d.address}}"
                        placeholder="客户地址" autocomplete="off">
             </div>
         </div>
@@ -261,7 +259,7 @@
             <label class="layui-form-label">客户电话</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input"
-                       name="tel" value="{{d.tel}}"
+                       name="tel" value="{{=d.tel}}"
                        placeholder="客户电话" autocomplete="off">
             </div>
         </div>
@@ -270,7 +268,7 @@
             <label class="layui-form-label">客户邮箱</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input"
-                       name="email" value="{{d.email}}"
+                       name="email" value="{{=d.email}}"
                        placeholder="客户邮箱" autocomplete="off">
             </div>
         </div>
@@ -279,7 +277,7 @@
             <label class="layui-form-label">负责人</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input"
-                       name="headName" value="{{d.headName}}"
+                       name="headName" value="{{=d.headName}}"
                        placeholder="负责人" autocomplete="off">
             </div>
         </div>
@@ -288,7 +286,7 @@
             <label class="layui-form-label">负责人电话</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input"
-                       name="headPhone" value="{{d.headPhone}}"
+                       name="headPhone" value="{{=d.headPhone}}"
                        placeholder="负责人电话" autocomplete="off">
             </div>
         </div>
@@ -313,35 +311,35 @@
     <form id="detail-form" class="layui-form">
         <div class="layui-form-item">
             <label class="layui-form-label">客户名称</label>
-            <div class="layui-form-mid">{{d.name}}</div>
+            <div class="layui-form-mid">{{=d.name}}</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">客户编码</label>
-            <div class="layui-form-mid">{{d.customerCode}}</div>
+            <div class="layui-form-mid">{{=d.customerCode}}</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">客户地址</label>
-            <div class="layui-form-mid">{{d.address}}</div>
+            <div class="layui-form-mid">{{=d.address}}</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">客户电话</label>
-            <div class="layui-form-mid">{{d.tel}}</div>
+            <div class="layui-form-mid">{{=d.tel}}</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">客户邮箱</label>
-            <div class="layui-form-mid">{{d.email}}</div>
+            <div class="layui-form-mid">{{=d.email}}</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">负责人</label>
-            <div class="layui-form-mid">{{d.headName}}</div>
+            <div class="layui-form-mid">{{=d.headName}}</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">负责人电话</label>
-            <div class="layui-form-mid">{{d.headPhone}}</div>
+            <div class="layui-form-mid">{{=d.headPhone}}</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">状态</label>
-            <div class="layui-form-mid">{{d.status}}</div>
+            <div class="layui-form-mid">{{=d.status}}</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label"></label>

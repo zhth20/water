@@ -345,7 +345,7 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl'], functi
         if (config.url && config.url != '') {
             return self.get(config.url, null)
                 .done(function (data) {
-                    config.data.result = data.result;
+                    config.data = data.result;
                     self.openPage(config);
                 });
         } else {

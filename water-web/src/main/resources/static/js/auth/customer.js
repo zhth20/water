@@ -11,8 +11,9 @@ layui.use('base', function () {
     Customer.fn.elem = {};
     //全局参数定义
     Customer.fn.config = {
-        test:'OK'
+        test: 'OK'
     };
+    Customer.fn.data = {};
     //事件定义
     Customer.fn.events = function () {
 
@@ -20,21 +21,20 @@ layui.use('base', function () {
     Customer.fn.toAdd = function (config) {
         var self = this;
 
-        this.queryUsers(function (data) {
-            config.data = {users: data.result};
-            config.callback = function () {
-                self.add();
-            }
-
-            self.openPage(config);
-
-        });
+        $.when(self.queryUsers())
+            .done(function () {
+                config.data.users = self.data.users;
+                self.openPage(config);
+            });
 
     }
     Customer.fn.queryUsers = function (callback) {
-        this.get('/user/queryAll', null, function (data) {
-            callback(data)
-        });
+        var self = this;
+        if (self.data.users) return;
+        return self.get('/user/queryAll', null)
+            .done(function (data) {
+                self.data.users = data.result;
+            });
     }
     //初始化方法
     Customer.fn.ready = function () {
