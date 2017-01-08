@@ -7,6 +7,7 @@ layui.config({
 
 layui.use('base', function () {
     var Customer = layui.base;
+    var $ = layui.jquery;
     //dom元素定义
     Customer.fn.elem = {};
     //全局参数定义
