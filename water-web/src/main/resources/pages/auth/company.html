@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>厂商账户</title>
+    <title>水司账户</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="pragma" content="no-cache">
@@ -20,13 +20,13 @@
     <!--查询条件-->
     <div class="layui-box">
         <blockquote class="layui-elem-quote">
-            <form id="query-form" class="layui-form" action="/firm">
+            <form id="query-form" class="layui-form" action="/company">
                 <div class="layui-hide">
                     <input type="hidden" name="pageNumber" value="1">
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-inline">
-                        <label class="layui-form-label">厂商名称</label>
+                        <label class="layui-form-label">水司名称</label>
                         <div class="layui-input-inline">
                             <input type="text" name="name" lay-verify="name" autocomplete="off"
                                    class="layui-input">
@@ -55,7 +55,7 @@
             </a>
 
             <a id="delete-trigger" class="layui-btn layui-btn-small" href="javascript:;"
-               data-href="/firm/deleteBy">
+               data-href="/company/deleteBy">
                 <i class="fa fa-trash"></i> 删除
             </a>
 
@@ -72,8 +72,8 @@
                 <!--列样式控制-->
                 <colgroup>
                     <col width="3%">
-                    <col width="15%">
                     <col width="8%">
+                    <col width="15%">
                     <col width="8%">
                     <col width="8%">
                     <col width="12%">
@@ -84,9 +84,9 @@
                 <thead>
                 <tr>
                     <th><input id="selected-all" type="checkbox" name="close" title="全选"></th>
-                    <th>厂商编码</th>
-                    <th>厂商名称</th>
-                    <th>厂商电话</th>
+                    <th>水司编码</th>
+                    <th>水司名称</th>
+                    <th>水司电话</th>
                     <th>创建人</th>
                     <th>创建时间</th>
                     <th>更新时间</th>
@@ -109,8 +109,8 @@
 <script id="table-template" type="text/html">
     {{# layui.each(d.result, function(index, item){ }}
     <tr>
-        <td><input type="checkbox" name="ids" value="{{=item.firmId}}" data-name="{{=item.name}}"></td>
-        <td>{{=item.firmCode}}</td>
+        <td><input type="checkbox" name="ids" value="{{=item.waterCompanyId}}" data-name="{{=item.name}}"></td>
+        <td>{{=item.companyCode}}</td>
         <td>{{=item.name}}</td>
         <td>{{=item.tel}}</td>
         <td>{{=item.createUser}}</td>
@@ -118,12 +118,12 @@
         <td>{{=item.updateTime}}</td>
         <td>
             <a class="layui-btn layui-btn-mini detail-trigger"
-               data-href="/firm/queryBy?firmId={{=item.firmId}}"
+               data-href="/company/queryBy?waterCompanyId={{=item.waterCompanyId}}"
                template="#detail-template">
                 <i class="fa fa-eye"></i>
             </a>
             <a class="layui-btn layui-btn-mini update-trigger"
-               data-href="/firm/queryBy?firmId={{=item.firmId}}"
+               data-href="/company/queryBy?waterCompanyId={{=item.waterCompanyId}}"
                template="#update-template">
                 <i class="fa fa-edit"></i>
             </a>
@@ -135,35 +135,35 @@
 
 <!--新增数据模版-->
 <script id="add-template" type="text/html">
-    <form id="add-form" class="layui-form" action="/firm/add">
+    <form id="add-form" class="layui-form" action="/company/add">
         <div class="layui-form-item">
-            <label class="layui-form-label">厂商编码</label>
+            <label class="layui-form-label">水司编码</label>
             <div class="layui-input-inline">
-                <input class="layui-input" type="text" name="firmCode" lay-verify="required" placeholder="厂商编码"
+                <input class="layui-input" type="text" name="companyCode" lay-verify="required" placeholder="水司编码"
                        autocomplete="off">
             </div>
-            <div class="layui-form-mid layui-word-aux">C0001</div>
+            <div class="layui-form-mid layui-word-aux">W0001</div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">厂商名称</label>
+            <label class="layui-form-label">水司名称</label>
             <div class="layui-input-inline">
-                <input class="layui-input" type="text" name="name" lay-verify="required" placeholder="厂商名称"
+                <input class="layui-input" type="text" name="name" lay-verify="required" placeholder="水司名称"
                        autocomplete="off">
             </div>
-            <div class="layui-form-mid layui-word-aux">厂商公司全称</div>
+            <div class="layui-form-mid layui-word-aux">水司公司全称</div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">厂商地址</label>
+            <label class="layui-form-label">水司地址</label>
             <div class="layui-input-inline">
-                <input class="layui-input" type="text" name="firmAddress" lay-verify="required" placeholder="厂商地址"
+                <input class="layui-input" type="text" name="address" lay-verify="required" placeholder="水司地址"
                        autocomplete="off">
             </div>
-            <div class="layui-form-mid layui-word-aux">厂商公司所在地址</div>
+            <div class="layui-form-mid layui-word-aux">水司公司所在地址</div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">厂商电话</label>
+            <label class="layui-form-label">水司电话</label>
             <div class="layui-input-inline">
-                <input type="text" name="tel" placeholder="厂商电话" autocomplete="off" class="layui-input">
+                <input type="text" name="tel" placeholder="水司电话" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
@@ -183,41 +183,41 @@
 
 <!--修改数据模版-->
 <script id="update-template" type="text/html">
-    <form id="update-form" class="layui-form" action="/firm/update">
+    <form id="update-form" class="layui-form" action="/company/update">
 
         <div class="layui-hide">
-            <input type="hidden" name="firmId" value="{{=d.firmId}}">
+            <input type="hidden" name="waterCompanyId" value="{{=d.waterCompanyId}}">
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">厂商编码</label>
-            <div class="layui-form-mid">{{d.firmCode}}</div>
+            <label class="layui-form-label">水司编码</label>
+            <div class="layui-form-mid">{{d.waterCompanyCode}}</div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">厂商名称</label>
+            <label class="layui-form-label">水司名称</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input"
                        name="name" value="{{=d.name}}"
-                       placeholder="厂商名称" autocomplete="off">
+                       placeholder="水司名称" autocomplete="off">
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">厂商地址</label>
+            <label class="layui-form-label">水司地址</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input"
-                       name="firmAddress" value="{{=d.firmAddress}}"
-                       placeholder="厂商地址" autocomplete="off">
+                       name="waterCompanyAddress" value="{{=d.waterCompanyAddress}}"
+                       placeholder="水司地址" autocomplete="off">
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">厂商电话</label>
+            <label class="layui-form-label">水司电话</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input"
                        name="tel" value="{{=d.tel}}"
-                       placeholder="厂商电话" autocomplete="off">
+                       placeholder="水司电话" autocomplete="off">
             </div>
         </div>
 
@@ -239,19 +239,19 @@
 <script id="detail-template" type="text/html">
     <form id="detail-form" class="layui-form">
         <div class="layui-form-item">
-            <label class="layui-form-label">厂商名称</label>
+            <label class="layui-form-label">水司名称</label>
             <div class="layui-form-mid">{{=d.name}}</div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">厂商编码</label>
-            <div class="layui-form-mid">{{=d.firmCode}}</div>
+            <label class="layui-form-label">水司编码</label>
+            <div class="layui-form-mid">{{=d.waterCompanyCode}}</div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">厂商地址</label>
-            <div class="layui-form-mid">{{=d.firmAddress}}</div>
+            <label class="layui-form-label">水司地址</label>
+            <div class="layui-form-mid">{{=d.waterCompanyAddress}}</div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">厂商电话</label>
+            <label class="layui-form-label">水司电话</label>
             <div class="layui-form-mid">{{=d.tel}}</div>
         </div>
         <div class="layui-form-item">
@@ -266,7 +266,7 @@
 </script>
 
 <script type="text/javascript" src="/static/layui/layui.js"></script>
-<script type="text/javascript" src="/static/js/auth/firm.js"></script>
+<script type="text/javascript" src="/static/js/auth/company.js"></script>
 </body>
 
 </html>

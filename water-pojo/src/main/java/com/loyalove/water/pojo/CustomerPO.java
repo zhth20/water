@@ -36,6 +36,12 @@ public class CustomerPO implements Serializable {
     /** 负责人联系方式 */
     private String headPhone;
 
+    /** 经度 */
+    private String lng;
+
+    /** 纬度 */
+    private String lat;
+
     /** 创建人 */
     private Integer createUser;
 
@@ -122,6 +128,22 @@ public class CustomerPO implements Serializable {
         this.headPhone = headPhone;
     }
 
+    public String getLng() {
+        return lng;
+    }
+
+    public void setLng(String lng) {
+        this.lng = lng;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
     public Integer getCreateUser() {
         return createUser;
     }
@@ -169,6 +191,8 @@ public class CustomerPO implements Serializable {
         sb.append(", email=").append(email);
         sb.append(", headName=").append(headName);
         sb.append(", headPhone=").append(headPhone);
+        sb.append(", lng=").append(lng);
+        sb.append(", lat=").append(lat);
         sb.append(", createUser=").append(createUser);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);

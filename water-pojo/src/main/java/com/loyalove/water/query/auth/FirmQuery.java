@@ -86,4 +86,20 @@ public class FirmQuery extends BaseQuery {
     public Date getUpdateTime() {
         return firmPO.getUpdateTime();
     }
+
+    public String getLng() {
+        return firmPO.getLng();
+    }
+
+    public void setLng(String lng) {
+        firmPO.setLng(lng);
+    }
+
+    public String getLat() {
+        return firmPO.getLat();
+    }
+
+    public void setLat(String lat) {
+        firmPO.setLat(lat);
+    }
 }

@@ -127,4 +127,20 @@ public class CustomerQuery extends BaseQuery {
     public void setCong(String cong) {
         customerPO.setCong(cong);
     }
+
+    public String getLng() {
+        return customerPO.getLng();
+    }
+
+    public void setLng(String lng) {
+        customerPO.setLng(lng);
+    }
+
+    public String getLat() {
+        return customerPO.getLat();
+    }
+
+    public void setLat(String lat) {
+        customerPO.setLat(lat);
+    }
 }

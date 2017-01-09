@@ -24,10 +24,10 @@ public class WaterCompanyPO implements Serializable {
     /** 水司电话 */
     private String tel;
 
-    /** 水司经度 */
+    /** 经度 */
     private String lng;
 
-    /** 水司纬度 */
+    /** 纬度 */
     private String lat;
 
     /** 创建人 */

@@ -24,6 +24,12 @@ public class FirmPO implements Serializable {
     /** 厂商电话 */
     private String tel;
 
+    /** 经度 */
+    private String lng;
+
+    /** 纬度 */
+    private String lat;
+
     /** 创建人 */
     private Integer createUser;
 
@@ -75,6 +81,22 @@ public class FirmPO implements Serializable {
         this.tel = tel;
     }
 
+    public String getLng() {
+        return lng;
+    }
+
+    public void setLng(String lng) {
+        this.lng = lng;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
     public Integer getCreateUser() {
         return createUser;
     }
@@ -110,6 +132,8 @@ public class FirmPO implements Serializable {
         sb.append(", name=").append(name);
         sb.append(", address=").append(address);
         sb.append(", tel=").append(tel);
+        sb.append(", lng=").append(lng);
+        sb.append(", lat=").append(lat);
         sb.append(", createUser=").append(createUser);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
