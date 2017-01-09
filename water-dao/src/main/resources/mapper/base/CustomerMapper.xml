@@ -11,7 +11,6 @@
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="head_name" jdbcType="VARCHAR" property="headName" />
     <result column="head_phone" jdbcType="VARCHAR" property="headPhone" />
-    <result column="status" jdbcType="VARCHAR" property="status" />
     <result column="create_user" jdbcType="INTEGER" property="createUser" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
@@ -79,7 +78,7 @@
   </sql>
   <sql id="Base_Column_List">
     customer_id, customer_code, user_id, name, address, tel, email, head_name, head_phone, 
-    status, create_user, create_time, update_time
+    create_user, create_time, update_time
   </sql>
   <sql id="Blob_Column_List">
     cong
@@ -141,14 +140,14 @@
     </selectKey>
     insert into customer (customer_code, user_id, name, 
       address, tel, email, 
-      head_name, head_phone, status, 
-      create_user, create_time, update_time, 
-      cong)
+      head_name, head_phone, create_user, 
+      create_time, update_time, cong
+      )
     values (#{customerCode,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{address,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{headName,jdbcType=VARCHAR}, #{headPhone,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
-      #{createUser,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{cong,jdbcType=LONGVARCHAR})
+      #{headName,jdbcType=VARCHAR}, #{headPhone,jdbcType=VARCHAR}, #{createUser,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{cong,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.loyalove.water.pojo.CustomerPO">
     <selectKey keyProperty="customerId" order="AFTER" resultType="java.lang.Integer">
@@ -179,9 +178,6 @@
       </if>
       <if test="headPhone != null">
         head_phone,
-      </if>
-      <if test="status != null">
-        status,
       </if>
       <if test="createUser != null">
         create_user,
@@ -220,9 +216,6 @@
       </if>
       <if test="headPhone != null">
         #{headPhone,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=VARCHAR},
       </if>
       <if test="createUser != null">
         #{createUser,jdbcType=INTEGER},
@@ -274,9 +267,6 @@
       <if test="record.headPhone != null">
         head_phone = #{record.headPhone,jdbcType=VARCHAR},
       </if>
-      <if test="record.status != null">
-        status = #{record.status,jdbcType=VARCHAR},
-      </if>
       <if test="record.createUser != null">
         create_user = #{record.createUser,jdbcType=INTEGER},
       </if>
@@ -305,7 +295,6 @@
       email = #{record.email,jdbcType=VARCHAR},
       head_name = #{record.headName,jdbcType=VARCHAR},
       head_phone = #{record.headPhone,jdbcType=VARCHAR},
-      status = #{record.status,jdbcType=VARCHAR},
       create_user = #{record.createUser,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
@@ -325,7 +314,6 @@
       email = #{record.email,jdbcType=VARCHAR},
       head_name = #{record.headName,jdbcType=VARCHAR},
       head_phone = #{record.headPhone,jdbcType=VARCHAR},
-      status = #{record.status,jdbcType=VARCHAR},
       create_user = #{record.createUser,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP}
@@ -360,9 +348,6 @@
       <if test="headPhone != null">
         head_phone = #{headPhone,jdbcType=VARCHAR},
       </if>
-      <if test="status != null">
-        status = #{status,jdbcType=VARCHAR},
-      </if>
       <if test="createUser != null">
         create_user = #{createUser,jdbcType=INTEGER},
       </if>
@@ -388,7 +373,6 @@
       email = #{email,jdbcType=VARCHAR},
       head_name = #{headName,jdbcType=VARCHAR},
       head_phone = #{headPhone,jdbcType=VARCHAR},
-      status = #{status,jdbcType=VARCHAR},
       create_user = #{createUser,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
@@ -405,7 +389,6 @@
       email = #{email,jdbcType=VARCHAR},
       head_name = #{headName,jdbcType=VARCHAR},
       head_phone = #{headPhone,jdbcType=VARCHAR},
-      status = #{status,jdbcType=VARCHAR},
       create_user = #{createUser,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}

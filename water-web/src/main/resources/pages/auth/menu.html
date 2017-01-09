@@ -29,7 +29,7 @@
                     <div class="layui-inline">
                         <label class="layui-form-label">菜单名</label>
                         <div class="layui-input-inline">
-                            <input type="text" name="menuName" lay-verify="menuName" autocomplete="off"
+                            <input type="text" name="name" lay-verify="name" autocomplete="off"
                                    class="layui-input">
                         </div>
                     </div>
@@ -110,13 +110,13 @@
 <script id="table-template" type="text/html">
     {{# layui.each(d.result, function(index, item){ }}
     <tr>
-        <td><input type="checkbox" name="ids" value="{{=item.menuId}}" data-name="{{=item.menuName}}"></td>
+        <td><input type="checkbox" name="ids" value="{{=item.menuId}}" data-name="{{=item.name}}"></td>
         <td>{{=item.menuId}}</td>
         <td>
-            {{=item.menuName}}
+            {{=item.name}}
         </td>
-        <td>{{=item.menuUrl}}</td>
-        <td>{{=item.menuIcon}}</td>
+        <td>{{=item.url}}</td>
+        <td>{{=item.icon}}</td>
         <td>{{=item.createUser}}</td>
         <td>{{=item.createTime}}</td>
         <td>{{=item.updateTime}}</td>
@@ -134,7 +134,7 @@
 
             <!--<a class="layui-btn layui-btn-mini delete-trigger"-->
             <!--href="javascript:;"-->
-            <!--data-name="{{=item.menuName}}"-->
+            <!--data-name="{{=item.name}}"-->
             <!--data-href="/menu/deleteBy?menuId={{=item.menuId}}">-->
             <!--<i class="fa fa-trash"></i>-->
             <!--</a>-->
@@ -150,20 +150,20 @@
         <div class="layui-form-item">
             <label class="layui-form-label">菜单名</label>
             <div class="layui-input-inline">
-                <input type="text" name="menuName" lay-verify="required" placeholder="菜单名" autocomplete="off"
+                <input type="text" name="name" lay-verify="required" placeholder="菜单名" autocomplete="off"
                        class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">菜单路径</label>
             <div class="layui-input-inline">
-                <input type="text" name="menuUrl" placeholder="菜单路径" autocomplete="off" class="layui-input">
+                <input type="text" name="url" placeholder="菜单路径" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">菜单图标</label>
             <div class="layui-input-inline">
-                <input type="text" name="menuIcon" placeholder="菜单图标" autocomplete="off" class="layui-input">
+                <input type="text" name="icon" placeholder="菜单图标" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item">
@@ -191,14 +191,14 @@
 
         <div class="layui-form-item">
             <label class="layui-form-label">菜单名</label>
-            <div class="layui-form-mid">{{=d.menuName}}</div>
+            <div class="layui-form-mid">{{=d.name}}</div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">菜单路径</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input"
-                       name="menuUrl" value="{{=d.menuUrl}}"
+                       name="url" value="{{=d.url}}"
                        placeholder="别名" autocomplete="off">
             </div>
         </div>
@@ -207,7 +207,7 @@
             <label class="layui-form-label">菜单图标</label>
             <div class="layui-input-inline">
                 <input type="text" class="layui-input"
-                       name="menuIcon" value="{{=d.menuIcon}}"
+                       name="icon" value="{{=d.icon}}"
                        placeholder="备注" autocomplete="off">
             </div>
         </div>
@@ -230,15 +230,15 @@
     <form id="detail-form" class="layui-form">
         <div class="layui-form-item">
             <label class="layui-form-label">菜单名</label>
-            <div class="layui-form-mid">{{=d.menuName}}</div>
+            <div class="layui-form-mid">{{=d.name}}</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">菜单路径</label>
-            <div class="layui-form-mid">{{=d.menuUrl}}</div>
+            <div class="layui-form-mid">{{=d.url}}</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">菜单图标</label>
-            <div class="layui-form-mid">{{=d.menuIcon}}</div>
+            <div class="layui-form-mid">{{=d.icon}}</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label"></label>

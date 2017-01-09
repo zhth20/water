@@ -35,55 +35,55 @@ public class FirmQuery extends BaseQuery {
         firmPO.setFirmId(firmId);
     }
 
-    public String getFirmName() {
-        return firmPO.getFirmName();
-    }
-
-    public Date getUpdateTime() {
-        return firmPO.getUpdateTime();
-    }
-
-    public void setFirmName(String firmName) {
-        firmPO.setFirmName(firmName);
-    }
-
-    public Integer getCreateUser() {
-        return firmPO.getCreateUser();
-    }
-
     public String getFirmCode() {
         return firmPO.getFirmCode();
-    }
-
-    public String getFirmTel() {
-        return firmPO.getFirmTel();
-    }
-
-    public void setFirmAddress(String firmAddress) {
-        firmPO.setFirmAddress(firmAddress);
-    }
-
-    public String getFirmAddress() {
-        return firmPO.getFirmAddress();
-    }
-
-    public void setCreateTime(Date createTime) {
-        firmPO.setCreateTime(createTime);
-    }
-
-    public Date getCreateTime() {
-        return firmPO.getCreateTime();
     }
 
     public void setFirmCode(String firmCode) {
         firmPO.setFirmCode(firmCode);
     }
 
-    public void setFirmTel(String firmTel) {
-        firmPO.setFirmTel(firmTel);
+    public String getName() {
+        return firmPO.getName();
+    }
+
+    public void setName(String name) {
+        firmPO.setName(name);
+    }
+
+    public String getAddress() {
+        return firmPO.getAddress();
+    }
+
+    public void setAddress(String address) {
+        firmPO.setAddress(address);
+    }
+
+    public String getTel() {
+        return firmPO.getTel();
+    }
+
+    public void setTel(String tel) {
+        firmPO.setTel(tel);
+    }
+
+    public Integer getCreateUser() {
+        return firmPO.getCreateUser();
     }
 
     public void setCreateUser(Integer createUser) {
         firmPO.setCreateUser(createUser);
+    }
+
+    public Date getCreateTime() {
+        return firmPO.getCreateTime();
+    }
+
+    public void setCreateTime(Date createTime) {
+        firmPO.setCreateTime(createTime);
+    }
+
+    public Date getUpdateTime() {
+        return firmPO.getUpdateTime();
     }
 }

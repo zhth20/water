@@ -89,13 +89,13 @@ CREATE TABLE `user_permission`(
 
 CREATE TABLE `menu`(
   `menu_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
-  `menu_name` INT(11) NOT NULL COMMENT '菜单名',
-  `menu_url` INT(11) NOT NULL COMMENT '菜单链接',
-  `menu_icon` INT(11) NOT NULL COMMENT '菜单图标',
+  `name` INT(11) NOT NULL COMMENT '菜单名',
+  `url` INT(11) NOT NULL COMMENT '菜单链接',
+  `icon` INT(11) NOT NULL COMMENT '菜单图标',
   `create_user` INT(11) NOT NULL COMMENT '创建人',
   `create_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`menu_id`),
-  INDEX (`menu_name`),
+  INDEX (`name`),
   INDEX (`create_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=UTF8 COMMENT '菜单表';

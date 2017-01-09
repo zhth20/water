@@ -96,14 +96,6 @@ public class CustomerQuery extends BaseQuery {
         customerPO.setHeadPhone(headPhone);
     }
 
-    public String getStatus() {
-        return customerPO.getStatus();
-    }
-
-    public void setStatus(String status) {
-        customerPO.setStatus(status);
-    }
-
     public Integer getCreateUser() {
         return customerPO.getCreateUser();
     }

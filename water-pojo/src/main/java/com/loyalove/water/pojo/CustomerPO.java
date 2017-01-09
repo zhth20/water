@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * 该实体由系统生成，请勿修改
  *
- * 生成时间 2016/12/25
+ * 生成时间 2017/01/09
  */
 public class CustomerPO implements Serializable {
     /** 自增主键 */
@@ -35,9 +35,6 @@ public class CustomerPO implements Serializable {
 
     /** 负责人联系方式 */
     private String headPhone;
-
-    /** 客户状态 */
-    private String status;
 
     /** 创建人 */
     private Integer createUser;
@@ -125,14 +122,6 @@ public class CustomerPO implements Serializable {
         this.headPhone = headPhone;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public Integer getCreateUser() {
         return createUser;
     }
@@ -180,7 +169,6 @@ public class CustomerPO implements Serializable {
         sb.append(", email=").append(email);
         sb.append(", headName=").append(headName);
         sb.append(", headPhone=").append(headPhone);
-        sb.append(", status=").append(status);
         sb.append(", createUser=").append(createUser);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);

@@ -8,21 +8,27 @@ import java.util.Date;
  *
  * 生成时间 2017/01/09
  */
-public class FirmPO implements Serializable {
+public class WaterCompanyPO implements Serializable {
     /** 自增主键 */
-    private Integer firmId;
+    private Integer waterCompanyId;
 
-    /** 厂商编码 */
-    private String firmCode;
+    /** 水司编码 */
+    private String companyCode;
 
-    /** 厂商名称 */
+    /** 水司名称 */
     private String name;
 
-    /** 厂商地址 */
+    /** 水司地址 */
     private String address;
 
-    /** 厂商电话 */
+    /** 水司电话 */
     private String tel;
+
+    /** 水司经度 */
+    private String lng;
+
+    /** 水司纬度 */
+    private String lat;
 
     /** 创建人 */
     private Integer createUser;
@@ -35,20 +41,20 @@ public class FirmPO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getFirmId() {
-        return firmId;
+    public Integer getWaterCompanyId() {
+        return waterCompanyId;
     }
 
-    public void setFirmId(Integer firmId) {
-        this.firmId = firmId;
+    public void setWaterCompanyId(Integer waterCompanyId) {
+        this.waterCompanyId = waterCompanyId;
     }
 
-    public String getFirmCode() {
-        return firmCode;
+    public String getCompanyCode() {
+        return companyCode;
     }
 
-    public void setFirmCode(String firmCode) {
-        this.firmCode = firmCode;
+    public void setCompanyCode(String companyCode) {
+        this.companyCode = companyCode;
     }
 
     public String getName() {
@@ -73,6 +79,22 @@ public class FirmPO implements Serializable {
 
     public void setTel(String tel) {
         this.tel = tel;
+    }
+
+    public String getLng() {
+        return lng;
+    }
+
+    public void setLng(String lng) {
+        this.lng = lng;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
     }
 
     public Integer getCreateUser() {
@@ -105,11 +127,13 @@ public class FirmPO implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", firmId=").append(firmId);
-        sb.append(", firmCode=").append(firmCode);
+        sb.append(", waterCompanyId=").append(waterCompanyId);
+        sb.append(", companyCode=").append(companyCode);
         sb.append(", name=").append(name);
         sb.append(", address=").append(address);
         sb.append(", tel=").append(tel);
+        sb.append(", lng=").append(lng);
+        sb.append(", lat=").append(lat);
         sb.append(", createUser=").append(createUser);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);

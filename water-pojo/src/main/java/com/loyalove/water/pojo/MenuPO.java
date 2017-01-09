@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * 该实体由系统生成，请勿修改
  *
- * 生成时间 2017/01/06
+ * 生成时间 2017/01/09
  */
 public class MenuPO implements Serializable {
     /** 自增主键 */
@@ -16,13 +16,13 @@ public class MenuPO implements Serializable {
     private Integer pmenuId;
 
     /** 菜单名 */
-    private String menuName;
+    private String name;
 
     /** 菜单链接 */
-    private String menuUrl;
+    private String url;
 
     /** 菜单图标 */
-    private String menuIcon;
+    private String icon;
 
     /** 创建人 */
     private Integer createUser;
@@ -51,28 +51,28 @@ public class MenuPO implements Serializable {
         this.pmenuId = pmenuId;
     }
 
-    public String getMenuName() {
-        return menuName;
+    public String getName() {
+        return name;
     }
 
-    public void setMenuName(String menuName) {
-        this.menuName = menuName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getMenuUrl() {
-        return menuUrl;
+    public String getUrl() {
+        return url;
     }
 
-    public void setMenuUrl(String menuUrl) {
-        this.menuUrl = menuUrl;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public String getMenuIcon() {
-        return menuIcon;
+    public String getIcon() {
+        return icon;
     }
 
-    public void setMenuIcon(String menuIcon) {
-        this.menuIcon = menuIcon;
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
     public Integer getCreateUser() {
@@ -107,9 +107,9 @@ public class MenuPO implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", menuId=").append(menuId);
         sb.append(", pmenuId=").append(pmenuId);
-        sb.append(", menuName=").append(menuName);
-        sb.append(", menuUrl=").append(menuUrl);
-        sb.append(", menuIcon=").append(menuIcon);
+        sb.append(", name=").append(name);
+        sb.append(", url=").append(url);
+        sb.append(", icon=").append(icon);
         sb.append(", createUser=").append(createUser);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);

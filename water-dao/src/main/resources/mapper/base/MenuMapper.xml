@@ -4,9 +4,9 @@
   <resultMap id="BaseResultMap" type="com.loyalove.water.pojo.MenuPO">
     <id column="menu_id" jdbcType="INTEGER" property="menuId" />
     <result column="pmenu_id" jdbcType="INTEGER" property="pmenuId" />
-    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
-    <result column="menu_url" jdbcType="VARCHAR" property="menuUrl" />
-    <result column="menu_icon" jdbcType="VARCHAR" property="menuIcon" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
     <result column="create_user" jdbcType="INTEGER" property="createUser" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
@@ -70,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    menu_id, pmenu_id, menu_name, menu_url, menu_icon, create_user, create_time, update_time
+    menu_id, pmenu_id, name, url, icon, create_user, create_time, update_time
   </sql>
   <select id="selectByExample" parameterType="com.loyalove.water.pojo.MenuExample" resultMap="BaseResultMap">
     select
@@ -90,7 +90,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select
+    select 
     <include refid="Base_Column_List" />
     from menu
     where menu_id = #{menuId,jdbcType=INTEGER}
@@ -109,12 +109,12 @@
     <selectKey keyProperty="menuId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into menu (pmenu_id, menu_name, menu_url,
-    menu_icon, create_user, create_time,
-    update_time)
-    values (#{pmenuId,jdbcType=INTEGER}, #{menuName,jdbcType=VARCHAR}, #{menuUrl,jdbcType=VARCHAR},
-    #{menuIcon,jdbcType=VARCHAR}, #{createUser,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
-    #{updateTime,jdbcType=TIMESTAMP})
+    insert into menu (pmenu_id, name, url, 
+      icon, create_user, create_time, 
+      update_time)
+    values (#{pmenuId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{icon,jdbcType=VARCHAR}, #{createUser,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.loyalove.water.pojo.MenuPO">
     <selectKey keyProperty="menuId" order="AFTER" resultType="java.lang.Integer">
@@ -125,14 +125,14 @@
       <if test="pmenuId != null">
         pmenu_id,
       </if>
-      <if test="menuName != null">
-        menu_name,
+      <if test="name != null">
+        name,
       </if>
-      <if test="menuUrl != null">
-        menu_url,
+      <if test="url != null">
+        url,
       </if>
-      <if test="menuIcon != null">
-        menu_icon,
+      <if test="icon != null">
+        icon,
       </if>
       <if test="createUser != null">
         create_user,
@@ -148,14 +148,14 @@
       <if test="pmenuId != null">
         #{pmenuId,jdbcType=INTEGER},
       </if>
-      <if test="menuName != null">
-        #{menuName,jdbcType=VARCHAR},
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
       </if>
-      <if test="menuUrl != null">
-        #{menuUrl,jdbcType=VARCHAR},
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
       </if>
-      <if test="menuIcon != null">
-        #{menuIcon,jdbcType=VARCHAR},
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
       </if>
       <if test="createUser != null">
         #{createUser,jdbcType=INTEGER},
@@ -183,14 +183,14 @@
       <if test="record.pmenuId != null">
         pmenu_id = #{record.pmenuId,jdbcType=INTEGER},
       </if>
-      <if test="record.menuName != null">
-        menu_name = #{record.menuName,jdbcType=VARCHAR},
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
       </if>
-      <if test="record.menuUrl != null">
-        menu_url = #{record.menuUrl,jdbcType=VARCHAR},
+      <if test="record.url != null">
+        url = #{record.url,jdbcType=VARCHAR},
       </if>
-      <if test="record.menuIcon != null">
-        menu_icon = #{record.menuIcon,jdbcType=VARCHAR},
+      <if test="record.icon != null">
+        icon = #{record.icon,jdbcType=VARCHAR},
       </if>
       <if test="record.createUser != null">
         create_user = #{record.createUser,jdbcType=INTEGER},
@@ -209,13 +209,13 @@
   <update id="updateByExample" parameterType="map">
     update menu
     set menu_id = #{record.menuId,jdbcType=INTEGER},
-    pmenu_id = #{record.pmenuId,jdbcType=INTEGER},
-    menu_name = #{record.menuName,jdbcType=VARCHAR},
-    menu_url = #{record.menuUrl,jdbcType=VARCHAR},
-    menu_icon = #{record.menuIcon,jdbcType=VARCHAR},
-    create_user = #{record.createUser,jdbcType=INTEGER},
-    create_time = #{record.createTime,jdbcType=TIMESTAMP},
-    update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+      pmenu_id = #{record.pmenuId,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      url = #{record.url,jdbcType=VARCHAR},
+      icon = #{record.icon,jdbcType=VARCHAR},
+      create_user = #{record.createUser,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -226,14 +226,14 @@
       <if test="pmenuId != null">
         pmenu_id = #{pmenuId,jdbcType=INTEGER},
       </if>
-      <if test="menuName != null">
-        menu_name = #{menuName,jdbcType=VARCHAR},
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="menuUrl != null">
-        menu_url = #{menuUrl,jdbcType=VARCHAR},
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
       </if>
-      <if test="menuIcon != null">
-        menu_icon = #{menuIcon,jdbcType=VARCHAR},
+      <if test="icon != null">
+        icon = #{icon,jdbcType=VARCHAR},
       </if>
       <if test="createUser != null">
         create_user = #{createUser,jdbcType=INTEGER},
@@ -250,9 +250,9 @@
   <update id="updateByPrimaryKey" parameterType="com.loyalove.water.pojo.MenuPO">
     update menu
     set pmenu_id = #{pmenuId,jdbcType=INTEGER},
-      menu_name = #{menuName,jdbcType=VARCHAR},
-      menu_url = #{menuUrl,jdbcType=VARCHAR},
-      menu_icon = #{menuIcon,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
       create_user = #{createUser,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}

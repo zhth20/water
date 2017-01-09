@@ -10,7 +10,8 @@ CREATE TABLE `customer`(
   `cong` TEXT DEFAULT NULL COMMENT '客户配置文件',
   `head_name` VARCHAR(20) DEFAULT NULL COMMENT '负责人',
   `head_phone` VARCHAR(11) DEFAULT NULL COMMENT '负责人电话',
-  `status` VARCHAR(20) NOT NULL DEFAULT 'INIT' COMMENT '客户状态',
+  `lng` varchar(20) NOT NULL COMMENT '水司经度',
+  `lat` varchar(20) NOT NULL COMMENT '水司纬度',
   `create_user` INT(11) NOT NULL COMMENT '创建人',
   `create_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
@@ -23,12 +24,29 @@ CREATE TABLE `customer`(
 CREATE TABLE `firm` (
   `firm_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
   `firm_code` varchar(20) NOT NULL COMMENT '厂商编码',
-  `firm_name` varchar(20) NOT NULL COMMENT '厂商名称',
-  `firm_address` varchar(100) NOT NULL COMMENT '厂商地址',
-  `firm_tel` varchar(11) NOT NULL COMMENT '厂商电话',
+  `name` varchar(20) NOT NULL COMMENT '厂商名称',
+  `address` varchar(100) NOT NULL COMMENT '厂商地址',
+  `tel` varchar(11) NOT NULL COMMENT '厂商电话',
+  `lng` varchar(20) NOT NULL COMMENT '水司经度',
+  `lat` varchar(20) NOT NULL COMMENT '水司纬度',
   `create_user` INT(11) NOT NULL COMMENT '创建人',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`firm_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='厂商表';
+
+CREATE TABLE `water_company` (
+  `water_company_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '自增主键',
+  `company_code` varchar(20) NOT NULL COMMENT '水司编码',
+  `name` varchar(20) NOT NULL COMMENT '水司名称',
+  `address` varchar(100) NOT NULL COMMENT '水司地址',
+  `tel` varchar(11) NOT NULL COMMENT '水司电话',
+  `lng` varchar(20) NOT NULL COMMENT '水司经度',
+  `lat` varchar(20) NOT NULL COMMENT '水司纬度',
+  `create_user` INT(11) NOT NULL COMMENT '创建人',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`water_company_id`),
+  KEY(`company_code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='水司表';
 

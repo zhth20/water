@@ -7,8 +7,8 @@
         FROM
         `menu` AS m
         <where>
-            <if test="query.menuName!=null and query.menuName!=''">
-                AND m.menu_name LIKE CONCAT('%',#{query.menuName},'%')
+            <if test="query.name!=null and query.name!=''">
+                AND m.menu_name LIKE CONCAT('%',#{query.name},'%')
             </if>
             <if test="query.pmenuId!=null and query.pmenuId!=''">
                 AND m.pmenu_id =#{query.pmenuId}
@@ -27,8 +27,8 @@
         FROM
         `menu` AS m
         <where>
-            <if test="query.menuName!=null and query.menuName!=''">
-                AND m.menu_name LIKE CONCAT('%',#{query.menuName},'%')
+            <if test="query.name!=null and query.name!=''">
+                AND m.menu_name LIKE CONCAT('%',#{query.name},'%')
             </if>
             <if test="query.pmenuId!=null and query.pmenuId!=''">
                 AND m.pmenu_id =#{query.pmenuId}

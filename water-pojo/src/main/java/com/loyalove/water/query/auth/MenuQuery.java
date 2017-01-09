@@ -13,6 +13,8 @@ package com.loyalove.water.query.auth;
 import com.loyalove.water.pojo.MenuPO;
 import com.loyalove.water.query.BaseQuery;
 
+import java.util.Date;
+
 /**
  * @author lingfeng@yiji.com
  */
@@ -42,11 +44,51 @@ public class MenuQuery extends BaseQuery {
         menuPO.setPmenuId(pmenuId);
     }
 
-    public String getMenuName() {
-     return   menuPO.getMenuName();
+    public String getName() {
+        return menuPO.getName();
     }
 
-    public void setMenuName(String menuName) {
-        menuPO.setMenuName(menuName);
+    public void setName(String name) {
+        menuPO.setName(name);
+    }
+
+    public String getUrl() {
+        return menuPO.getUrl();
+    }
+
+    public void setUrl(String url) {
+        menuPO.setUrl(url);
+    }
+
+    public String getIcon() {
+        return menuPO.getIcon();
+    }
+
+    public void setIcon(String icon) {
+        menuPO.setIcon(icon);
+    }
+
+    public Integer getCreateUser() {
+        return menuPO.getCreateUser();
+    }
+
+    public void setCreateUser(Integer createUser) {
+        menuPO.setCreateUser(createUser);
+    }
+
+    public Date getCreateTime() {
+        return menuPO.getCreateTime();
+    }
+
+    public void setCreateTime(Date createTime) {
+        menuPO.setCreateTime(createTime);
+    }
+
+    public Date getUpdateTime() {
+        return menuPO.getUpdateTime();
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        menuPO.setUpdateTime(updateTime);
     }
 }

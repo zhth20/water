@@ -39,7 +39,7 @@ public class FirmBizImpl extends BaseBiz implements FirmBiz {
     @Override
     public FirmPO queryFirmByName(String firmName) {
         FirmExample example = new FirmExample();
-        example.createCriteria().andFirmNameEqualTo(firmName);
+        example.createCriteria().andNameEqualTo(firmName);
         List<FirmPO> firmPOS = firmMapper.selectByExample(example);
         return CollectionUtils.isEmpty(firmPOS) ? null : firmPOS.get(0);
     }

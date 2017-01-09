@@ -23,8 +23,8 @@
 
     <sql id="queryCondition">
         <where>
-            <if test="query.firmName!=null and query.firmName!=''">
-            AND f.firm_name LIKE CONCAT('%',#{query.firmName},'%')
+            <if test="query.name!=null and query.name!=''">
+            AND f.firm_name LIKE CONCAT('%',#{query.name},'%')
             </if>
         </where>
     </sql>

@@ -48,5 +48,17 @@
         "href": "/pages/auth/firm.html"
       }
     ]
+  },
+  {
+    "title": "水司管理",
+    "icon": "fa-tint fa-fw",
+    "spread": false,
+    "children": [
+      {
+        "title": "水司",
+        "icon": "fa-tint fa-fw",
+        "href": "/pages/auth/company.html"
+      }
+    ]
   }
 ]

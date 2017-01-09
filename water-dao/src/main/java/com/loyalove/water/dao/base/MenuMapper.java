@@ -2,17 +2,16 @@ package com.loyalove.water.dao.base;
 
 import com.loyalove.water.pojo.MenuExample;
 import com.loyalove.water.pojo.MenuPO;
+import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 /**
  * 该接口（类）由系统生成，请勿修改
  *
- 生成时间 2017/01/06
+ 生成时间 2017/01/09
  */
 @Mapper
 @Repository
