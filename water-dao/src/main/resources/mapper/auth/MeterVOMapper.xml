@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.loyalove.water.dao.auth.MeterDAO">
+    <select id="queryMeters" resultType="com.loyalove.water.pojo.MeterPO">
+        SELECT
+        *
+        FROM
+        `meter` AS m
+        <where>
+            <if test="query.meterNumber != null and query.meterNumber!=''">
+                AND  m.meter_number = #{meterNumber,jdbcType=VARCHAR}
+            </if>
+            <if test="query.typeCode != null and query.typeCode!=''">
+                AND  m.type_code = #{typeCode,jdbcType=VARCHAR}
+            </if>
+            <if test="query.version != null and query.version != ''">
+                AND  m.version =  #{version,jdbcType=VARCHAR}
+            </if>
+            <if test="query.moduleNumber != null and query.moduleNumber !=''">
+                AND   m.module_number =  #{moduleNumber,jdbcType=VARCHAR}
+            </if>
+            <if test="query.purpose != null and query.purpose != ''">
+                AND   m.purpose = #{purpose,jdbcType=VARCHAR}
+            </if>
+            <if test="query.creatUser != null and query.creatUser!=''">
+                AND  m.creat_user = #{creatUser,jdbcType=INTEGER}
+            </if>
+            <if test="query.createTime != null">
+                AND   m.create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+        LIMIT #{pager.recordStart}, #{pager.pageSize}
+    </select>
+
+    <!--查询角色数量-->
+    <select id="queryCount" resultType="java.lang.Integer">
+        SELECT
+        count(*)
+        FROM
+        `meter` AS m
+        <where>
+            <if test="query.meterNumber != null and query.meterNumber!=''">
+                AND  m.meter_number = #{meterNumber,jdbcType=VARCHAR}
+            </if>
+            <if test="query.typeCode != null and query.typeCode!=''">
+                AND  m.type_code = #{typeCode,jdbcType=VARCHAR}
+            </if>
+            <if test="query.version != null and query.version != ''">
+                AND  m.version =  #{version,jdbcType=VARCHAR}
+            </if>
+            <if test="query.moduleNumber != null and query.moduleNumber !=''">
+                AND   m.module_number =  #{moduleNumber,jdbcType=VARCHAR}
+            </if>
+            <if test="query.purpose != null and query.purpose != ''">
+                AND   m.purpose = #{purpose,jdbcType=VARCHAR}
+            </if>
+            <if test="query.creatUser != null and query.creatUser!=''">
+                AND  m.creat_user = #{creatUser,jdbcType=INTEGER}
+            </if>
+            <if test="query.createTime != null">
+                AND   m.create_time = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+        </where>
+    </select>
+</mapper>
