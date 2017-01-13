@@ -86,7 +86,7 @@
                     <th><input id="selected-all" type="checkbox" name="close" title="全选"></th>
                     <th>水司编码</th>
                     <th>水司名称</th>
-                    <th>水司电话</th>
+                    <th>电话</th>
                     <th>创建人</th>
                     <th>创建时间</th>
                     <th>更新时间</th>
@@ -139,32 +139,42 @@
         <div class="layui-form-item">
             <label class="layui-form-label">水司编码</label>
             <div class="layui-input-inline">
-                <input class="layui-input" type="text" name="companyCode" lay-verify="required" placeholder="水司编码"
-                       autocomplete="off">
+                <input class="layui-input" type="text" name="companyCode"
+                       lay-verify="required" placeholder="水司编码" autocomplete="off">
             </div>
             <div class="layui-form-mid layui-word-aux">W0001</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">水司名称</label>
             <div class="layui-input-inline">
-                <input class="layui-input" type="text" name="name" lay-verify="required" placeholder="水司名称"
-                       autocomplete="off">
+                <input class="layui-input" type="text" name="name"
+                       lay-verify="required" placeholder="水司名称" autocomplete="off">
             </div>
-            <div class="layui-form-mid layui-word-aux">水司公司全称</div>
+            <div class="layui-form-mid layui-word-aux">水司全称</div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">水司地址</label>
+            <label class="layui-form-label">电话</label>
             <div class="layui-input-inline">
-                <input class="layui-input" type="text" name="address" lay-verify="required" placeholder="水司地址"
-                       autocomplete="off">
+                <input class="layui-input" type="text" name="tel" placeholder="电话"
+                       lay-verify="required" autocomplete="off">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">位置</label>
+            <div class="layui-input-inline layui-input-short">
+                <input class="layui-input" type="text" name="lng" placeholder="经度" autocomplete="off">
+            </div>
+            <div class="layui-input-inline layui-input-short">
+                <input class="layui-input" type="text" name="lat" placeholder="纬度" autocomplete="off">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">地址</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="address"
+                       lay-verify="required" placeholder="地址" autocomplete="off">
             </div>
             <div class="layui-form-mid layui-word-aux">水司公司所在地址</div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">水司电话</label>
-            <div class="layui-input-inline">
-                <input type="text" name="tel" placeholder="水司电话" autocomplete="off" class="layui-input">
-            </div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label"></label>
@@ -197,27 +207,36 @@
         <div class="layui-form-item">
             <label class="layui-form-label">水司名称</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input"
-                       name="name" value="{{=d.name}}"
+                <input class="layui-input" type="text"name="name" value="{{=d.name}}"
                        placeholder="水司名称" autocomplete="off">
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">水司地址</label>
+            <label class="layui-form-label">电话</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input"
-                       name="waterCompanyAddress" value="{{=d.waterCompanyAddress}}"
-                       placeholder="水司地址" autocomplete="off">
+                <input class="layui-input" type="text" name="tel" value="{{=d.tel}}"
+                       placeholder="电话" autocomplete="off">
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">水司电话</label>
+            <label class="layui-form-label">位置</label>
+            <div class="layui-input-inline layui-input-short">
+                <input class="layui-input" type="text" name="lng" value="{{=d.lng}}"
+                       placeholder="经度" autocomplete="off">
+            </div>
+            <div class="layui-input-inline layui-input-short">
+                <input class="layui-input" type="text" name="lat" value="{{=d.lat}}"
+                       placeholder="纬度" autocomplete="off">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">地址</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input"
-                       name="tel" value="{{=d.tel}}"
-                       placeholder="水司电话" autocomplete="off">
+                <input class="layui-input" type="text" name="address" value="{{=d.address}}"
+                       placeholder="地址" autocomplete="off">
             </div>
         </div>
 
@@ -247,12 +266,16 @@
             <div class="layui-form-mid">{{=d.waterCompanyCode}}</div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">水司地址</label>
-            <div class="layui-form-mid">{{=d.waterCompanyAddress}}</div>
+            <label class="layui-form-label">电话</label>
+            <div class="layui-form-mid">{{=d.tel}}</div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">水司电话</label>
-            <div class="layui-form-mid">{{=d.tel}}</div>
+            <label class="layui-form-label">位置</label>
+            <div class="layui-form-mid">{{=d.lng}},{{=d.lat}}</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">地址</label>
+            <div class="layui-form-mid">{{=d.address}}</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label"></label>

@@ -35,7 +35,8 @@
                     <div class="layui-inline">
                         <label class="layui-form-label"></label>
                         <div class="layui-input-inline">
-                            <button id="query-trigger" class="layui-btn layui-btn-small" lay-submit lay-filter="query-trigger" template="#table-template">
+                            <button id="query-trigger" class="layui-btn layui-btn-small" lay-submit
+                                    lay-filter="query-trigger" template="#table-template">
                                 <i class="fa fa-search"></i> 搜索
                             </button>
                         </div>
@@ -139,32 +140,41 @@
         <div class="layui-form-item">
             <label class="layui-form-label">厂商编码</label>
             <div class="layui-input-inline">
-                <input class="layui-input" type="text" name="firmCode" lay-verify="required" placeholder="厂商编码"
-                       autocomplete="off">
+                <input class="layui-input" type="text" name="firmCode"
+                       lay-verify="required" placeholder="厂商编码" autocomplete="off">
             </div>
             <div class="layui-form-mid layui-word-aux">C0001</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">厂商名称</label>
             <div class="layui-input-inline">
-                <input class="layui-input" type="text" name="name" lay-verify="required" placeholder="厂商名称"
-                       autocomplete="off">
+                <input class="layui-input" type="text" name="name"
+                       lay-verify="required" placeholder="厂商名称" autocomplete="off">
             </div>
-            <div class="layui-form-mid layui-word-aux">厂商公司全称</div>
+            <div class="layui-form-mid layui-word-aux">厂商全称</div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">厂商地址</label>
+            <label class="layui-form-label">电话</label>
             <div class="layui-input-inline">
-                <input class="layui-input" type="text" name="address" lay-verify="required" placeholder="厂商地址"
-                       autocomplete="off">
+                <input class="layui-input" type="text" name="tel" placeholder="电话" autocomplete="off">
             </div>
-            <div class="layui-form-mid layui-word-aux">厂商公司所在地址</div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">厂商电话</label>
-            <div class="layui-input-inline">
-                <input type="text" name="tel" placeholder="厂商电话" autocomplete="off" class="layui-input">
+            <label class="layui-form-label">位置</label>
+            <div class="layui-input-inline layui-input-short">
+                <input class="layui-input" type="text" name="lng" placeholder="经度" autocomplete="off">
             </div>
+            <div class="layui-input-inline layui-input-short">
+                <input class="layui-input" type="text" name="lat" placeholder="纬度" autocomplete="off">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">地址</label>
+            <div class="layui-input-inline layui-input-long">
+                <input class="layui-input" type="text" name="address"
+                       lay-verify="required" placeholder="地址" autocomplete="off">
+            </div>
+            <div class="layui-form-mid layui-word-aux">厂商所在地址</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label"></label>
@@ -197,27 +207,36 @@
         <div class="layui-form-item">
             <label class="layui-form-label">厂商名称</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input"
-                       name="name" value="{{=d.name}}"
+                <input class="layui-input" type="text" name="name" value="{{=d.name}}"
                        placeholder="厂商名称" autocomplete="off">
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">厂商地址</label>
+            <label class="layui-form-label">电话</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input"
-                       name="address" value="{{=d.address}}"
-                       placeholder="厂商地址" autocomplete="off">
+                <input class="layui-input" type="text" name="tel" value="{{=d.tel}}"
+                       placeholder="厂商电话" autocomplete="off">
             </div>
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">厂商电话</label>
-            <div class="layui-input-inline">
-                <input type="text" class="layui-input"
-                       name="tel" value="{{=d.tel}}"
-                       placeholder="厂商电话" autocomplete="off">
+            <label class="layui-form-label">位置</label>
+            <div class="layui-input-inline layui-input-short">
+                <input class="layui-input" type="text" name="lng" value="{{=d.lng}}"
+                       placeholder="经度" autocomplete="off">
+            </div>
+            <div class="layui-input-inline layui-input-short">
+                <input class="layui-input" type="text" name="lat" value="{{=d.lat}}"
+                       placeholder="纬度" autocomplete="off">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">地址</label>
+            <div class="layui-input-inline layui-input-long">
+                <input class="layui-input" type="text" name="address" value="{{=d.address}}"
+                       placeholder="厂商地址" autocomplete="off">
             </div>
         </div>
 
@@ -247,12 +266,16 @@
             <div class="layui-form-mid">{{=d.firmCode}}</div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">厂商地址</label>
-            <div class="layui-form-mid">{{=d.address}}</div>
+            <label class="layui-form-label">电话</label>
+            <div class="layui-form-mid">{{=d.tel}}</div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">厂商电话</label>
-            <div class="layui-form-mid">{{=d.tel}}</div>
+            <label class="layui-form-label">位置</label>
+            <div class="layui-form-mid">{{=d.lng}},{{=d.lat}}</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">地址</label>
+            <div class="layui-form-mid">{{=d.address}}</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label"></label>
