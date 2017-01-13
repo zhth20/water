@@ -42,3 +42,12 @@
     width: 100%;
     background: #fff;
 }
+
+.layui-form-item .layui-input-short{
+    width: 190px;
+}
+
+.layui-form-item .layui-input-long{
+    max-width: 390px;
+    width: 100%;
+}

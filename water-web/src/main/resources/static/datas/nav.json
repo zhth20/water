@@ -41,11 +41,11 @@
       {
         "title": "厂商",
         "icon": "fa-building fa-fw",
-        "href": "/pages/auth/firm.html"
+        "href": "/pages/firm/firm.html"
       },{
         "title": "表具",
         "icon": "fa-dashboard fa-fw",
-        "href": "/pages/auth/firm.html"
+        "href": "/pages/firm/meter.html"
       }
     ]
   },

@@ -40,7 +40,7 @@ public class MeterController  extends BaseController {
 
     @RequestMapping("/add")
     public Result addRole(MeterPO meterPO) {
-        meterPO.setCreatUser(currUser().getUserId());
+        meterPO.setCreateUser(currUser().getUserId());
         meterBiz.addMeter(meterPO);
         return Result.getResultSuccess("新增表具成功");
     }

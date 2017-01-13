@@ -13,7 +13,7 @@ public class MeterPO implements Serializable {
     private Integer meterId;
 
     /** 表号 */
-    private String meterNumber;
+    private String meterNo;
 
     /** 型号 */
     private String typeCode;
@@ -25,7 +25,7 @@ public class MeterPO implements Serializable {
     private String version;
 
     /** 通信模块号 */
-    private String moduleNumber;
+    private String moduleNo;
 
     /** 频率 */
     private String rate;
@@ -36,14 +36,17 @@ public class MeterPO implements Serializable {
     /** 安装地址 */
     private String address;
 
-    /** 安装坐标 */
-    private String coordinate;
+    /** 经度 */
+    private String lng;
+
+    /** 纬度 */
+    private String lat;
 
     /** 出厂时间 */
     private Date releaseDate;
 
     /** 创建人 */
-    private Integer creatUser;
+    private Integer createUser;
 
     private Date createTime;
 
@@ -59,12 +62,12 @@ public class MeterPO implements Serializable {
         this.meterId = meterId;
     }
 
-    public String getMeterNumber() {
-        return meterNumber;
+    public String getMeterNo() {
+        return meterNo;
     }
 
-    public void setMeterNumber(String meterNumber) {
-        this.meterNumber = meterNumber;
+    public void setMeterNo(String meterNo) {
+        this.meterNo = meterNo;
     }
 
     public String getTypeCode() {
@@ -91,12 +94,12 @@ public class MeterPO implements Serializable {
         this.version = version;
     }
 
-    public String getModuleNumber() {
-        return moduleNumber;
+    public String getModuleNo() {
+        return moduleNo;
     }
 
-    public void setModuleNumber(String moduleNumber) {
-        this.moduleNumber = moduleNumber;
+    public void setModuleNo(String moduleNo) {
+        this.moduleNo = moduleNo;
     }
 
     public String getRate() {
@@ -123,12 +126,20 @@ public class MeterPO implements Serializable {
         this.address = address;
     }
 
-    public String getCoordinate() {
-        return coordinate;
+    public String getLng() {
+        return lng;
     }
 
-    public void setCoordinate(String coordinate) {
-        this.coordinate = coordinate;
+    public void setLng(String lng) {
+        this.lng = lng;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
     }
 
     public Date getReleaseDate() {
@@ -139,12 +150,12 @@ public class MeterPO implements Serializable {
         this.releaseDate = releaseDate;
     }
 
-    public Integer getCreatUser() {
-        return creatUser;
+    public Integer getCreateUser() {
+        return createUser;
     }
 
-    public void setCreatUser(Integer creatUser) {
-        this.creatUser = creatUser;
+    public void setCreateUser(Integer createUser) {
+        this.createUser = createUser;
     }
 
     public Date getCreateTime() {
@@ -170,17 +181,18 @@ public class MeterPO implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", meterId=").append(meterId);
-        sb.append(", meterNumber=").append(meterNumber);
+        sb.append(", meterNo=").append(meterNo);
         sb.append(", typeCode=").append(typeCode);
         sb.append(", caliber=").append(caliber);
         sb.append(", version=").append(version);
-        sb.append(", moduleNumber=").append(moduleNumber);
+        sb.append(", moduleNo=").append(moduleNo);
         sb.append(", rate=").append(rate);
         sb.append(", purpose=").append(purpose);
         sb.append(", address=").append(address);
-        sb.append(", coordinate=").append(coordinate);
+        sb.append(", lng=").append(lng);
+        sb.append(", lat=").append(lat);
         sb.append(", releaseDate=").append(releaseDate);
-        sb.append(", creatUser=").append(creatUser);
+        sb.append(", createUser=").append(createUser);
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append("]");

@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * 该实体由系统生成，请勿修改
  *
- * 生成时间 2017/01/09
+ * 生成时间 2017/01/13
  */
 public class CustomerPO implements Serializable {
     /** 自增主键 */

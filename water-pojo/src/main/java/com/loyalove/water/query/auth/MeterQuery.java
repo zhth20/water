@@ -35,12 +35,12 @@ public class MeterQuery extends BaseQuery {
         meterPO.setMeterId(meterId);
     }
 
-    public String getMeterNumber() {
-        return meterPO.getMeterNumber();
+    public String getMeterNo() {
+        return meterPO.getMeterNo();
     }
 
-    public void setMeterNumber(String meterNumber) {
-        meterPO.setMeterNumber(meterNumber);
+    public void setMeterNo(String meterNo) {
+        meterPO.setMeterNo(meterNo);
     }
 
     public String getTypeCode() {
@@ -59,12 +59,12 @@ public class MeterQuery extends BaseQuery {
         meterPO.setVersion(version);
     }
 
-    public String getModuleNumber() {
-        return meterPO.getModuleNumber();
+    public String getModuleNo() {
+        return meterPO.getModuleNo();
     }
 
-    public void setModuleNumber(String moduleNumber) {
-        meterPO.setModuleNumber(moduleNumber);
+    public void setModuleNo(String moduleNo) {
+        meterPO.setModuleNo(moduleNo);
     }
 
     public String getPurpose() {
@@ -75,12 +75,12 @@ public class MeterQuery extends BaseQuery {
         meterPO.setPurpose(purpose);
     }
 
-    public Integer getCreatUser() {
-        return meterPO.getCreatUser();
+    public Integer getCreateUser() {
+        return meterPO.getCreateUser();
     }
 
-    public void setCreatUser(Integer creatUser) {
-        meterPO.setCreatUser(creatUser);
+    public void setCreateUser(Integer createUser) {
+        meterPO.setCreateUser(createUser);
     }
 
     public Date getCreateTime() {

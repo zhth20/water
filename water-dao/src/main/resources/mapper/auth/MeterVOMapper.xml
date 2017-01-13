@@ -7,8 +7,8 @@
         FROM
         `meter` AS m
         <where>
-            <if test="query.meterNumber != null and query.meterNumber!=''">
-                AND m.meter_number = #{query.meterNumber,jdbcType=VARCHAR}
+            <if test="query.meterNo != null and query.meterNo!=''">
+                AND m.meter_no = #{query.meterNo,jdbcType=VARCHAR}
             </if>
             <if test="query.typeCode != null and query.typeCode!=''">
                 AND m.type_code = #{query.typeCode,jdbcType=VARCHAR}
@@ -16,14 +16,14 @@
             <if test="query.version != null and query.version != ''">
                 AND m.version = #{query.version,jdbcType=VARCHAR}
             </if>
-            <if test="query.moduleNumber != null and query.moduleNumber !=''">
-                AND m.module_number = #{query.moduleNumber,jdbcType=VARCHAR}
+            <if test="query.moduleNo != null and query.moduleNo !=''">
+                AND m.module_no = #{query.moduleNo,jdbcType=VARCHAR}
             </if>
             <if test="query.purpose != null and query.purpose != ''">
                 AND m.purpose = #{query.purpose,jdbcType=VARCHAR}
             </if>
-            <if test="query.creatUser != null and query.creatUser!=''">
-                AND m.creat_user = #{query.creatUser,jdbcType=INTEGER}
+            <if test="query.createUser != null and query.createUser!=''">
+                AND m.create_user = #{query.createUser,jdbcType=INTEGER}
             </if>
             <if test="query.createTime != null">
                 AND m.create_time = #{query.createTime,jdbcType=TIMESTAMP}
@@ -39,8 +39,8 @@
         FROM
         `meter` AS m
         <where>
-            <if test="query.meterNumber != null and query.meterNumber!=''">
-                AND m.meter_number = #{query.meterNumber,jdbcType=VARCHAR}
+            <if test="query.meterNo != null and query.meterNo!=''">
+                AND m.meter_no = #{query.meterNo,jdbcType=VARCHAR}
             </if>
             <if test="query.typeCode != null and query.typeCode!=''">
                 AND m.type_code = #{query.typeCode,jdbcType=VARCHAR}
@@ -48,14 +48,14 @@
             <if test="query.version != null and query.version != ''">
                 AND m.version = #{query.version,jdbcType=VARCHAR}
             </if>
-            <if test="query.moduleNumber != null and query.moduleNumber !=''">
-                AND m.module_number = #{query.moduleNumber,jdbcType=VARCHAR}
+            <if test="query.moduleNo != null and query.moduleNo !=''">
+                AND m.module_no = #{query.moduleNo,jdbcType=VARCHAR}
             </if>
             <if test="query.purpose != null and query.purpose != ''">
                 AND m.purpose = #{query.purpose,jdbcType=VARCHAR}
             </if>
-            <if test="query.creatUser != null and query.creatUser!=''">
-                AND m.creat_user = #{query.creatUser,jdbcType=INTEGER}
+            <if test="query.createUser != null and query.createUser!=''">
+                AND m.create_user = #{query.createUser,jdbcType=INTEGER}
             </if>
             <if test="query.createTime != null">
                 AND m.create_time = #{query.createTime,jdbcType=TIMESTAMP}

@@ -50,3 +50,22 @@ CREATE TABLE `water_company` (
   KEY(`company_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='水司表';
 
+CREATE TABLE `meter` (
+  `meter_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `meter_no` varchar(50) NOT NULL DEFAULT '' COMMENT '表号',
+  `type_code` varchar(20) NOT NULL DEFAULT '' COMMENT '型号',
+  `caliber` varchar(20) NOT NULL DEFAULT '' COMMENT '口径',
+  `version` varchar(20) NOT NULL DEFAULT '' COMMENT '软件版本号',
+  `module_number` varchar(50) NOT NULL DEFAULT '' COMMENT '通信模块号',
+  `rate` varchar(10) NOT NULL DEFAULT '' COMMENT '频率',
+  `purpose` varchar(20) NOT NULL DEFAULT '' COMMENT '用途',
+  `address` varchar(255) NOT NULL DEFAULT '' COMMENT '安装地址',
+  `lng` varchar(20) NOT NULL DEFAULT '' COMMENT '经度',
+  `lat` varchar(20) NOT NULL DEFAULT '' COMMENT '纬度',
+  `release_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '出厂时间',
+  `create_user` int(11) NOT NULL COMMENT '创建人',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`meter_id`),
+  UNIQUE KEY `meter_no_unique` (`meter_no`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='表具表';
