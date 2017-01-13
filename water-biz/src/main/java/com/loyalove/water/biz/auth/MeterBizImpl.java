@@ -59,4 +59,9 @@ public class MeterBizImpl implements MeterBiz {
     public List<MeterPO> queryAllMeters() {
         return meterMapper.selectByExample(new MeterExample());
     }
+
+    @Override
+    public MeterPO queryMeter(MeterPO meterPO) {
+        return meterMapper.selectByPrimaryKey(meterPO.getMeterId());
+    }
 }

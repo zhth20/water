@@ -57,4 +57,11 @@ public interface MeterBiz {
      * @return
      */
     List<MeterPO> queryAllMeters();
+
+    /**
+     * 查询表具详情
+     * @param meterPO
+     * @return
+     */
+    MeterPO queryMeter(MeterPO meterPO);
 }
