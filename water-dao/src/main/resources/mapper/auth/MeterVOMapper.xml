@@ -8,25 +8,25 @@
         `meter` AS m
         <where>
             <if test="query.meterNumber != null and query.meterNumber!=''">
-                AND  m.meter_number = #{meterNumber,jdbcType=VARCHAR}
+                AND m.meter_number = #{query.meterNumber,jdbcType=VARCHAR}
             </if>
             <if test="query.typeCode != null and query.typeCode!=''">
-                AND  m.type_code = #{typeCode,jdbcType=VARCHAR}
+                AND m.type_code = #{query.typeCode,jdbcType=VARCHAR}
             </if>
             <if test="query.version != null and query.version != ''">
-                AND  m.version =  #{version,jdbcType=VARCHAR}
+                AND m.version = #{query.version,jdbcType=VARCHAR}
             </if>
             <if test="query.moduleNumber != null and query.moduleNumber !=''">
-                AND   m.module_number =  #{moduleNumber,jdbcType=VARCHAR}
+                AND m.module_number = #{query.moduleNumber,jdbcType=VARCHAR}
             </if>
             <if test="query.purpose != null and query.purpose != ''">
-                AND   m.purpose = #{purpose,jdbcType=VARCHAR}
+                AND m.purpose = #{query.purpose,jdbcType=VARCHAR}
             </if>
             <if test="query.creatUser != null and query.creatUser!=''">
-                AND  m.creat_user = #{creatUser,jdbcType=INTEGER}
+                AND m.creat_user = #{query.creatUser,jdbcType=INTEGER}
             </if>
             <if test="query.createTime != null">
-                AND   m.create_time = #{createTime,jdbcType=TIMESTAMP}
+                AND m.create_time = #{query.createTime,jdbcType=TIMESTAMP}
             </if>
         </where>
         LIMIT #{pager.recordStart}, #{pager.pageSize}
@@ -40,25 +40,25 @@
         `meter` AS m
         <where>
             <if test="query.meterNumber != null and query.meterNumber!=''">
-                AND  m.meter_number = #{meterNumber,jdbcType=VARCHAR}
+                AND m.meter_number = #{query.meterNumber,jdbcType=VARCHAR}
             </if>
             <if test="query.typeCode != null and query.typeCode!=''">
-                AND  m.type_code = #{typeCode,jdbcType=VARCHAR}
+                AND m.type_code = #{query.typeCode,jdbcType=VARCHAR}
             </if>
             <if test="query.version != null and query.version != ''">
-                AND  m.version =  #{version,jdbcType=VARCHAR}
+                AND m.version = #{query.version,jdbcType=VARCHAR}
             </if>
             <if test="query.moduleNumber != null and query.moduleNumber !=''">
-                AND   m.module_number =  #{moduleNumber,jdbcType=VARCHAR}
+                AND m.module_number = #{query.moduleNumber,jdbcType=VARCHAR}
             </if>
             <if test="query.purpose != null and query.purpose != ''">
-                AND   m.purpose = #{purpose,jdbcType=VARCHAR}
+                AND m.purpose = #{query.purpose,jdbcType=VARCHAR}
             </if>
             <if test="query.creatUser != null and query.creatUser!=''">
-                AND  m.creat_user = #{creatUser,jdbcType=INTEGER}
+                AND m.creat_user = #{query.creatUser,jdbcType=INTEGER}
             </if>
             <if test="query.createTime != null">
-                AND   m.create_time = #{createTime,jdbcType=TIMESTAMP}
+                AND m.create_time = #{query.createTime,jdbcType=TIMESTAMP}
             </if>
         </where>
     </select>
