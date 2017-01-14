@@ -9,6 +9,9 @@
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="tel" jdbcType="VARCHAR" property="tel" />
     <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="logo" jdbcType="VARCHAR" property="logo" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="mark" jdbcType="VARCHAR" property="mark" />
     <result column="head_name" jdbcType="VARCHAR" property="headName" />
     <result column="head_phone" jdbcType="VARCHAR" property="headPhone" />
     <result column="lng" jdbcType="VARCHAR" property="lng" />
@@ -79,8 +82,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    customer_id, customer_code, user_id, name, address, tel, email, head_name, head_phone, 
-    lng, lat, create_user, create_time, update_time
+    customer_id, customer_code, user_id, name, address, tel, email, logo, province, mark, 
+    head_name, head_phone, lng, lat, create_user, create_time, update_time
   </sql>
   <sql id="Blob_Column_List">
     cong
@@ -142,11 +145,13 @@
     </selectKey>
     insert into customer (customer_code, user_id, name, 
       address, tel, email, 
+      logo, province, mark, 
       head_name, head_phone, lng, 
       lat, create_user, create_time, 
       update_time, cong)
     values (#{customerCode,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{address,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{logo,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{mark,jdbcType=VARCHAR}, 
       #{headName,jdbcType=VARCHAR}, #{headPhone,jdbcType=VARCHAR}, #{lng,jdbcType=VARCHAR}, 
       #{lat,jdbcType=VARCHAR}, #{createUser,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP}, #{cong,jdbcType=LONGVARCHAR})
@@ -174,6 +179,15 @@
       </if>
       <if test="email != null">
         email,
+      </if>
+      <if test="logo != null">
+        logo,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="mark != null">
+        mark,
       </if>
       <if test="headName != null">
         head_name,
@@ -218,6 +232,15 @@
       </if>
       <if test="email != null">
         #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null">
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        #{mark,jdbcType=VARCHAR},
       </if>
       <if test="headName != null">
         #{headName,jdbcType=VARCHAR},
@@ -275,6 +298,15 @@
       <if test="record.email != null">
         email = #{record.email,jdbcType=VARCHAR},
       </if>
+      <if test="record.logo != null">
+        logo = #{record.logo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.province != null">
+        province = #{record.province,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mark != null">
+        mark = #{record.mark,jdbcType=VARCHAR},
+      </if>
       <if test="record.headName != null">
         head_name = #{record.headName,jdbcType=VARCHAR},
       </if>
@@ -313,6 +345,9 @@
       address = #{record.address,jdbcType=VARCHAR},
       tel = #{record.tel,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
+      logo = #{record.logo,jdbcType=VARCHAR},
+      province = #{record.province,jdbcType=VARCHAR},
+      mark = #{record.mark,jdbcType=VARCHAR},
       head_name = #{record.headName,jdbcType=VARCHAR},
       head_phone = #{record.headPhone,jdbcType=VARCHAR},
       lng = #{record.lng,jdbcType=VARCHAR},
@@ -334,6 +369,9 @@
       address = #{record.address,jdbcType=VARCHAR},
       tel = #{record.tel,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
+      logo = #{record.logo,jdbcType=VARCHAR},
+      province = #{record.province,jdbcType=VARCHAR},
+      mark = #{record.mark,jdbcType=VARCHAR},
       head_name = #{record.headName,jdbcType=VARCHAR},
       head_phone = #{record.headPhone,jdbcType=VARCHAR},
       lng = #{record.lng,jdbcType=VARCHAR},
@@ -365,6 +403,15 @@
       </if>
       <if test="email != null">
         email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="logo != null">
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="mark != null">
+        mark = #{mark,jdbcType=VARCHAR},
       </if>
       <if test="headName != null">
         head_name = #{headName,jdbcType=VARCHAR},
@@ -401,6 +448,9 @@
       address = #{address,jdbcType=VARCHAR},
       tel = #{tel,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
+      logo = #{logo,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      mark = #{mark,jdbcType=VARCHAR},
       head_name = #{headName,jdbcType=VARCHAR},
       head_phone = #{headPhone,jdbcType=VARCHAR},
       lng = #{lng,jdbcType=VARCHAR},
@@ -419,6 +469,9 @@
       address = #{address,jdbcType=VARCHAR},
       tel = #{tel,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
+      logo = #{logo,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      mark = #{mark,jdbcType=VARCHAR},
       head_name = #{headName,jdbcType=VARCHAR},
       head_phone = #{headPhone,jdbcType=VARCHAR},
       lng = #{lng,jdbcType=VARCHAR},

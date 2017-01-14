@@ -74,24 +74,25 @@
         <!--<table tableName="user">-->
             <!--<generatedKey column="user_id" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
-        <table tableName="customer">
-            <generatedKey column="customer_id" sqlStatement="MySql" identity="true"/>
-        </table>
         <!--<table tableName="role">-->
-            <!--<generatedKey column="role_id" sqlStatement="MySql" identity="true"/>-->
-        <!--</table>-->
-        <!--<table tableName="firm">-->
-            <!--<generatedKey column="firm_id" sqlStatement="MySql" identity="true"/>-->
-        <!--</table>-->
-        <!--<table tableName="menu">-->
-        <!--<generatedKey column="menu_id" sqlStatement="MySql" identity="true"/>-->
+        <!--<generatedKey column="role_id" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
         <!--<table tableName="user_role">-->
         <!--<generatedKey column="user_role_id" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
-        <!--<table tableName="water_company">-->
-        <!--<generatedKey column="water_company_id" sqlStatement="MySql" identity="true"/>-->
+        <!--<table tableName="menu">-->
+        <!--<generatedKey column="menu_id" sqlStatement="MySql" identity="true"/>-->
         <!--</table>-->
+
+        <table tableName="customer">
+            <generatedKey column="customer_id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="water_company">
+        <generatedKey column="water_company_id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="firm">
+        <generatedKey column="firm_id" sqlStatement="MySql" identity="true"/>
+        </table>
         <table tableName="meter">
             <generatedKey column="meter_id" sqlStatement="MySql" identity="true"/>
         </table>

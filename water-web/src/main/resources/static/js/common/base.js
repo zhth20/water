@@ -399,7 +399,7 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl', 'unders
             self.warn('请选择要删除数据');
             return false;
         }
-        player.confirm('确认删除：[ ' + items.names.join('，') + ' ]？', {icon: 7}, function () {
+        player.confirm('确认删除：[ ' + items.names.join('，') + ' ]', {icon: 7}, function () {
             self.get(item.url, {ids: items.ids.join(',')})
                 .done(function (data) {
                     self.ok(data.message);

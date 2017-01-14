@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * 该实体由系统生成，请勿修改
  *
- * 生成时间 2017/01/09
+ * 生成时间 2017/01/14
  */
 public class FirmPO implements Serializable {
     /** 自增主键 */
@@ -23,6 +23,15 @@ public class FirmPO implements Serializable {
 
     /** 厂商电话 */
     private String tel;
+
+    /** LOGO */
+    private String logo;
+
+    /** 省份 */
+    private String province;
+
+    /** 备注 */
+    private String mark;
 
     /** 经度 */
     private String lng;
@@ -81,6 +90,30 @@ public class FirmPO implements Serializable {
         this.tel = tel;
     }
 
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getMark() {
+        return mark;
+    }
+
+    public void setMark(String mark) {
+        this.mark = mark;
+    }
+
     public String getLng() {
         return lng;
     }
@@ -132,6 +165,9 @@ public class FirmPO implements Serializable {
         sb.append(", name=").append(name);
         sb.append(", address=").append(address);
         sb.append(", tel=").append(tel);
+        sb.append(", logo=").append(logo);
+        sb.append(", province=").append(province);
+        sb.append(", mark=").append(mark);
         sb.append(", lng=").append(lng);
         sb.append(", lat=").append(lat);
         sb.append(", createUser=").append(createUser);

@@ -86,6 +86,7 @@
                 <tr>
                     <th><input id="selected-all" type="checkbox" name="close" title="全选"></th>
                     <th>表号</th>
+                    <th>厂商</th>
                     <th>型号</th>
                     <th>口径</th>
                     <th>通信模块号</th>
@@ -113,6 +114,7 @@
     <tr>
         <td><input type="checkbox" name="ids" value="{{=item.meterId}}" data-name="{{=item.meterNo}}"></td>
         <td>{{=item.meterNo}}</td>
+        <td>{{=item.firmId}}</td>
         <td>{{=item.typeCode}}</td>
         <td>{{=item.caliber}}</td>
         <td>{{=item.moduleNo}}</td>
@@ -139,6 +141,13 @@
 <!--新增数据模版-->
 <script id="add-template" type="text/html">
     <form id="add-form" class="layui-form" action="/meter/add">
+        <div class="layui-form-item">
+            <label class="layui-form-label">厂商</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="firmId" lay-verify="required" placeholder="厂商"
+                       autocomplete="off">
+            </div>
+        </div>
         <div class="layui-form-item">
             <label class="layui-form-label">表号</label>
             <div class="layui-input-inline">
@@ -200,7 +209,7 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">位置</label>
+            <label class="layui-form-label">坐标</label>
             <div class="layui-input-inline layui-input-short">
                 <input type="text" name="lng" placeholder="经度" autocomplete="off" class="layui-input layui-inline">
             </div>
@@ -239,6 +248,10 @@
             <input type="hidden" name="meterId" value="{{=d.meterId}}">
         </div>
 
+        <div class="layui-form-item">
+            <label class="layui-form-label">厂商</label>
+            <div class="layui-form-mid">{{=d.firmId}}</div>
+        </div>
         <div class="layui-form-item">
             <label class="layui-form-label">表号</label>
             <div class="layui-form-mid">{{=d.meterNo}}</div>
@@ -283,7 +296,7 @@
             </div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">位置</label>
+            <label class="layui-form-label">坐标</label>
             <div class="layui-input-inline layui-input-short">
                 <input class="layui-input" type="text" name="lng" value="{{=d.lng}}"
                        placeholder="经度" autocomplete="off">
@@ -322,6 +335,10 @@
 <script id="detail-template" type="text/html">
     <form id="detail-form" class="layui-form">
         <div class="layui-form-item">
+            <label class="layui-form-label">厂商</label>
+            <div class="layui-form-mid">{{=d.firmId}}</div>
+        </div>
+        <div class="layui-form-item">
             <label class="layui-form-label">表号</label>
             <div class="layui-form-mid">{{=d.meterNo}}</div>
         </div>
@@ -354,7 +371,7 @@
             <div class="layui-form-mid">{{=d.releaseDate}}</div>
         </div>
         <div class="layui-form-item">
-            <label class="layui-form-label">位置</label>
+            <label class="layui-form-label">坐标</label>
             <div class="layui-form-mid">{{=d.lng}},{{=d.lat}}</div>
         </div>
         <div class="layui-form-item">

@@ -255,6 +255,66 @@ public class MeterExample {
             return (Criteria) this;
         }
 
+        public Criteria andFirmIdIsNull() {
+            addCriterion("firm_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFirmIdIsNotNull() {
+            addCriterion("firm_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andFirmIdEqualTo(Integer value) {
+            addCriterion("firm_id =", value, "firmId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFirmIdNotEqualTo(Integer value) {
+            addCriterion("firm_id <>", value, "firmId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFirmIdGreaterThan(Integer value) {
+            addCriterion("firm_id >", value, "firmId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFirmIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("firm_id >=", value, "firmId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFirmIdLessThan(Integer value) {
+            addCriterion("firm_id <", value, "firmId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFirmIdLessThanOrEqualTo(Integer value) {
+            addCriterion("firm_id <=", value, "firmId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFirmIdIn(List<Integer> values) {
+            addCriterion("firm_id in", values, "firmId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFirmIdNotIn(List<Integer> values) {
+            addCriterion("firm_id not in", values, "firmId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFirmIdBetween(Integer value1, Integer value2) {
+            addCriterion("firm_id between", value1, value2, "firmId");
+            return (Criteria) this;
+        }
+
+        public Criteria andFirmIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("firm_id not between", value1, value2, "firmId");
+            return (Criteria) this;
+        }
+
         public Criteria andTypeCodeIsNull() {
             addCriterion("type_code is null");
             return (Criteria) this;

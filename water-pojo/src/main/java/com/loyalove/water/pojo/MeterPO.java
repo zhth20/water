@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * 该实体由系统生成，请勿修改
  *
- * 生成时间 2017/01/13
+ * 生成时间 2017/01/14
  */
 public class MeterPO implements Serializable {
     /** 编号 */
@@ -14,6 +14,8 @@ public class MeterPO implements Serializable {
 
     /** 表号 */
     private String meterNo;
+
+    private Integer firmId;
 
     /** 型号 */
     private String typeCode;
@@ -68,6 +70,14 @@ public class MeterPO implements Serializable {
 
     public void setMeterNo(String meterNo) {
         this.meterNo = meterNo;
+    }
+
+    public Integer getFirmId() {
+        return firmId;
+    }
+
+    public void setFirmId(Integer firmId) {
+        this.firmId = firmId;
     }
 
     public String getTypeCode() {
@@ -182,6 +192,7 @@ public class MeterPO implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", meterId=").append(meterId);
         sb.append(", meterNo=").append(meterNo);
+        sb.append(", firmId=").append(firmId);
         sb.append(", typeCode=").append(typeCode);
         sb.append(", caliber=").append(caliber);
         sb.append(", version=").append(version);

@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * 该实体由系统生成，请勿修改
  *
- * 生成时间 2017/01/13
+ * 生成时间 2017/01/14
  */
 public class CustomerPO implements Serializable {
     /** 自增主键 */
@@ -29,6 +29,15 @@ public class CustomerPO implements Serializable {
 
     /** 客户邮箱 */
     private String email;
+
+    /** LOGO */
+    private String logo;
+
+    /** 省份 */
+    private String province;
+
+    /** 备注 */
+    private String mark;
 
     /** 负责人 */
     private String headName;
@@ -112,6 +121,30 @@ public class CustomerPO implements Serializable {
         this.email = email;
     }
 
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public String getMark() {
+        return mark;
+    }
+
+    public void setMark(String mark) {
+        this.mark = mark;
+    }
+
     public String getHeadName() {
         return headName;
     }
@@ -189,6 +222,9 @@ public class CustomerPO implements Serializable {
         sb.append(", address=").append(address);
         sb.append(", tel=").append(tel);
         sb.append(", email=").append(email);
+        sb.append(", logo=").append(logo);
+        sb.append(", province=").append(province);
+        sb.append(", mark=").append(mark);
         sb.append(", headName=").append(headName);
         sb.append(", headPhone=").append(headPhone);
         sb.append(", lng=").append(lng);
