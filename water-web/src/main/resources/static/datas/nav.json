@@ -2,7 +2,7 @@
   {
     "title": "账户管理",
     "icon": "fa-user fa-fw",
-    "spread": false,
+    "spread": true,
     "children": [
       {
         "title": "用户",
@@ -24,7 +24,7 @@
   {
     "title": "客户管理",
     "icon": "fa-users fa-fw",
-    "spread": false,
+    "spread": true,
     "children": [
       {
         "title": "客户",
@@ -36,7 +36,7 @@
   {
     "title": "厂商管理",
     "icon": "fa-building fa-fw",
-    "spread": false,
+    "spread": true,
     "children": [
       {
         "title": "厂商",
@@ -52,7 +52,7 @@
   {
     "title": "水司管理",
     "icon": "fa-tint fa-fw",
-    "spread": false,
+    "spread": true,
     "children": [
       {
         "title": "水司",
