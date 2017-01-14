@@ -29,7 +29,7 @@
       {
         "title": "客户",
         "icon": "fa-male fa-fw",
-        "href": "/pages/auth/customer.html"
+        "href": "/pages/customer/customer.html"
       }
     ]
   },
@@ -57,7 +57,19 @@
       {
         "title": "水司",
         "icon": "fa-tint fa-fw",
-        "href": "/pages/auth/company.html"
+        "href": "/pages/company/company.html"
+      }
+    ]
+  },
+  {
+    "title": "GIS系统",
+    "icon": "fa-globe fa-fw",
+    "spread": true,
+    "children": [
+      {
+        "title": "地图",
+        "icon": "fa-map-marker fa-fw",
+        "href": "/pages/gis/map.html"
       }
     ]
   }

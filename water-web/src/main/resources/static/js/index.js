@@ -12,7 +12,7 @@ layui.config({
     //iframe自适应
     $(window).on('resize', function () {
         var $content = $('.admin-nav-card .layui-tab-content');
-        $content.height($(this).height() - 156);
+        $content.height($(this).height() - 153);
         $content.find('iframe').each(function () {
             $(this).height($content.height());
         });
@@ -23,7 +23,7 @@ layui.config({
         elem: '#admin-navbar-side',
         // data: navs
         /*cached:true,*/
-        url: '/static/datas/nav.json'
+        url: '/static/datas/nav.json?_='+new Date().getTime()
     });
     //渲染navbar
     navbar.render();
@@ -78,4 +78,15 @@ layui.config({
         $('body').removeClass('site-mobile');
     });
 
+    $.get('/userInfo', function(data){
+        $('#login-user').text(data.result.nickname);
+    });
+
+    $(document).on('click', '#logout', function () {
+        var href = $(this).attr('href');
+        $.get('/logout',function(){
+            window.location.href = '/pages/index.html';
+        });
+        return false;
+    });
 });
