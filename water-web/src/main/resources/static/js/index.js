@@ -89,4 +89,9 @@ layui.config({
         });
         return false;
     });
+
+    $(document).on('click', '#refresh-btn', function () {
+        $('.layui-tab-content .layui-tab-item.layui-show iframe')[0].contentWindow.location.reload();
+        return false;
+    });
 });
