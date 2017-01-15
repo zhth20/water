@@ -1,11 +1,11 @@
-package com.loyalove.water.web.controller.auth;
+package com.loyalove.water.web.controller.firm;
 
-import com.loyalove.water.biz.auth.FirmBiz;
+import com.loyalove.water.biz.firm.FirmBiz;
 import com.loyalove.water.common.enums.BaseStatusEnum;
 import com.loyalove.water.common.model.Pager;
 import com.loyalove.water.common.model.Result;
 import com.loyalove.water.pojo.FirmPO;
-import com.loyalove.water.query.auth.FirmQuery;
+import com.loyalove.water.query.firm.FirmQuery;
 import com.loyalove.water.web.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

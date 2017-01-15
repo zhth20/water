@@ -1,4 +1,4 @@
-package com.loyalove.water.query.auth;
+package com.loyalove.water.query.customer;
 
 import com.loyalove.water.pojo.CustomerPO;
 import com.loyalove.water.query.BaseQuery;

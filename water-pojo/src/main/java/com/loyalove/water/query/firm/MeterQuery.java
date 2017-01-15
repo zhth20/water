@@ -8,7 +8,7 @@
  * lingfeng@yiji.com 2017-01-13 10:52 创建
  *
  */
-package com.loyalove.water.query.auth;
+package com.loyalove.water.query.firm;
 
 import com.loyalove.water.pojo.MeterPO;
 import com.loyalove.water.query.BaseQuery;

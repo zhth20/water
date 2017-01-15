@@ -1,8 +1,8 @@
-package com.loyalove.water.dao.auth;
+package com.loyalove.water.dao.customer;
 
 import com.loyalove.water.common.model.Pager;
 import com.loyalove.water.pojo.CustomerPO;
-import com.loyalove.water.query.auth.CustomerQuery;
+import com.loyalove.water.query.customer.CustomerQuery;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;

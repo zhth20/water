@@ -1,4 +1,4 @@
-package com.loyalove.water.query.auth;
+package com.loyalove.water.query.company;
 
 import com.loyalove.water.pojo.FirmPO;
 import com.loyalove.water.pojo.WaterCompanyPO;

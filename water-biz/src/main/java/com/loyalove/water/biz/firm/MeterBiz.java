@@ -8,11 +8,11 @@
  * lingfeng@yiji.com 2017-01-13 10:50 创建
  *
  */
-package com.loyalove.water.biz.auth;
+package com.loyalove.water.biz.firm;
 
 import com.loyalove.water.common.model.Pager;
 import com.loyalove.water.pojo.MeterPO;
-import com.loyalove.water.query.auth.MeterQuery;
+import com.loyalove.water.query.firm.MeterQuery;
 
 import java.util.List;
 

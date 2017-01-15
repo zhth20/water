@@ -28,7 +28,7 @@
     "children": [
       {
         "title": "客户",
-        "icon": "fa-male fa-fw",
+        "icon": "fa-university fa-fw",
         "href": "/pages/customer/customer.html"
       }
     ]

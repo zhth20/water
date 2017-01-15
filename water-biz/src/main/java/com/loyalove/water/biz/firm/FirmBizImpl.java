@@ -1,13 +1,13 @@
-package com.loyalove.water.biz.auth;
+package com.loyalove.water.biz.firm;
 
 import com.loyalove.water.biz.BaseBiz;
 import com.loyalove.water.common.model.Pager;
 import com.loyalove.water.common.util.CollectionUtils;
-import com.loyalove.water.dao.auth.FirmDAO;
+import com.loyalove.water.dao.firm.FirmDAO;
 import com.loyalove.water.dao.base.FirmMapper;
 import com.loyalove.water.pojo.FirmExample;
 import com.loyalove.water.pojo.FirmPO;
-import com.loyalove.water.query.auth.FirmQuery;
+import com.loyalove.water.query.firm.FirmQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

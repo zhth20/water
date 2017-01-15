@@ -8,11 +8,11 @@
  * lingfeng@yiji.com 2017-01-13 11:11 创建
  *
  */
-package com.loyalove.water.dao.auth;
+package com.loyalove.water.dao.firm;
 
 import com.loyalove.water.common.model.Pager;
 import com.loyalove.water.pojo.MeterPO;
-import com.loyalove.water.query.auth.MeterQuery;
+import com.loyalove.water.query.firm.MeterQuery;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;

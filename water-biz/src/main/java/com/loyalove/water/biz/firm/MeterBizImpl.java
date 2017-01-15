@@ -8,14 +8,14 @@
  * lingfeng@yiji.com 2017-01-13 10:50 创建
  *
  */
-package com.loyalove.water.biz.auth;
+package com.loyalove.water.biz.firm;
 
 import com.loyalove.water.common.model.Pager;
-import com.loyalove.water.dao.auth.MeterDAO;
+import com.loyalove.water.dao.firm.MeterDAO;
 import com.loyalove.water.dao.base.MeterMapper;
 import com.loyalove.water.pojo.MeterExample;
 import com.loyalove.water.pojo.MeterPO;
-import com.loyalove.water.query.auth.MeterQuery;
+import com.loyalove.water.query.firm.MeterQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

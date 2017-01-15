@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.loyalove.water.dao.auth.WaterCompanyDAO">
+<mapper namespace="com.loyalove.water.dao.firm.FirmDAO">
 
     <!--查询厂商列表-->
-    <select id="queryWaterCompanys" resultType="com.loyalove.water.pojo.WaterCompanyPO">
+    <select id="queryFirms" resultType="com.loyalove.water.pojo.FirmPO">
         SELECT
-        wc.*
+        f.*
         FROM
-        `water_company` as wc
+        `firm` as f
         <include refid="queryCondition"/>
         LIMIT #{pager.recordStart}, #{pager.pageSize}
     </select>
@@ -17,14 +17,14 @@
         SELECT
         COUNT(*)
         FROM
-        `water_company` as wc
+        `firm` as f
         <include refid="queryCondition"/>
     </select>
 
     <sql id="queryCondition">
         <where>
             <if test="query.name!=null and query.name!=''">
-            AND wc.water_company_name LIKE CONCAT('%',#{query.name},'%')
+            AND f.firm_name LIKE CONCAT('%',#{query.name},'%')
             </if>
         </where>
     </sql>

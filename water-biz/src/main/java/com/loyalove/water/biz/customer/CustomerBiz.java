@@ -1,8 +1,8 @@
-package com.loyalove.water.biz.auth;
+package com.loyalove.water.biz.customer;
 
 import com.loyalove.water.common.model.Pager;
 import com.loyalove.water.pojo.CustomerPO;
-import com.loyalove.water.query.auth.CustomerQuery;
+import com.loyalove.water.query.customer.CustomerQuery;
 
 import java.util.List;
 

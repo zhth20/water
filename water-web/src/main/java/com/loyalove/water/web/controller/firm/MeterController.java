@@ -8,13 +8,13 @@
  * lingfeng@yiji.com 2017-01-13 13:58 创建
  *
  */
-package com.loyalove.water.web.controller.auth;
+package com.loyalove.water.web.controller.firm;
 
-import com.loyalove.water.biz.auth.MeterBiz;
+import com.loyalove.water.biz.firm.MeterBiz;
 import com.loyalove.water.common.model.Pager;
 import com.loyalove.water.common.model.Result;
 import com.loyalove.water.pojo.MeterPO;
-import com.loyalove.water.query.auth.MeterQuery;
+import com.loyalove.water.query.firm.MeterQuery;
 import com.loyalove.water.web.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

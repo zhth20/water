@@ -1,8 +1,8 @@
-package com.loyalove.water.biz.auth;
+package com.loyalove.water.biz.firm;
 
 import com.loyalove.water.common.model.Pager;
 import com.loyalove.water.pojo.FirmPO;
-import com.loyalove.water.query.auth.FirmQuery;
+import com.loyalove.water.query.firm.FirmQuery;
 
 import java.util.List;
 

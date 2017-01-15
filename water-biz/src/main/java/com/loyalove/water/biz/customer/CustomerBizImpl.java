@@ -1,13 +1,13 @@
-package com.loyalove.water.biz.auth;
+package com.loyalove.water.biz.customer;
 
 import com.loyalove.water.biz.BaseBiz;
 import com.loyalove.water.common.model.Pager;
 import com.loyalove.water.common.util.CollectionUtils;
-import com.loyalove.water.dao.auth.CustomerDAO;
+import com.loyalove.water.dao.customer.CustomerDAO;
 import com.loyalove.water.dao.base.CustomerMapper;
 import com.loyalove.water.pojo.CustomerExample;
 import com.loyalove.water.pojo.CustomerPO;
-import com.loyalove.water.query.auth.CustomerQuery;
+import com.loyalove.water.query.customer.CustomerQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

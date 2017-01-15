@@ -1,8 +1,8 @@
-package com.loyalove.water.dao.auth;
+package com.loyalove.water.dao.firm;
 
 import com.loyalove.water.common.model.Pager;
 import com.loyalove.water.pojo.FirmPO;
-import com.loyalove.water.query.auth.FirmQuery;
+import com.loyalove.water.query.firm.FirmQuery;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
