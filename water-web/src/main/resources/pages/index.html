@@ -12,6 +12,8 @@
 </head>
 
 <body class="beg-login-bg">
+
+<div class="layui-canvs"></div>
 <div class="beg-login-box" style="display: none;">
     <header>
         <h1>智慧水务管理系统</h1>
@@ -33,12 +35,15 @@
                        class="layui-input">
             </div>
             <div class="layui-form-item">
-                <div class="beg-pull-left beg-login-remember">
-                    <input type="checkbox" name="rememberMe" value="true" lay-skin="switch" checked title="记住帐号">
-                    <label>记住帐号</label>
+                <!--<div class="beg-pull-left beg-login-remember">-->
+                    <!--<input type="checkbox" name="rememberMe" value="true" lay-skin="switch" checked title="记住帐号">-->
+                    <!--<label>记住帐号</label>-->
+                <!--</div>-->
+                <div class="beg-pull-left">
+                    <button class="layui-btn layui-btn-primary" type="reset">重置</button>
                 </div>
                 <div class="beg-pull-right">
-                    <button class="layui-btn layui-btn-primary" lay-submit lay-filter="login">登录</button>
+                    <button class="layui-btn" lay-submit lay-filter="login">登录</button>
                 </div>
                 <div class="beg-clear"></div>
             </div>
