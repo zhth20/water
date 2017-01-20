@@ -57,6 +57,10 @@
 
         <water.dubbo-starter.version>1.0.0</water.dubbo-starter.version>
 
+        <water.jsondoc-starter.version>1.2.16</water.jsondoc-starter.version>
+
+        <water.jsondoc-ui.version>1.2.16</water.jsondoc-ui.version>
+
     </properties>
 
     <dependencyManagement>
@@ -127,6 +131,18 @@
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${water.mybatis-spring-boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jsondoc</groupId>
+                <artifactId>spring-boot-starter-jsondoc</artifactId>
+                <version>${water.jsondoc-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jsondoc</groupId>
+                <artifactId>jsondoc-ui-webjar</artifactId>
+                <version>${water.jsondoc-ui.version}</version>
             </dependency>
 
             <dependency>
