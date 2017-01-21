@@ -21,12 +21,16 @@ public class WebDevStart extends SpringBootServletInitializer {
 
     private static final Logger logger = LoggerFactory.getLogger(WebDevStart.class);
 
+    private static final String ENV_KEY = "spring.profiles.active";
+    private static final String ENV_VALUE = "dev";
+
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(WebDevStart.class);
     }
 
     public static void main(String[] args) {
+        System.setProperty(ENV_KEY, ENV_VALUE);
         EmbeddedWebApplicationContext context = (EmbeddedWebApplicationContext) SpringApplication.run(WebDevStart.class, args);
         logger.info("Web开发服务启动成功：http://localhost:{}",context.getEmbeddedServletContainer().getPort());
     }
