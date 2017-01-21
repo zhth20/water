@@ -73,4 +73,77 @@
       }
     ]
   }
+  ,
+  {
+    "title": "系统首页",
+    "icon": "fa-globe fa-fw"
+  }
+  ,
+  {
+    "title": "运行调度管理",
+    "icon": "fa-globe fa-fw"
+  }
+  ,
+  {
+    "title": "实时报警系统",
+    "icon": "fa-globe fa-fw"
+  }
+  ,
+  {
+    "title": "统计分析报告",
+    "icon": "fa-globe fa-fw"
+  }
+  ,
+  {
+    "title": "管网数据管理",
+    "icon": "fa-globe fa-fw",
+    "spread": true,
+    "children": [
+      {
+        "title": "管网管理",
+        "icon": "fa-map-marker fa-fw",
+        "href": "/pages/gis/map.html"
+      },
+      {
+        "title": "显示设置",
+        "icon": "fa-map-marker fa-fw",
+        "href": "/pages/gis/map.html"
+      },
+      {
+        "title": "系统设置",
+        "icon": "fa-map-marker fa-fw",
+        "href": "/pages/gis/map.html"
+      }
+    ]
+  }
+  ,
+  {
+    "title": "附属设备管理",
+    "icon": "fa-globe fa-fw"
+  }
+  ,
+  {
+    "title": "系统配置设置",
+    "icon": "fa-globe fa-fw"
+  }
+  ,
+  {
+    "title": "用户管理",
+    "icon": "fa-globe fa-fw"
+  }
+  ,
+  {
+    "title": "学校管理",
+    "icon": "fa-globe fa-fw"
+  }
+  ,
+  {
+    "title": "水司管理",
+    "icon": "fa-globe fa-fw"
+  }
+   ,
+  {
+    "title": "企业管理",
+    "icon": "fa-globe fa-fw"
+  }
 ]
