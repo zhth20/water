@@ -12,6 +12,7 @@
     <result column="logo" jdbcType="VARCHAR" property="logo" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="has3d" jdbcType="VARCHAR" property="has3d" />
     <result column="mark" jdbcType="VARCHAR" property="mark" />
     <result column="head_name" jdbcType="VARCHAR" property="headName" />
     <result column="head_phone" jdbcType="VARCHAR" property="headPhone" />
@@ -84,7 +85,7 @@
   </sql>
   <sql id="Base_Column_List">
     customer_id, customer_code, user_id, name, address, tel, email, logo, title, province, 
-    mark, head_name, head_phone, lng, lat, create_user, create_time, update_time
+    has3d, mark, head_name, head_phone, lng, lat, create_user, create_time, update_time
   </sql>
   <sql id="Blob_Column_List">
     cong
@@ -147,17 +148,17 @@
     insert into customer (customer_code, user_id, name, 
       address, tel, email, 
       logo, title, province, 
-      mark, head_name, head_phone, 
-      lng, lat, create_user, 
-      create_time, update_time, cong
-      )
+      has3d, mark, head_name, 
+      head_phone, lng, lat, 
+      create_user, create_time, update_time, 
+      cong)
     values (#{customerCode,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{address,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
       #{logo,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
-      #{mark,jdbcType=VARCHAR}, #{headName,jdbcType=VARCHAR}, #{headPhone,jdbcType=VARCHAR}, 
-      #{lng,jdbcType=VARCHAR}, #{lat,jdbcType=VARCHAR}, #{createUser,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{cong,jdbcType=LONGVARCHAR}
-      )
+      #{has3d,jdbcType=VARCHAR}, #{mark,jdbcType=VARCHAR}, #{headName,jdbcType=VARCHAR}, 
+      #{headPhone,jdbcType=VARCHAR}, #{lng,jdbcType=VARCHAR}, #{lat,jdbcType=VARCHAR}, 
+      #{createUser,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{cong,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.loyalove.water.pojo.CustomerPO">
     <selectKey keyProperty="customerId" order="AFTER" resultType="java.lang.Integer">
@@ -191,6 +192,9 @@
       </if>
       <if test="province != null">
         province,
+      </if>
+      <if test="has3d != null">
+        has3d,
       </if>
       <if test="mark != null">
         mark,
@@ -247,6 +251,9 @@
       </if>
       <if test="province != null">
         #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="has3d != null">
+        #{has3d,jdbcType=VARCHAR},
       </if>
       <if test="mark != null">
         #{mark,jdbcType=VARCHAR},
@@ -316,6 +323,9 @@
       <if test="record.province != null">
         province = #{record.province,jdbcType=VARCHAR},
       </if>
+      <if test="record.has3d != null">
+        has3d = #{record.has3d,jdbcType=VARCHAR},
+      </if>
       <if test="record.mark != null">
         mark = #{record.mark,jdbcType=VARCHAR},
       </if>
@@ -360,6 +370,7 @@
       logo = #{record.logo,jdbcType=VARCHAR},
       title = #{record.title,jdbcType=VARCHAR},
       province = #{record.province,jdbcType=VARCHAR},
+      has3d = #{record.has3d,jdbcType=VARCHAR},
       mark = #{record.mark,jdbcType=VARCHAR},
       head_name = #{record.headName,jdbcType=VARCHAR},
       head_phone = #{record.headPhone,jdbcType=VARCHAR},
@@ -385,6 +396,7 @@
       logo = #{record.logo,jdbcType=VARCHAR},
       title = #{record.title,jdbcType=VARCHAR},
       province = #{record.province,jdbcType=VARCHAR},
+      has3d = #{record.has3d,jdbcType=VARCHAR},
       mark = #{record.mark,jdbcType=VARCHAR},
       head_name = #{record.headName,jdbcType=VARCHAR},
       head_phone = #{record.headPhone,jdbcType=VARCHAR},
@@ -427,6 +439,9 @@
       <if test="province != null">
         province = #{province,jdbcType=VARCHAR},
       </if>
+      <if test="has3d != null">
+        has3d = #{has3d,jdbcType=VARCHAR},
+      </if>
       <if test="mark != null">
         mark = #{mark,jdbcType=VARCHAR},
       </if>
@@ -468,6 +483,7 @@
       logo = #{logo,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},
       province = #{province,jdbcType=VARCHAR},
+      has3d = #{has3d,jdbcType=VARCHAR},
       mark = #{mark,jdbcType=VARCHAR},
       head_name = #{headName,jdbcType=VARCHAR},
       head_phone = #{headPhone,jdbcType=VARCHAR},
@@ -490,6 +506,7 @@
       logo = #{logo,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},
       province = #{province,jdbcType=VARCHAR},
+      has3d = #{has3d,jdbcType=VARCHAR},
       mark = #{mark,jdbcType=VARCHAR},
       head_name = #{headName,jdbcType=VARCHAR},
       head_phone = #{headPhone,jdbcType=VARCHAR},

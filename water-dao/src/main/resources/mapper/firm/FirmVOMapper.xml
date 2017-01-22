@@ -3,12 +3,17 @@
 <mapper namespace="com.loyalove.water.dao.firm.FirmDAO">
 
     <!--查询厂商列表-->
-    <select id="queryFirms" resultType="com.loyalove.water.pojo.FirmPO">
+    <select id="queryFirms" resultType="com.loyalove.water.vo.customer.FirmVO">
         SELECT
-        f.*
+        f.*,
+        u.username AS create_username
         FROM
-        `firm` as f
-        <include refid="queryCondition"/>
+        `firm` as f,
+        `user` as u
+        <where>
+            f.create_user = u.user_id
+            <include refid="queryCondition"/>
+        </where>
         LIMIT #{pager.recordStart}, #{pager.pageSize}
     </select>
 
@@ -18,14 +23,14 @@
         COUNT(*)
         FROM
         `firm` as f
-        <include refid="queryCondition"/>
+        <where>
+            <include refid="queryCondition"/>
+        </where>
     </select>
 
     <sql id="queryCondition">
-        <where>
-            <if test="query.name!=null and query.name!=''">
+        <if test="query.name!=null and query.name!=''">
             AND f.firm_name LIKE CONCAT('%',#{query.name},'%')
-            </if>
-        </where>
+        </if>
     </sql>
 </mapper>

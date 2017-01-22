@@ -3,6 +3,7 @@ package com.loyalove.water.biz.company;
 import com.loyalove.water.common.model.Pager;
 import com.loyalove.water.pojo.WaterCompanyPO;
 import com.loyalove.water.query.company.WaterCompanyQuery;
+import com.loyalove.water.vo.customer.WaterCompanyVO;
 
 import java.util.List;
 
@@ -26,7 +27,7 @@ public interface WaterCompanyBiz {
      * 查询水司列表
      * @return
      */
-    List<WaterCompanyPO> queryWaterCompanys(WaterCompanyQuery query, Pager pager);
+    List<WaterCompanyVO> queryWaterCompanys(WaterCompanyQuery query, Pager pager);
 
     /**
      * 查询水司数量

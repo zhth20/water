@@ -80,6 +80,9 @@
                     <col width="8%">
                     <col width="8%">
                     <col width="8%">
+                    <col width="8%">
+                    <col width="8%">
+                    <col width="8%">
                     <col width="12%">
                     <col width="12%">
                     <col width="auto">
@@ -92,6 +95,9 @@
                     <th>客户名称</th>
                     <th>邮箱</th>
                     <th>客户电话</th>
+                    <th>省份</th>
+                    <th>3D</th>
+                    <th>备注</th>
                     <th>创建人</th>
                     <th>创建时间</th>
                     <th>更新时间</th>
@@ -118,7 +124,10 @@
         <td>{{=item.name}}</td>
         <td>{{=item.email}}</td>
         <td>{{=item.tel}}</td>
-        <td>{{=item.createUser}}</td>
+        <td>{{=item.province}}</td>
+        <td>{{=item.has3d}}</td>
+        <td>{{=item.mark}}</td>
+        <td>{{=item.createUsername}}</td>
         <td>{{=item.createTime}}</td>
         <td>{{=item.updateTime}}</td>
         <td>
@@ -194,6 +203,13 @@
             <div class="layui-input-inline">
                 <input class="layui-input" type="text" name="province"
                        placeholder="省份" autocomplete="off">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">3D</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="has3d"
+                       placeholder="3D" autocomplete="off">
             </div>
         </div>
         <div class="layui-form-item">
@@ -308,6 +324,14 @@
         </div>
 
         <div class="layui-form-item">
+            <label class="layui-form-label">3D</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="has3d" value="{{=d.has3d}}"
+                       placeholder="3D" autocomplete="off">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
             <label class="layui-form-label">备注</label>
             <div class="layui-input-inline">
                 <input class="layui-input" type="text" name="mark" value="{{=d.mark}}"
@@ -404,6 +428,10 @@
         <div class="layui-form-item">
             <label class="layui-form-label">省份</label>
             <div class="layui-form-mid">{{=d.province}}</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">3D</label>
+            <div class="layui-form-mid">{{=d.has3d}}</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">备注</label>

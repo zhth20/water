@@ -3,6 +3,7 @@ package com.loyalove.water.biz.customer;
 import com.loyalove.water.common.model.Pager;
 import com.loyalove.water.pojo.CustomerPO;
 import com.loyalove.water.query.customer.CustomerQuery;
+import com.loyalove.water.vo.customer.CustomerVO;
 
 import java.util.List;
 
@@ -23,10 +24,10 @@ public interface CustomerBiz {
     CustomerPO queryCustomerByName(String customerName);
 
     /**
-     * 查询客户列表
+    * 查询客户列表
      * @return
      */
-    List<CustomerPO> queryCustomers(CustomerQuery query, Pager pager);
+    List<CustomerVO> queryCustomers(CustomerQuery query, Pager pager);
 
     /**
      * 查询客户数量

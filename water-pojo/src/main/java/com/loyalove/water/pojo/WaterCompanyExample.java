@@ -675,6 +675,76 @@ public class WaterCompanyExample {
             return (Criteria) this;
         }
 
+        public Criteria andHas3dIsNull() {
+            addCriterion("has3d is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHas3dIsNotNull() {
+            addCriterion("has3d is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHas3dEqualTo(String value) {
+            addCriterion("has3d =", value, "has3d");
+            return (Criteria) this;
+        }
+
+        public Criteria andHas3dNotEqualTo(String value) {
+            addCriterion("has3d <>", value, "has3d");
+            return (Criteria) this;
+        }
+
+        public Criteria andHas3dGreaterThan(String value) {
+            addCriterion("has3d >", value, "has3d");
+            return (Criteria) this;
+        }
+
+        public Criteria andHas3dGreaterThanOrEqualTo(String value) {
+            addCriterion("has3d >=", value, "has3d");
+            return (Criteria) this;
+        }
+
+        public Criteria andHas3dLessThan(String value) {
+            addCriterion("has3d <", value, "has3d");
+            return (Criteria) this;
+        }
+
+        public Criteria andHas3dLessThanOrEqualTo(String value) {
+            addCriterion("has3d <=", value, "has3d");
+            return (Criteria) this;
+        }
+
+        public Criteria andHas3dLike(String value) {
+            addCriterion("has3d like", value, "has3d");
+            return (Criteria) this;
+        }
+
+        public Criteria andHas3dNotLike(String value) {
+            addCriterion("has3d not like", value, "has3d");
+            return (Criteria) this;
+        }
+
+        public Criteria andHas3dIn(List<String> values) {
+            addCriterion("has3d in", values, "has3d");
+            return (Criteria) this;
+        }
+
+        public Criteria andHas3dNotIn(List<String> values) {
+            addCriterion("has3d not in", values, "has3d");
+            return (Criteria) this;
+        }
+
+        public Criteria andHas3dBetween(String value1, String value2) {
+            addCriterion("has3d between", value1, value2, "has3d");
+            return (Criteria) this;
+        }
+
+        public Criteria andHas3dNotBetween(String value1, String value2) {
+            addCriterion("has3d not between", value1, value2, "has3d");
+            return (Criteria) this;
+        }
+
         public Criteria andMarkIsNull() {
             addCriterion("mark is null");
             return (Criteria) this;

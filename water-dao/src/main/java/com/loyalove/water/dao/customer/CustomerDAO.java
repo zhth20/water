@@ -1,8 +1,8 @@
 package com.loyalove.water.dao.customer;
 
 import com.loyalove.water.common.model.Pager;
-import com.loyalove.water.pojo.CustomerPO;
 import com.loyalove.water.query.customer.CustomerQuery;
+import com.loyalove.water.vo.customer.CustomerVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -27,7 +27,7 @@ public interface CustomerDAO {
      * @param query,pager
      * @return
      */
-    List<CustomerPO> queryCustomers(@Param("query") CustomerQuery query, @Param("pager") Pager pager);
+    List<CustomerVO> queryCustomers(@Param("query") CustomerQuery query, @Param("pager") Pager pager);
 
     /**
      * 查询客户数量

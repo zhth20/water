@@ -3,11 +3,12 @@ package com.loyalove.water.biz.company;
 import com.loyalove.water.biz.BaseBiz;
 import com.loyalove.water.common.model.Pager;
 import com.loyalove.water.common.util.CollectionUtils;
-import com.loyalove.water.dao.company.WaterCompanyDAO;
 import com.loyalove.water.dao.base.WaterCompanyMapper;
+import com.loyalove.water.dao.company.WaterCompanyDAO;
 import com.loyalove.water.pojo.WaterCompanyExample;
 import com.loyalove.water.pojo.WaterCompanyPO;
 import com.loyalove.water.query.company.WaterCompanyQuery;
+import com.loyalove.water.vo.customer.WaterCompanyVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -51,7 +52,7 @@ public class WaterCompanyBizImpl extends BaseBiz implements WaterCompanyBiz {
      * @return
      */
     @Override
-    public List<WaterCompanyPO> queryWaterCompanys(WaterCompanyQuery query, Pager pager) {
+    public List<WaterCompanyVO> queryWaterCompanys(WaterCompanyQuery query, Pager pager) {
         return waterCompanyDAO.queryWaterCompanys(query, pager);
     }
 

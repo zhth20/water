@@ -1,8 +1,8 @@
 package com.loyalove.water.dao.firm;
 
 import com.loyalove.water.common.model.Pager;
-import com.loyalove.water.pojo.FirmPO;
 import com.loyalove.water.query.firm.FirmQuery;
+import com.loyalove.water.vo.customer.FirmVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -27,7 +27,7 @@ public interface FirmDAO {
      * @param query,pager
      * @return
      */
-    List<FirmPO> queryFirms(@Param("query") FirmQuery query, @Param("pager") Pager pager);
+    List<FirmVO> queryFirms(@Param("query") FirmQuery query, @Param("pager") Pager pager);
 
     /**
      * 查询厂商数量

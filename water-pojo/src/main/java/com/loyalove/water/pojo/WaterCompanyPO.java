@@ -33,6 +33,9 @@ public class WaterCompanyPO implements Serializable {
     /** 省份 */
     private String province;
 
+    /** 是否有3D模型 */
+    private String has3d;
+
     /** 备注 */
     private String mark;
 
@@ -117,6 +120,14 @@ public class WaterCompanyPO implements Serializable {
         this.province = province;
     }
 
+    public String getHas3d() {
+        return has3d;
+    }
+
+    public void setHas3d(String has3d) {
+        this.has3d = has3d;
+    }
+
     public String getMark() {
         return mark;
     }
@@ -179,6 +190,7 @@ public class WaterCompanyPO implements Serializable {
         sb.append(", logo=").append(logo);
         sb.append(", title=").append(title);
         sb.append(", province=").append(province);
+        sb.append(", has3d=").append(has3d);
         sb.append(", mark=").append(mark);
         sb.append(", lng=").append(lng);
         sb.append(", lat=").append(lat);

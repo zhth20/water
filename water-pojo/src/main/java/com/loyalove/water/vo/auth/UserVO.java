@@ -23,8 +23,6 @@ public class UserVO extends BaseVO {
 
     private RolePO rolePO;
 
-    private String createUsername;
-
     private Set<String> roles;
 
     private Set<String> permissions;
@@ -96,14 +94,6 @@ public class UserVO extends BaseVO {
 
     public void setRoleId(Integer roleId) {
         rolePO.setRoleId(roleId);
-    }
-
-    public String getCreateUsername() {
-        return createUsername;
-    }
-
-    public void setCreateUsername(String createUsername) {
-        this.createUsername = createUsername;
     }
 
     public Integer getUserId() {

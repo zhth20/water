@@ -6,6 +6,7 @@ import com.loyalove.water.common.model.Pager;
 import com.loyalove.water.common.model.Result;
 import com.loyalove.water.pojo.WaterCompanyPO;
 import com.loyalove.water.query.company.WaterCompanyQuery;
+import com.loyalove.water.vo.customer.WaterCompanyVO;
 import com.loyalove.water.web.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +25,7 @@ public class WaterCompanyController extends BaseController {
 
     @RequestMapping("")
     public Result queryWaterCompanys(WaterCompanyQuery query, Pager pager) {
-        List<WaterCompanyPO> result = waterCompanyBiz.queryWaterCompanys(query, pager);
+        List<WaterCompanyVO> result = waterCompanyBiz.queryWaterCompanys(query, pager);
         pager.setRecordTotal(waterCompanyBiz.queryCount(query));
         return Result.getResultSuccess("查询成功", result, pager);
     }

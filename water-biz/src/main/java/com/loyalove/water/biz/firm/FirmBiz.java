@@ -3,6 +3,7 @@ package com.loyalove.water.biz.firm;
 import com.loyalove.water.common.model.Pager;
 import com.loyalove.water.pojo.FirmPO;
 import com.loyalove.water.query.firm.FirmQuery;
+import com.loyalove.water.vo.customer.FirmVO;
 
 import java.util.List;
 
@@ -26,7 +27,7 @@ public interface FirmBiz {
      * 查询厂商列表
      * @return
      */
-    List<FirmPO> queryFirms(FirmQuery query, Pager pager);
+    List<FirmVO> queryFirms(FirmQuery query, Pager pager);
 
     /**
      * 查询厂商数量
