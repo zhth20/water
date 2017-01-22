@@ -44,18 +44,6 @@
     ]
   },
   {
-    "title": "学校管理",
-    "icon": "fa-university fa-fw",
-    "spread": true,
-    "children": [
-      {
-        "title": "地图",
-        "icon": "fa-map-marker fa-fw",
-        "href": "/pages/gis/map.html"
-      }
-    ]
-  },
-  {
     "title": "厂商管理",
     "icon": "fa-building fa-fw",
     "spread": true,
@@ -66,11 +54,6 @@
       }
     ]
   },
-  {
-    "title": "系统首页",
-    "icon": "fa-globe fa-fw"
-  }
-  ,
   {
     "title": "运行调度管理",
     "icon": "fa-globe fa-fw"
@@ -116,26 +99,6 @@
   ,
   {
     "title": "系统配置设置",
-    "icon": "fa-globe fa-fw"
-  }
-  ,
-  {
-    "title": "用户管理",
-    "icon": "fa-globe fa-fw"
-  }
-  ,
-  {
-    "title": "学校管理",
-    "icon": "fa-globe fa-fw"
-  }
-  ,
-  {
-    "title": "水司管理",
-    "icon": "fa-globe fa-fw"
-  }
-   ,
-  {
-    "title": "企业管理",
     "icon": "fa-globe fa-fw"
   }
 ]
