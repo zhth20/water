@@ -8,6 +8,7 @@
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="tel" jdbcType="VARCHAR" property="tel" />
     <result column="logo" jdbcType="VARCHAR" property="logo" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="province" jdbcType="VARCHAR" property="province" />
     <result column="mark" jdbcType="VARCHAR" property="mark" />
     <result column="lng" jdbcType="VARCHAR" property="lng" />
@@ -75,8 +76,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    water_company_id, company_code, name, address, tel, logo, province, mark, lng, lat, 
-    create_user, create_time, update_time
+    water_company_id, company_code, name, address, tel, logo, title, province, mark, 
+    lng, lat, create_user, create_time, update_time
   </sql>
   <select id="selectByExample" parameterType="com.loyalove.water.pojo.WaterCompanyExample" resultMap="BaseResultMap">
     select
@@ -116,11 +117,11 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into water_company (company_code, name, address, 
-      tel, logo, province, 
+      tel, logo, title, province, 
       mark, lng, lat, create_user, 
       create_time, update_time)
     values (#{companyCode,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{tel,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{tel,jdbcType=VARCHAR}, #{logo,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
       #{mark,jdbcType=VARCHAR}, #{lng,jdbcType=VARCHAR}, #{lat,jdbcType=VARCHAR}, #{createUser,jdbcType=INTEGER}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
@@ -144,6 +145,9 @@
       </if>
       <if test="logo != null">
         logo,
+      </if>
+      <if test="title != null">
+        title,
       </if>
       <if test="province != null">
         province,
@@ -182,6 +186,9 @@
       </if>
       <if test="logo != null">
         #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
       </if>
       <if test="province != null">
         #{province,jdbcType=VARCHAR},
@@ -233,6 +240,9 @@
       <if test="record.logo != null">
         logo = #{record.logo,jdbcType=VARCHAR},
       </if>
+      <if test="record.title != null">
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
       <if test="record.province != null">
         province = #{record.province,jdbcType=VARCHAR},
       </if>
@@ -267,6 +277,7 @@
       address = #{record.address,jdbcType=VARCHAR},
       tel = #{record.tel,jdbcType=VARCHAR},
       logo = #{record.logo,jdbcType=VARCHAR},
+      title = #{record.title,jdbcType=VARCHAR},
       province = #{record.province,jdbcType=VARCHAR},
       mark = #{record.mark,jdbcType=VARCHAR},
       lng = #{record.lng,jdbcType=VARCHAR},
@@ -295,6 +306,9 @@
       </if>
       <if test="logo != null">
         logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
       </if>
       <if test="province != null">
         province = #{province,jdbcType=VARCHAR},
@@ -327,6 +341,7 @@
       address = #{address,jdbcType=VARCHAR},
       tel = #{tel,jdbcType=VARCHAR},
       logo = #{logo,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
       province = #{province,jdbcType=VARCHAR},
       mark = #{mark,jdbcType=VARCHAR},
       lng = #{lng,jdbcType=VARCHAR},

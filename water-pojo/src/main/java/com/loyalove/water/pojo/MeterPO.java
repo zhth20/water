@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * 该实体由系统生成，请勿修改
  *
- * 生成时间 2017/01/14
+ * 生成时间 2017/01/22
  */
 public class MeterPO implements Serializable {
     /** 编号 */
