@@ -183,6 +183,13 @@
             </div>
         </div>
         <div class="layui-form-item">
+            <label class="layui-form-label">标题</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="title"
+                       placeholder="标题" autocomplete="off">
+            </div>
+        </div>
+        <div class="layui-form-item">
             <label class="layui-form-label">省份</label>
             <div class="layui-input-inline">
                 <input class="layui-input" type="text" name="province"
@@ -285,6 +292,14 @@
         </div>
 
         <div class="layui-form-item">
+            <label class="layui-form-label">标题</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="logo" value="{{=d.title}}"
+                       placeholder="标题" autocomplete="off">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
             <label class="layui-form-label">省份</label>
             <div class="layui-input-inline">
                 <input class="layui-input" type="text" name="province" value="{{=d.province}}"
@@ -381,6 +396,10 @@
         <div class="layui-form-item">
             <label class="layui-form-label">LOGO</label>
             <div class="layui-form-mid">{{=d.logo}}</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">标题</label>
+            <div class="layui-form-mid">{{=d.title}}</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">省份</label>
