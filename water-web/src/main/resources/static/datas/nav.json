@@ -27,33 +27,15 @@
     "spread": true,
     "children": [
       {
-        "title": "客户",
+        "title": "学校",
         "icon": "fa-university fa-fw",
         "href": "/pages/customer/customer.html"
-      }
-    ]
-  },
-  {
-    "title": "厂商管理",
-    "icon": "fa-building fa-fw",
-    "spread": true,
-    "children": [
+      },
       {
         "title": "厂商",
         "icon": "fa-building fa-fw",
         "href": "/pages/firm/firm.html"
-      },{
-        "title": "表具",
-        "icon": "fa-dashboard fa-fw",
-        "href": "/pages/firm/meter.html"
-      }
-    ]
-  },
-  {
-    "title": "水司管理",
-    "icon": "fa-tint fa-fw",
-    "spread": true,
-    "children": [
+      },
       {
         "title": "水司",
         "icon": "fa-tint fa-fw",
@@ -62,8 +44,8 @@
     ]
   },
   {
-    "title": "GIS系统",
-    "icon": "fa-globe fa-fw",
+    "title": "学校管理",
+    "icon": "fa-university fa-fw",
     "spread": true,
     "children": [
       {
@@ -72,8 +54,18 @@
         "href": "/pages/gis/map.html"
       }
     ]
-  }
-  ,
+  },
+  {
+    "title": "厂商管理",
+    "icon": "fa-building fa-fw",
+    "spread": true,
+    "children": [{
+        "title": "表具",
+        "icon": "fa-dashboard fa-fw",
+        "href": "/pages/firm/meter.html"
+      }
+    ]
+  },
   {
     "title": "系统首页",
     "icon": "fa-globe fa-fw"
