@@ -2,17 +2,15 @@
  * Created by Loyal on 2016/12/29.
  */
 layui.config({
-    base: '/static/js/common/'
+    base: '/static/js/common/',
+}).extend({ //设定组件别名
+    CustomMap: '../gis/common/CustomMap', //如果test.js是在根目录，也可以不用设定别名
+    CustomControl: '../gis/common/CustomControl', //如果test.js是在根目录，也可以不用设定别名
+    CustomMarkers: '../gis/common/CustomMarkers', //如果test.js是在根目录，也可以不用设定别名
 });
 
-layui.use('layer', function () {
-    var map = new BMap.Map('map-content');
-    map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);//设定地图的中心点和坐标并将地图显示在地图容器中
-    map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
-    map.enableScrollWheelZoom();//启用地图滚轮放大缩小
-    map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
-    map.enableKeyboard();//启用键盘上下左右键移动地图
-    var ctrl_nav = new BMap.NavigationControl({anchor: BMAP_ANCHOR_BOTTOM_LEFT, type: BMAP_NAVIGATION_CONTROL_LARGE});
-    map.addControl(new BMap.MapTypeControl({anchor: BMAP_ANCHOR_BOTTOM_RIGHT}));
-    map.addControl(ctrl_nav);
+layui.use('CustomMap', function () {
+    var customer = {"id":1, "name":"重庆大学","address":"重庆市沙坪坝区沙正街174号，A区节能办", "tel":"0123456789","cong":{"center":{"y":"29.564212","x":"106.561764"},"zoom":13,"map":[{"s":3,"color":"#2A8ABC","dn":50},{"s":3,"color":"#009999","dn":65},{"s":3,"color":"#385AD3","dn":80},{"s":3,"color":"#3894E4","dn":100},{"s":3,"color":"#F7883A","dn":125},{"s":3,"color":"#114A67","dn":150},{"s":3,"color":"#437469","dn":200},{"s":3,"color":"#7384DA","dn":250},{"s":3,"color":"#308430","dn":300},{"s":3,"color":"#69D02A","dn":350}]}};
+    var Bmap = layui.CustomMap;
+    var map = new Bmap('map-content',customer);
 });
