@@ -56,7 +56,8 @@
   },
   {
     "title": "运行调度管理",
-    "icon": "fa-globe fa-fw"
+    "icon": "fa-globe fa-fw",
+    "href": "/pages/gis/map.html"
   }
   ,
   {
