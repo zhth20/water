@@ -73,11 +73,20 @@
                 <!--列样式控制-->
                 <colgroup>
                     <col width="3%">
-                    <col width="8%">
-                    <col width="15%">
-                    <col width="8%">
-                    <col width="8%">
+                    
+                    <col width="5%">
+                    <col width="5%">
+                    <col width="7%">
+                    <col width="7%">
+                    <col width="7%">
+                    
+                    <col width="7%">
+                    <col width="7%">
+                    <col width="7%">
+                    <col width="7%">
+                    <col width="7%">
                     <col width="12%">
+                    
                     <col width="12%">
                     <col width="auto">
                 </colgroup>
@@ -85,14 +94,20 @@
                 <thead>
                 <tr>
                     <th><input id="selected-all" type="checkbox" name="close" title="全选"></th>
-                    <th>表号</th>
                     <th>厂商</th>
-                    <th>型号</th>
+                    <th>表号</th>
                     <th>口径</th>
+                    <th>型号</th>
+                    <th>类别</th>
+                    
                     <th>通信模块号</th>
-                    <th>创建人</th>
-                    <th>创建时间</th>
-                    <th>更新时间</th>
+                    <th>软件版本</th>
+                    <th>频率</th>
+                    <th>备注</th>
+                    <th>隶属客户</th>
+                    <th>出厂时间</th>
+                    
+                    <th>安装时间</th>
                     <th>操作</th>
                 </tr>
                 </thead>
@@ -113,13 +128,19 @@
     {{# layui.each(d.result, function(index, item){ }}
     <tr>
         <td><input type="checkbox" name="ids" value="{{=item.meterId}}" data-name="{{=item.meterNo}}"></td>
-        <td>{{=item.meterNo}}</td>
         <td>{{=item.firmId}}</td>
+		<td>{{=item.meterNo}}</td>
         <td>{{=item.typeCode}}</td>
         <td>{{=item.caliber}}</td>
         <td>{{=item.moduleNo}}</td>
-        <td>{{=item.createUser}}</td>
+
+		<td>{{=item.moduleNo}}</td>
+		<td>Ver 6.0.3</td>
+        <td>2分钟</td>
+		<td>管网</td>
+		<td>重庆大学</td>
         <td>{{=item.createTime}}</td>
+
         <td>{{=item.updateTime}}</td>
         <td>
             <a class="layui-btn layui-btn-mini detail-trigger"

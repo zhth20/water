@@ -2,7 +2,7 @@
   {
     "title": "账户管理",
     "icon": "fa-user fa-fw",
-    "spread": true,
+    "spread": false,
     "children": [
       {
         "title": "用户",
@@ -24,7 +24,7 @@
   {
     "title": "客户管理",
     "icon": "fa-users fa-fw",
-    "spread": true,
+    "spread": false,
     "children": [
       {
         "title": "学校",
@@ -44,11 +44,11 @@
     ]
   },
   {
-    "title": "厂商管理",
+    "title": "终端管理",
     "icon": "fa-building fa-fw",
-    "spread": true,
+    "spread": false,
     "children": [{
-        "title": "表具",
+        "title": "表具管理",
         "icon": "fa-dashboard fa-fw",
         "href": "/pages/firm/meter.html"
       }
@@ -73,7 +73,7 @@
   {
     "title": "管网数据管理",
     "icon": "fa-globe fa-fw",
-    "spread": true,
+    "spread": false,
     "children": [
       {
         "title": "管网管理",
