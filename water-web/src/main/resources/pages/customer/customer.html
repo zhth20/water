@@ -75,11 +75,11 @@
                 <colgroup>
                     <col width="3%">
                     <col width="8%">
-                    <col width="15%">
+                    <col width="11%">
+                    <col width="6%">
                     <col width="8%">
                     <col width="8%">
-                    <col width="8%">
-                    <col width="8%">
+                    <col width="12%">
                     <col width="8%">
                     <col width="8%">
                     <col width="8%">
@@ -93,13 +93,13 @@
                     <th><input id="selected-all" type="checkbox" name="close" title="全选"></th>
                     <th>客户编码</th>
                     <th>客户名称</th>
-                    <th>邮箱</th>
-                    <th>客户电话</th>
                     <th>省份</th>
                     <th>3D</th>
                     <th>备注</th>
-                    <th>创建人</th>
                     <th>创建时间</th>
+                    <th>创建人</th>
+                    <th>邮箱</th>
+                    <th>客户电话</th>
                     <th>更新时间</th>
                     <th>操作</th>
                 </tr>
@@ -122,13 +122,14 @@
         <td><input type="checkbox" name="ids" value="{{=item.customerId}}" data-name="{{=item.name}}"></td>
         <td>{{=item.customerCode}}</td>
         <td>{{=item.name}}</td>
-        <td>{{=item.email}}</td>
-        <td>{{=item.tel}}</td>
-        <td>{{=item.province}}</td>
-        <td>{{=item.has3d=='Y'?'有':'无'}}</td>
+		<td>{{=item.province}}</td>
+ 		<td>{{=item.has3d=='Y'?'有':'无'}}</td>
         <td>{{=item.mark}}</td>
+		<td>{{=item.createTime}}</td>
         <td>{{=item.createUsername}}</td>
-        <td>{{=item.createTime}}</td>
+        
+		<td>{{=item.email}}</td>
+        <td>{{=item.tel}}</td>
         <td>{{=item.updateTime}}</td>
         <td>
             <a class="layui-btn layui-btn-mini detail-trigger"

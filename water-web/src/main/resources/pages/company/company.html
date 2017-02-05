@@ -71,17 +71,29 @@
             <table class="layui-table" lay-even lay-skin="line" style="min-width: 1200px;">
                 <!--列样式控制-->
                 <colgroup>
-                    <col width="3%">
-                    <col width="8%">
-                    <col width="15%">
-                    <col width="8%">
-                    <col width="8%">
-                    <col width="8%">
-                    <col width="8%">
-                    <col width="8%">
-                    <col width="12%">
-                    <col width="12%">
                     <col width="auto">
+                    <col width="auto">
+                    <col width="auto">
+                    <col width="auto">
+                    <col width="auto">
+                    <col width="auto">
+                    <col width="auto">
+                    <col width="auto">
+                    <col width="auto">
+                    <col width="auto">
+                    <col width="auto">
+                    
+                    <!--  <col width="3%">
+                    <col width="8%">
+                    <col width="8%">
+                    <col width="8%">
+                    <col width="8%">
+                    <col width="5%">
+                    <col width="12%">
+                    <col width="8%">
+                    <col width="8%">
+                    <col width="12%">
+                    <col width="auto"> -->
                 </colgroup>
 
                 <thead>
@@ -89,12 +101,12 @@
                     <th><input id="selected-all" type="checkbox" name="close" title="全选"></th>
                     <th>水司编码</th>
                     <th>水司名称</th>
-                    <th>电话</th>
                     <th>省份</th>
-                    <th>3D</th>
                     <th>备注</th>
-                    <th>创建人</th>
+                    <th>3D</th>
                     <th>创建时间</th>
+                    <th>创建人</th>
+                    <th>电话</th>
                     <th>更新时间</th>
                     <th>操作</th>
                 </tr>
@@ -118,12 +130,12 @@
         <td><input type="checkbox" name="ids" value="{{=item.waterCompanyId}}" data-name="{{=item.name}}"></td>
         <td>{{=item.companyCode}}</td>
         <td>{{=item.name}}</td>
+		<td>{{=item.province}}</td>
+		<td>{{=item.mark}}</td>
+		<td>{{=item.has3d=='Y'?'有':'无'}}</td>
+		<td>{{=item.createTime}}</td>
+		<td>{{=item.createUsername}}</td>
         <td>{{=item.tel}}</td>
-        <td>{{=item.province}}</td>
-        <td>{{=item.has3d=='Y'?'有':'无'}}</td>
-        <td>{{=item.mark}}</td>
-        <td>{{=item.createUsername}}</td>
-        <td>{{=item.createTime}}</td>
         <td>{{=item.updateTime}}</td>
         <td>
             <a class="layui-btn layui-btn-mini detail-trigger"
