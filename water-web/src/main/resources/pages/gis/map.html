@@ -71,19 +71,22 @@
                                    placeholder="长度" autocomplete="off">
                         </div>
                     </div>
-                    
                     <div class="layui-form-item">
                         <label class="layui-form-label">管网类型</label>
                         <div class="layui-input-inline">
-                            <input class="layui-input" type="text" name="mark"
-                                   placeholder="管网类型" autocomplete="off">
+                            <select name="pipe-type">
+                                <option value="">管网类型</option>
+                                <option value="1" selected="">钢管</option>
+                                <option value="2">球墨铸铁</option>
+                                <option value="3">PE管</option>
+                            </select>
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">安装时间</label>
                         <div class="layui-input-inline">
-                            <input class="layui-input" type="text" name="mark"
-                                   placeholder="安装时间" autocomplete="off">
+                            <input class="layui-input" placeholder="安装时间" readonly
+                                   onclick="layui.laydate({elem: this, festival: true})">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -143,7 +146,7 @@
                 </form>
             </div>
             <div class="layui-tab-item">
-                <form id="add-form" class="layui-form" action="/firm/add">
+                <form id="add-form" class="layui-form" action="/firm/add" style="padding-bottom: 50px;">
                     <div class="layui-form-item">
                         <label class="layui-form-label">选择CAD</label>
                         <div class="layui-input-inline">
@@ -187,30 +190,21 @@
                         </button>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">安装时间</label>
-                        <div class="layui-inline">
-						  <input class="layui-input" placeholder="选择时间" onclick="layui.laydate({elem: this, festival: true})">
-						</div>
-                    </div>
-                    <div class="layui-form-item">
                         <label class="layui-form-label">管网类型</label>
                         <div class="layui-input-inline">
-							<select name="pipe-type">
-								<option value="">管网类型</option>
-								<option value="1" selected="">钢管</option>
-								<option value="2">球墨铸铁</option>
-								<option value="3">PE管</option>
-							</select>
-							<div class="layui-unselect layui-form-select">
-								<div class="layui-select-title">
-									<input placeholder="请选类型" value="管网类型" readonly="" class="layui-input layui-unselect" type="text"><i class="layui-edge"></i>
-								</div>
-								<dl class="layui-anim layui-anim-upbit">
-									<dd lay-value="1" class="layui-this">钢管</dd>
-									<dd lay-value="2" class="">球墨铸铁</dd>
-									<dd lay-value="3" class="">PE管</dd>
-								</dl>
-							</div>
+                            <select name="pipe-type">
+                                <option value="">管网类型</option>
+                                <option value="1" selected="">钢管</option>
+                                <option value="2">球墨铸铁</option>
+                                <option value="3">PE管</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">安装时间</label>
+                        <div class="layui-inline">
+						  <input class="layui-input" placeholder="选择时间" readonly
+                                 onclick="layui.laydate({elem: this, festival: true})">
 						</div>
                     </div>
                     <div class="layui-form-item">

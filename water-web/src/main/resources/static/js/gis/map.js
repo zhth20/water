@@ -9,8 +9,9 @@ layui.config({
     CustomMarkers: '../gis/common/CustomMarkers', //如果test.js是在根目录，也可以不用设定别名
 });
 
-layui.use(['CustomMap', 'element', 'upload'], function () {
+layui.use(['CustomMap', 'element', 'upload','form','laydate'], function () {
     var element = layui.element();
+    var form = layui.form();
     layui.upload({
         url: '/upload',
         unwrap: false, //其实就是不向你的input包裹upload组件的ui元素
