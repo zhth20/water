@@ -47,17 +47,40 @@
     "title": "终端管理",
     "icon": "fa-building fa-fw",
     "spread": false,
-    "children": [{
+    "children": [
+    	{
         "title": "表具管理",
         "icon": "fa-dashboard fa-fw",
         "href": "/pages/firm/meter.html"
-      }
+      	}
     ]
   },
   {
     "title": "运行调度管理",
     "icon": "fa-globe fa-fw",
-    "href": "/pages/gis/map.html"
+    "spread": false,
+    "children": [
+      {
+        "title": "实时监测",
+        "icon": "fa-map-marker fa-fw",
+        "href": "/pages/gis/actual.html"
+      },
+      {
+        "title": "动态监测",
+        "icon": "fa-map-marker fa-fw",
+        "href": "/pages/gis/actual.html"
+      },
+      {
+        "title": "层次化显示",
+        "icon": "fa-map-marker fa-fw",
+        "href": "/pages/gis/actual.html"
+      },
+      {
+        "title": "对比分析",
+        "icon": "fa-map-marker fa-fw",
+        "href": "/pages/gis/actual.html"
+      }
+     ]
   }
   ,
   {
@@ -78,6 +101,11 @@
       {
         "title": "管网管理",
         "icon": "fa-map-marker fa-fw",
+        "href": "/pages/gis/map.html"
+      },
+      {
+       	"title": "设备安装",
+        "icon": "fa-dashboard fa-fw",
         "href": "/pages/gis/map.html"
       },
       {
