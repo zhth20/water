@@ -63,13 +63,7 @@
                                    placeholder="口径" autocomplete="off">
                         </div>
                     </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">标高</label>
-                        <div class="layui-input-inline">
-                            <input class="layui-input" type="text" name="mark"
-                                   placeholder="标高" autocomplete="off">
-                        </div>
-                    </div>
+                    
                     <div class="layui-form-item">
                         <label class="layui-form-label">长度</label>
                         <div class="layui-input-inline">
@@ -77,13 +71,7 @@
                                    placeholder="长度" autocomplete="off">
                         </div>
                     </div>
-                    <div class="layui-form-item">
-                        <label class="layui-form-label">埋深</label>
-                        <div class="layui-input-inline">
-                            <input class="layui-input" type="text" name="mark"
-                                   placeholder="埋深" autocomplete="off">
-                        </div>
-                    </div>
+                    
                     <div class="layui-form-item">
                         <label class="layui-form-label">管网类型</label>
                         <div class="layui-input-inline">
@@ -96,6 +84,20 @@
                         <div class="layui-input-inline">
                             <input class="layui-input" type="text" name="mark"
                                    placeholder="安装时间" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">标高</label>
+                        <div class="layui-input-inline">
+                            <input class="layui-input" type="text" name="mark"
+                                   placeholder="标高" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">埋深</label>
+                        <div class="layui-input-inline">
+                            <input class="layui-input" type="text" name="mark"
+                                   placeholder="埋深" autocomplete="off">
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -122,9 +124,9 @@
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">关联管段</label>
-                        <div class="layui-input-inline">
-                            <input class="layui-textarea" type="text" name="mark"
-                                   placeholder="关联管段" autocomplete="off">
+                        <div class="layui-input-block">
+                            <textarea class="layui-textarea" type="text" name="mark"
+                                   placeholder="关联管段" autocomplete="off"></textarea>
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -134,7 +136,7 @@
                                 <i class="fa fa-save"></i> 保存
                             </button>
                             <button type="button" class="layui-btn layui-btn-primary layui-btn-small back-trigger">
-                                <i class="fa fa-reply"></i> 返回
+                                <i class="fa fa-reply"></i> 清除
                             </button>
                         </div>
                     </div>
@@ -146,7 +148,7 @@
                         <label class="layui-form-label">选择CAD</label>
                         <div class="layui-input-inline">
                             <input class="layui-upload-file" type="file" name="file" lay-title="选择CAD">
-                            <button class="layui-btn layui-btn-small" lay-submit lay-filter="save-trigger">
+                            <button class="layui-btn layui-btn-small" lay-submit lay-filter="save-trigger" >
                                 <i class="fa fa-save"></i> 保存
                             </button>
                         </div>
@@ -158,12 +160,14 @@
                                    placeholder="A点坐标" autocomplete="off">
                         </div>
                     </div>
-                    <div class="layui-form-item">
+                    <div class="layui-form-item ">
                         <label class="layui-form-label">A点地图坐标</label>
                         <div class="layui-input-inline">
-                            <input class="layui-input" type="text" name="mark"
-                                   placeholder="A点地图坐标" autocomplete="off">
+                            <input class="layui-input" type="text" name="mark" placeholder="A点地图坐标" autocomplete="off">
                         </div>
+                        <button class="layui-btn layui-btn-small" lay-submit lay-filter="save-trigger" style="margin-top: 5px">
+                        	点击获取
+                        </button>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">B点坐标</label>
@@ -178,22 +182,45 @@
                             <input class="layui-input" type="text" name="mark"
                                    placeholder="B点地图坐标" autocomplete="off">
                         </div>
+                        <button class="layui-btn layui-btn-small" lay-submit lay-filter="save-trigger" style="margin-top: 5px">
+                        	点击获取
+                        </button>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">安装时间</label>
+                        <div class="layui-inline">
+						  <input class="layui-input" placeholder="选择时间" onclick="layui.laydate({elem: this, festival: true})">
+						</div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">管网类型</label>
                         <div class="layui-input-inline">
-                            <input class="layui-input" type="text" name="mark"
-                                   placeholder="管网类型" autocomplete="off">
-                        </div>
+							<select name="pipe-type">
+								<option value="">管网类型</option>
+								<option value="1" selected="">钢管</option>
+								<option value="2">球墨铸铁</option>
+								<option value="3">PE管</option>
+							</select>
+							<div class="layui-unselect layui-form-select">
+								<div class="layui-select-title">
+									<input placeholder="请选类型" value="管网类型" readonly="" class="layui-input layui-unselect" type="text"><i class="layui-edge"></i>
+								</div>
+								<dl class="layui-anim layui-anim-upbit">
+									<dd lay-value="1" class="layui-this">钢管</dd>
+									<dd lay-value="2" class="">球墨铸铁</dd>
+									<dd lay-value="3" class="">PE管</dd>
+								</dl>
+							</div>
+						</div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label"></label>
                         <div class="layui-input-inline">
                             <button class="layui-btn layui-btn-small" lay-submit lay-filter="save-trigger">
-                                <i class="fa fa-save"></i> 保存
+                                <i class="fa fa-save"></i> 保存修改
                             </button>
                             <button type="button" class="layui-btn layui-btn-primary layui-btn-small back-trigger">
-                                <i class="fa fa-reply"></i> 返回
+                                <i class="fa fa-reply"></i> 在线编辑
                             </button>
                         </div>
                     </div>
