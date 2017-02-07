@@ -146,7 +146,7 @@
                 </form>
             </div>
             <div class="layui-tab-item">
-                <form id="add-form" class="layui-form" action="/firm/add" style="padding-bottom: 50px;">
+                <form id="add-form" class="layui-form" action="/firm/add" style="padding-bottom: 120px;">
                     <div class="layui-form-item">
                         <label class="layui-form-label">选择CAD</label>
                         <div class="layui-input-inline">
@@ -165,7 +165,7 @@
                     </div>
                     <div class="layui-form-item ">
                         <label class="layui-form-label">A点地图坐标</label>
-                        <div class="layui-input-inline layui-input-short">
+                        <div class="layui-input-inline">
                             <input class="layui-input" type="text" name="mark" placeholder="A点地图坐标" autocomplete="off">
                         </div>
                         <button class="layui-btn" lay-filter="save-trigger">
@@ -181,7 +181,7 @@
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">B点地图坐标</label>
-                        <div class="layui-input-inline layui-input-short">
+                        <div class="layui-input-inline">
                             <input class="layui-input" type="text" name="mark"
                                    placeholder="B点地图坐标" autocomplete="off">
                         </div>
@@ -194,15 +194,18 @@
                         <div class="layui-input-inline">
                             <select name="pipe-type">
                                 <option value="">管网类型</option>
-                                <option value="1" selected="">钢管</option>
-                                <option value="2">球墨铸铁</option>
-                                <option value="3">PE管</option>
+                                <option value="1" selected="">供水管网</option>
+                                <option value="2">源水管网</option>
+                                <option value="3">中水管网</option>
+                                <option value="4">电线管网</option>
+                                <option value="5">燃气管网</option>
+                                <option value="6">光缆管网</option>
                             </select>
                         </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">安装时间</label>
-                        <div class="layui-inline">
+                        <div class="layui-input-inline">
 						  <input class="layui-input" placeholder="选择时间" readonly
                                  onclick="layui.laydate({elem: this, festival: true})">
 						</div>
