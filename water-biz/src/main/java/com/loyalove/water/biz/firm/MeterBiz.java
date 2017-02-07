@@ -64,4 +64,6 @@ public interface MeterBiz {
      * @return
      */
     MeterPO queryMeter(MeterPO meterPO);
+
+    List<MeterPO> queryMeters(MeterPO meterPO );
 }
