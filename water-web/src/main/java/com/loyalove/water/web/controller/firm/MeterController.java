@@ -124,7 +124,7 @@ public class MeterController  extends BaseController {
     @RequestMapping(value = "export.json")
     public Result export(HttpServletRequest request,MeterPO meterPO) {
         try {
-            List<MeterPO> meterPOs = meterBiz.queryMeters(meterPO);
+            List<MeterPO> meterPOs = meterBiz.queryMetersByConditions(meterPO);
             String path = request.getSession().getServletContext().getRealPath("");
             String fileName =  "表具导出数据.xlsx";
             String filePath = path + fileName.trim();
@@ -158,8 +158,9 @@ public class MeterController  extends BaseController {
     }
 
     private MeterPO generateDetailOrder(Row xssfRow) throws ParseException {
+        int userId =  currUser().getUserId();
         MeterPO meterPO = new MeterPO();
-        Cell firmId = xssfRow.getCell(0);
+        Cell firmName = xssfRow.getCell(0);
         Cell meterNo = xssfRow.getCell(1);
         Cell caliber = xssfRow.getCell(2);
         Cell typeCode = xssfRow.getCell(3);
@@ -172,6 +173,9 @@ public class MeterController  extends BaseController {
         Cell createTime = xssfRow.getCell(10);
         Cell address = xssfRow.getCell(11);
         Cell customer = xssfRow.getCell(12);
+        if (firmName != null && firmName.getCellType() == Cell.CELL_TYPE_STRING) {
+            meterPO.setFirmName(firmName.getStringCellValue());
+        }
         if (meterNo != null && meterNo.getCellType() == Cell.CELL_TYPE_STRING) {
             meterPO.setMeterNo(meterNo.getStringCellValue());
         }else{
@@ -208,6 +212,14 @@ public class MeterController  extends BaseController {
         if (createTime != null && createTime.getCellType() == Cell.CELL_TYPE_STRING) {
             meterPO.setCreateTime(string2Date(createTime.getStringCellValue()));
         }
+        if (customer != null && customer.getCellType() == Cell.CELL_TYPE_STRING) {
+            meterPO.setCustomer(customer.getStringCellValue());
+        }
+        if (memo != null && memo.getCellType() == Cell.CELL_TYPE_STRING) {
+            meterPO.setMemo(memo.getStringCellValue());
+        }
+        meterPO.setCreateUser(userId);
+        meterPO.setFirmId(userId);
         return meterPO;
     }
     private Date string2Date(String time) throws ParseException {
@@ -252,7 +264,7 @@ public class MeterController  extends BaseController {
             row = sheet.createRow(i + 1);
             MeterPO info = infos.get(i);
             //创建单元格，并设置值
-            row.createCell((short) 0, 1).setCellValue(info.getFirmId());
+            row.createCell((short) 0, 1).setCellValue(info.getFirmName());
             row.createCell((short) 1, 1).setCellValue(info.getMeterNo());
             row.createCell((short) 2, 1).setCellValue(info.getCaliber());
             row.createCell((short) 3, 1).setCellValue(info.getTypeCode());
@@ -260,11 +272,11 @@ public class MeterController  extends BaseController {
             row.createCell((short) 5, 1).setCellValue(info.getModuleNo());
             row.createCell((short) 6, 1).setCellValue(info.getVersion());
             row.createCell((short) 7, 1).setCellValue(info.getRate());
-//            row.createCell((short) 8, 1).setCellValue(info.getMemo());
+            row.createCell((short) 8, 1).setCellValue(info.getMemo());
             row.createCell((short) 9, 1).setCellValue(info.getReleaseDate());
             row.createCell((short) 10, 1).setCellValue(info.getCreateTime());
             row.createCell((short) 11, 1).setCellValue(info.getAddress());
-//            row.createCell((short) 12, 1).setCellValue(info.getCustomer());
+            row.createCell((short) 12, 1).setCellValue(info.getCustomer());
         }
 
         // 6、将文件存到指定位置

@@ -28,6 +28,15 @@
             <if test="query.createTime != null">
                 AND m.create_time = #{query.createTime,jdbcType=TIMESTAMP}
             </if>
+            <if test="query.firmId != null and query.firmId != ''">
+                AND m.firm_id = #{query.firmId,jdbcType=INTEGER}
+            </if>
+            <if test="query.firmName != null and query.firmName!=''">
+                AND m.firm_name = #{query.firmName,jdbcType=VARCHAR}
+            </if>
+            <if test="query.customer != null">
+                AND m.customer = #{query.customer,jdbcType=VARCHAR}
+            </if>
         </where>
         LIMIT #{pager.recordStart}, #{pager.pageSize}
     </select>
@@ -59,6 +68,54 @@
             </if>
             <if test="query.createTime != null">
                 AND m.create_time = #{query.createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="query.firmId != null and query.firmId != ''">
+                AND m.firm_id = #{query.firmId,jdbcType=INTEGER}
+            </if>
+            <if test="query.firmName != null and query.firmName!=''">
+                AND m.firm_name = #{query.firmName,jdbcType=VARCHAR}
+            </if>
+            <if test="query.customer != null">
+                AND m.customer = #{query.customer,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <select id="queryMetersByConditions" resultType="com.loyalove.water.pojo.MeterPO">
+        SELECT
+        *
+        FROM
+        `meter` AS m
+        <where>
+            <if test="query.meterNo != null and query.meterNo!=''">
+                AND m.meter_no = #{query.meterNo,jdbcType=VARCHAR}
+            </if>
+            <if test="query.typeCode != null and query.typeCode!=''">
+                AND m.type_code = #{query.typeCode,jdbcType=VARCHAR}
+            </if>
+            <if test="query.version != null and query.version != ''">
+                AND m.version = #{query.version,jdbcType=VARCHAR}
+            </if>
+            <if test="query.moduleNo != null and query.moduleNo !=''">
+                AND m.module_no = #{query.moduleNo,jdbcType=VARCHAR}
+            </if>
+            <if test="query.purpose != null and query.purpose != ''">
+                AND m.purpose = #{query.purpose,jdbcType=VARCHAR}
+            </if>
+            <if test="query.createUser != null and query.createUser!=''">
+                AND m.create_user = #{query.createUser,jdbcType=INTEGER}
+            </if>
+            <if test="query.createTime != null">
+                AND m.create_time = #{query.createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="query.firmId != null and query.firmId != ''">
+                AND m.firm_id = #{query.firmId,jdbcType=INTEGER}
+            </if>
+            <if test="query.firmName != null and query.firmName!=''">
+                AND m.firm_name = #{query.firmName,jdbcType=VARCHAR}
+            </if>
+            <if test="query.customer != null">
+                AND m.customer = #{query.customer,jdbcType=VARCHAR}
             </if>
         </where>
     </select>

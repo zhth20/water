@@ -75,6 +75,30 @@ public class MeterQuery extends BaseQuery {
         meterPO.setPurpose(purpose);
     }
 
+    public Integer getFirmId() {
+        return meterPO.getFirmId();
+    }
+
+    public void setFirmId(Integer firmId) {
+        meterPO.setFirmId(firmId);
+    }
+
+    public String getFirmName() {
+        return meterPO.getFirmName();
+    }
+
+    public void setFirmName(String firmName) {
+        meterPO.setFirmName(firmName);
+    }
+
+    public String getCustomer() {
+        return meterPO.getCustomer();
+    }
+
+    public void setCustomer(String customer) {
+        meterPO.setCustomer(customer);
+    }
+
     public Integer getCreateUser() {
         return meterPO.getCreateUser();
     }

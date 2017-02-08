@@ -5,6 +5,7 @@
     <id column="meter_id" jdbcType="INTEGER" property="meterId" />
     <result column="meter_no" jdbcType="VARCHAR" property="meterNo" />
     <result column="firm_id" jdbcType="INTEGER" property="firmId" />
+    <result column="firm_name" jdbcType="VARCHAR" property="firmName" />
     <result column="type_code" jdbcType="VARCHAR" property="typeCode" />
     <result column="caliber" jdbcType="VARCHAR" property="caliber" />
     <result column="version" jdbcType="VARCHAR" property="version" />
@@ -14,6 +15,8 @@
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="lng" jdbcType="VARCHAR" property="lng" />
     <result column="lat" jdbcType="VARCHAR" property="lat" />
+    <result column="customer" jdbcType="VARCHAR" property="customer" />
+    <result column="memo" jdbcType="VARCHAR" property="memo" />
     <result column="release_date" jdbcType="TIMESTAMP" property="releaseDate" />
     <result column="create_user" jdbcType="INTEGER" property="createUser" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -78,8 +81,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    meter_id, meter_no, firm_id, type_code, caliber, version, module_no, rate, purpose, 
-    address, lng, lat, release_date, create_user, create_time, update_time
+    meter_id, meter_no, firm_id, firm_name, type_code, caliber, version, module_no, rate,
+    purpose, address, lng, lat, customer, memo, release_date, create_user, create_time,
+    update_time
   </sql>
   <select id="selectByExample" parameterType="com.loyalove.water.pojo.MeterExample" resultMap="BaseResultMap">
     select
@@ -99,7 +103,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from meter
     where meter_id = #{meterId,jdbcType=INTEGER}
@@ -118,18 +122,20 @@
     <selectKey keyProperty="meterId" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into meter (meter_no, firm_id, type_code, 
-      caliber, version, module_no, 
-      rate, purpose, address, 
-      lng, lat, release_date, 
-      create_user, create_time, update_time
-      )
-    values (#{meterNo,jdbcType=VARCHAR}, #{firmId,jdbcType=INTEGER}, #{typeCode,jdbcType=VARCHAR}, 
-      #{caliber,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR}, #{moduleNo,jdbcType=VARCHAR}, 
-      #{rate,jdbcType=VARCHAR}, #{purpose,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{lng,jdbcType=VARCHAR}, #{lat,jdbcType=VARCHAR}, #{releaseDate,jdbcType=TIMESTAMP}, 
-      #{createUser,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
-      )
+    insert into meter (meter_no, firm_id, firm_name,
+    type_code, caliber, version,
+    module_no, rate, purpose,
+    address, lng, lat,
+    customer, memo, release_date,
+    create_user, create_time, update_time
+    )
+    values (#{meterNo,jdbcType=VARCHAR}, #{firmId,jdbcType=INTEGER}, #{firmName,jdbcType=VARCHAR},
+    #{typeCode,jdbcType=VARCHAR}, #{caliber,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR},
+    #{moduleNo,jdbcType=VARCHAR}, #{rate,jdbcType=VARCHAR}, #{purpose,jdbcType=VARCHAR},
+    #{address,jdbcType=VARCHAR}, #{lng,jdbcType=VARCHAR}, #{lat,jdbcType=VARCHAR},
+    #{customer,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}, #{releaseDate,jdbcType=TIMESTAMP},
+    #{createUser,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+    )
   </insert>
   <insert id="insertSelective" parameterType="com.loyalove.water.pojo.MeterPO">
     <selectKey keyProperty="meterId" order="AFTER" resultType="java.lang.Integer">
@@ -142,6 +148,9 @@
       </if>
       <if test="firmId != null">
         firm_id,
+      </if>
+      <if test="firmName != null">
+        firm_name,
       </if>
       <if test="typeCode != null">
         type_code,
@@ -170,6 +179,12 @@
       <if test="lat != null">
         lat,
       </if>
+      <if test="customer != null">
+        customer,
+      </if>
+      <if test="memo != null">
+        memo,
+      </if>
       <if test="releaseDate != null">
         release_date,
       </if>
@@ -189,6 +204,9 @@
       </if>
       <if test="firmId != null">
         #{firmId,jdbcType=INTEGER},
+      </if>
+      <if test="firmName != null">
+        #{firmName,jdbcType=VARCHAR},
       </if>
       <if test="typeCode != null">
         #{typeCode,jdbcType=VARCHAR},
@@ -216,6 +234,12 @@
       </if>
       <if test="lat != null">
         #{lat,jdbcType=VARCHAR},
+      </if>
+      <if test="customer != null">
+        #{customer,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null">
+        #{memo,jdbcType=VARCHAR},
       </if>
       <if test="releaseDate != null">
         #{releaseDate,jdbcType=TIMESTAMP},
@@ -249,6 +273,9 @@
       <if test="record.firmId != null">
         firm_id = #{record.firmId,jdbcType=INTEGER},
       </if>
+      <if test="record.firmName != null">
+        firm_name = #{record.firmName,jdbcType=VARCHAR},
+      </if>
       <if test="record.typeCode != null">
         type_code = #{record.typeCode,jdbcType=VARCHAR},
       </if>
@@ -276,6 +303,12 @@
       <if test="record.lat != null">
         lat = #{record.lat,jdbcType=VARCHAR},
       </if>
+      <if test="record.customer != null">
+        customer = #{record.customer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memo != null">
+        memo = #{record.memo,jdbcType=VARCHAR},
+      </if>
       <if test="record.releaseDate != null">
         release_date = #{record.releaseDate,jdbcType=TIMESTAMP},
       </if>
@@ -296,21 +329,24 @@
   <update id="updateByExample" parameterType="map">
     update meter
     set meter_id = #{record.meterId,jdbcType=INTEGER},
-      meter_no = #{record.meterNo,jdbcType=VARCHAR},
-      firm_id = #{record.firmId,jdbcType=INTEGER},
-      type_code = #{record.typeCode,jdbcType=VARCHAR},
-      caliber = #{record.caliber,jdbcType=VARCHAR},
-      version = #{record.version,jdbcType=VARCHAR},
-      module_no = #{record.moduleNo,jdbcType=VARCHAR},
-      rate = #{record.rate,jdbcType=VARCHAR},
-      purpose = #{record.purpose,jdbcType=VARCHAR},
-      address = #{record.address,jdbcType=VARCHAR},
-      lng = #{record.lng,jdbcType=VARCHAR},
-      lat = #{record.lat,jdbcType=VARCHAR},
-      release_date = #{record.releaseDate,jdbcType=TIMESTAMP},
-      create_user = #{record.createUser,jdbcType=INTEGER},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
-      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+    meter_no = #{record.meterNo,jdbcType=VARCHAR},
+    firm_id = #{record.firmId,jdbcType=INTEGER},
+    firm_name = #{record.firmName,jdbcType=VARCHAR},
+    type_code = #{record.typeCode,jdbcType=VARCHAR},
+    caliber = #{record.caliber,jdbcType=VARCHAR},
+    version = #{record.version,jdbcType=VARCHAR},
+    module_no = #{record.moduleNo,jdbcType=VARCHAR},
+    rate = #{record.rate,jdbcType=VARCHAR},
+    purpose = #{record.purpose,jdbcType=VARCHAR},
+    address = #{record.address,jdbcType=VARCHAR},
+    lng = #{record.lng,jdbcType=VARCHAR},
+    lat = #{record.lat,jdbcType=VARCHAR},
+    customer = #{record.customer,jdbcType=VARCHAR},
+    memo = #{record.memo,jdbcType=VARCHAR},
+    release_date = #{record.releaseDate,jdbcType=TIMESTAMP},
+    create_user = #{record.createUser,jdbcType=INTEGER},
+    create_time = #{record.createTime,jdbcType=TIMESTAMP},
+    update_time = #{record.updateTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -323,6 +359,9 @@
       </if>
       <if test="firmId != null">
         firm_id = #{firmId,jdbcType=INTEGER},
+      </if>
+      <if test="firmName != null">
+        firm_name = #{firmName,jdbcType=VARCHAR},
       </if>
       <if test="typeCode != null">
         type_code = #{typeCode,jdbcType=VARCHAR},
@@ -351,6 +390,12 @@
       <if test="lat != null">
         lat = #{lat,jdbcType=VARCHAR},
       </if>
+      <if test="customer != null">
+        customer = #{customer,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null">
+        memo = #{memo,jdbcType=VARCHAR},
+      </if>
       <if test="releaseDate != null">
         release_date = #{releaseDate,jdbcType=TIMESTAMP},
       </if>
@@ -370,6 +415,7 @@
     update meter
     set meter_no = #{meterNo,jdbcType=VARCHAR},
       firm_id = #{firmId,jdbcType=INTEGER},
+      firm_name = #{firmName,jdbcType=VARCHAR},
       type_code = #{typeCode,jdbcType=VARCHAR},
       caliber = #{caliber,jdbcType=VARCHAR},
       version = #{version,jdbcType=VARCHAR},
@@ -379,6 +425,8 @@
       address = #{address,jdbcType=VARCHAR},
       lng = #{lng,jdbcType=VARCHAR},
       lat = #{lat,jdbcType=VARCHAR},
+      customer = #{customer,jdbcType=VARCHAR},
+      memo = #{memo,jdbcType=VARCHAR},
       release_date = #{releaseDate,jdbcType=TIMESTAMP},
       create_user = #{createUser,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},

@@ -6,7 +6,7 @@ import java.util.Date;
 /**
  * 该实体由系统生成，请勿修改
  *
- * 生成时间 2017/01/22
+ * 生成时间 2017/02/08
  */
 public class MeterPO implements Serializable {
     /** 编号 */
@@ -16,6 +16,9 @@ public class MeterPO implements Serializable {
     private String meterNo;
 
     private Integer firmId;
+
+    /** 厂商名称 */
+    private String firmName;
 
     /** 型号 */
     private String typeCode;
@@ -43,6 +46,12 @@ public class MeterPO implements Serializable {
 
     /** 纬度 */
     private String lat;
+
+    /** 隶属客户 */
+    private String customer;
+
+    /** 备注 */
+    private String memo;
 
     /** 出厂时间 */
     private Date releaseDate;
@@ -78,6 +87,14 @@ public class MeterPO implements Serializable {
 
     public void setFirmId(Integer firmId) {
         this.firmId = firmId;
+    }
+
+    public String getFirmName() {
+        return firmName;
+    }
+
+    public void setFirmName(String firmName) {
+        this.firmName = firmName;
     }
 
     public String getTypeCode() {
@@ -152,6 +169,22 @@ public class MeterPO implements Serializable {
         this.lat = lat;
     }
 
+    public String getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(String customer) {
+        this.customer = customer;
+    }
+
+    public String getMemo() {
+        return memo;
+    }
+
+    public void setMemo(String memo) {
+        this.memo = memo;
+    }
+
     public Date getReleaseDate() {
         return releaseDate;
     }
@@ -193,6 +226,7 @@ public class MeterPO implements Serializable {
         sb.append(", meterId=").append(meterId);
         sb.append(", meterNo=").append(meterNo);
         sb.append(", firmId=").append(firmId);
+        sb.append(", firmName=").append(firmName);
         sb.append(", typeCode=").append(typeCode);
         sb.append(", caliber=").append(caliber);
         sb.append(", version=").append(version);
@@ -202,6 +236,8 @@ public class MeterPO implements Serializable {
         sb.append(", address=").append(address);
         sb.append(", lng=").append(lng);
         sb.append(", lat=").append(lat);
+        sb.append(", customer=").append(customer);
+        sb.append(", memo=").append(memo);
         sb.append(", releaseDate=").append(releaseDate);
         sb.append(", createUser=").append(createUser);
         sb.append(", createTime=").append(createTime);

@@ -66,7 +66,7 @@ public class MeterBizImpl implements MeterBiz {
     }
 
     @Override
-    public List<MeterPO> queryMeters(MeterPO meterPO) {
-        return null;
+    public List<MeterPO> queryMetersByConditions(MeterPO meterPO) {
+        return meterDAO.queryMetersByConditions(meterPO);
     }
 }

@@ -27,7 +27,7 @@ import java.util.List;
 public interface MeterDAO {
 
     /**
-     * 查询表具列表
+     * 分页查询表具列表
      * @param query
      * @param pager
      * @return
@@ -40,5 +40,12 @@ public interface MeterDAO {
      * @return
      */
     Integer queryCount(@Param("query") MeterQuery query);
+
+    /**
+     * 查询表具列表
+     * @param query
+     * @return
+     */
+    List<MeterPO> queryMetersByConditions(@Param("query") MeterPO query);
 
 }
