@@ -37,7 +37,7 @@
     <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
         <ul class="layui-tab-title">
             <li class="layui-this">管段编辑</li>
-            <li>关联管线</li>
+            <li>关联管段</li>
             <li>CAD导入</li>
         </ul>
         <div class="layui-tab-content">
@@ -46,15 +46,18 @@
                     <div class="layui-form-item">
                         <label class="layui-form-label">编号</label>
                         <div class="layui-input-inline">
-                            <input class="layui-input" type="text" name="mark"
-                                   placeholder="编号" autocomplete="off">
+                            <input class="layui-input" type="text" name="mark" placeholder="编号" autocomplete="off">
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label class="layui-form-label">材质</label>
+                        <label class="layui-form-label">管段材质</label>
                         <div class="layui-input-inline">
-                            <input class="layui-input" type="text" name="mark"
-                                   placeholder="材质" autocomplete="off">
+                            <select name="pipe-type">
+                                <option value="">管段材质</option>
+                                <option value="1" selected="">钢管</option>
+                                <option value="2">球墨铸铁</option>
+                                <option value="3">PE管</option>
+                            </select>
                         </div>
                     </div>
                     <div class="layui-form-item">
@@ -72,14 +75,30 @@
                                    placeholder="长度" autocomplete="off">
                         </div>
                     </div>
+                    
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">管网名称</label>
+                        <div class="layui-input-inline">
+                            <select name="pipe-type">
+                                <option value="">管网名称</option>
+                                <option value="1" selected="">重庆大学A区</option>
+                                <option value="2">重庆大学B区</option>
+                                <option value="3">重庆大学C区</option>
+                                <option value="4">重庆大学虎溪校区</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">管网类型</label>
                         <div class="layui-input-inline">
                             <select name="pipe-type">
                                 <option value="">管网类型</option>
-                                <option value="1" selected="">钢管</option>
-                                <option value="2">球墨铸铁</option>
-                                <option value="3">PE管</option>
+                                <option value="1" selected="">供水管网</option>
+                                <option value="2">源水管网</option>
+                                <option value="3">中水管网</option>
+                                <option value="4">电线管网</option>
+                                <option value="5">燃气管网</option>
+                                <option value="6">光缆管网</option>
                             </select>
                         </div>
                     </div>
@@ -89,6 +108,20 @@
                             <input class="layui-input" placeholder="安装时间" readonly
                                    onclick="layui.laydate({elem: this, festival: true})">
                         </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label"></label>
+                        <div class="layui-input-inline">
+                            <button class="layui-btn layui-btn-small" lay-submit lay-filter="save-trigger">
+                                <i class="fa fa-save"></i> 保存修改
+                            </button>
+                            <button type="button" class="layui-btn layui-btn-primary layui-btn-small back-trigger">
+                                <i class="fa fa-reply"></i> 在线编辑
+                            </button>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">连接点设置</label>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">标高</label>
@@ -109,9 +142,6 @@
                         <div class="layui-input-inline">
                             <button class="layui-btn layui-btn-small" lay-submit lay-filter="save-trigger">
                                 <i class="fa fa-save"></i> 保存修改
-                            </button>
-                            <button type="button" class="layui-btn layui-btn-primary layui-btn-small back-trigger">
-                                <i class="fa fa-reply"></i> 在线编辑
                             </button>
                         </div>
                     </div>
@@ -147,7 +177,7 @@
                 </form>
             </div>
             <div class="layui-tab-item">
-                <form id="add-form" class="layui-form" action="/firm/add" style="padding-bottom: 120px;">
+                <form id="add-form" class="layui-form" action="/firm/add" style="padding-bottom: 50px;">
                     <div class="layui-form-item">
                         <label class="layui-form-label">选择CAD</label>
                         <div class="layui-input-inline">
@@ -190,6 +220,19 @@
                             <i class="fa fa-map-marker"></i>
                         </button>
                     </div>
+                     <div class="layui-form-item">
+                        <label class="layui-form-label">管网名称</label>
+                        <div class="layui-input-inline">
+                            <select name="pipe-type">
+                                <option value="">管网名称</option>
+                                <option value="1" selected="">重庆大学A区</option>
+                                <option value="2">重庆大学B区</option>
+                                <option value="3">重庆大学C区</option>
+                                <option value="4">重庆大学虎溪校区</option>
+                            </select>
+                        </div>
+                        <button class="layui-btn" lay-filter="save-trigger"><i class="fa fa-plus"></i></button>
+                    </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">管网类型</label>
                         <div class="layui-input-inline">
@@ -203,6 +246,7 @@
                                 <option value="6">光缆管网</option>
                             </select>
                         </div>
+                        <button class="layui-btn" lay-filter="save-trigger"><i class="fa fa-plus"></i></button>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label">安装时间</label>
@@ -210,6 +254,20 @@
 						  <input class="layui-input" placeholder="选择时间" readonly
                                  onclick="layui.laydate({elem: this, festival: true})">
 						</div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">默认标高</label>
+                        <div class="layui-input-inline">
+                            <input class="layui-input" type="text" name="mark"
+                                   placeholder="标高" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">默认埋深</label>
+                        <div class="layui-input-inline">
+                            <input class="layui-input" type="text" name="mark"
+                                   placeholder="埋深" autocomplete="off">
+                        </div>
                     </div>
                     <div class="layui-form-item">
                         <label class="layui-form-label"></label>
