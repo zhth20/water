@@ -73,7 +73,7 @@
       {
         "title": "层次化显示",
         "icon": "fa-map-marker fa-fw",
-        "href": "/pages/gis/actual.html"
+        "href": "/pages/gis/layer.html"
       },
       {
         "title": "对比分析",
