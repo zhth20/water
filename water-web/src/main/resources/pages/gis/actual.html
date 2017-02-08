@@ -34,15 +34,19 @@
 <body>
 <div class="layui-float map-main" id="map-content" style="width: 50%;"></div>
 <div class="layui-float" style="width: 50%;">
+	<div style="height: 50%;">
+		<div id="line-chart-demo" style="height: 100%; width: 100%;"></div>
+	</div>
+	<div style="height: 50%;">
 	<table class="layui-table" lay-skin="line">
 		<colgroup>
-			<col width="auto">
-		    <col width="auto">
-		    <col width="auto">
-		    <col width="auto">
-		    <col width="auto">
-		    <col width="auto">
-		    <col width="auto">
+			<col width="7%">
+		    <col width="15%">
+		    <col width="7%">
+		    <col width="5%">
+		    <col width="5%">
+		    <col width="12%">
+		    <col width="12%">
 		    <col width="auto">
 		</colgroup>
 		<thead>
@@ -90,8 +94,11 @@
 			</tr>
 		</tbody>
 	</table>
+	</div>
 </div>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=iRhFasKasZ1QWkyLQed6usUa"></script>
+<script type="text/javascript" src="/static/js/echarts/echarts.min.js"></script>
+<script type="text/javascript" src="/static/js/echarts/demo.js"></script>
 <script type="text/javascript" src="/static/layui/layui.js"></script>
 <script type="text/javascript" src="/static/js/gis/map.js"></script>
 </body>
