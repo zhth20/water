@@ -68,7 +68,7 @@
       {
         "title": "动态监测",
         "icon": "fa-map-marker fa-fw",
-        "href": "/pages/gis/actual.html"
+        "href": "/pages/gis/contrast.html"
       },
       {
         "title": "层次化显示",
