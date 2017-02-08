@@ -88,7 +88,7 @@ public class MeterController  extends BaseController {
         return Result.getResultSuccess("查询表具成功", meterPO);
     }
 
-    @RequestMapping("/upload")
+    @RequestMapping("/upload.json")
     public Result upload(@RequestParam(value = "file", required = false) MultipartFile file, HttpServletRequest request,
                        HttpServletResponse response) throws IOException {
         String path = request.getSession().getServletContext().getRealPath("");
@@ -123,17 +123,18 @@ public class MeterController  extends BaseController {
 
     @RequestMapping(value = "export.json")
     public Result export(HttpServletRequest request,MeterPO meterPO) {
+        String fileName;
         try {
             List<MeterPO> meterPOs = meterBiz.queryMetersByConditions(meterPO);
             String path = request.getSession().getServletContext().getRealPath("");
-            String fileName =  "表具导出数据.xlsx";
+             fileName =  "表具导出数据.xlsx";
             String filePath = path + fileName.trim();
             //导出数据到excel
             exportToExcel(meterPOs, filePath);
         } catch (Exception e) {
             return Result.getResultFail("导出失败");
         }
-        return Result.getResultSuccess("导出成功");
+        return Result.getResultSuccess("导出成功", "/" + fileName);
     }
 
     //读取EXCEL
