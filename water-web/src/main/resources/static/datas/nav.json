@@ -52,6 +52,11 @@
         "title": "表具管理",
         "icon": "fa-dashboard fa-fw",
         "href": "/pages/firm/meter.html"
+      	},
+      	{
+        "title": "实时数据",
+        "icon": "fa-dashboard fa-fw",
+        "href": "/pages/firm/view.html"
       	}
     ]
   },
