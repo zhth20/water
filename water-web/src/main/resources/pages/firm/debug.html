@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>表具</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    
+	<link rel="stylesheet" type="text/css" href="/static/debug/material.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/debug/dataTables.material.css">
+	
+    <link rel="stylesheet" href="/static/layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="/static/css/main.css"/>
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css"/>
+    
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
+	<title>DataTables example - Material Design (Tech. preview)</title>
+	
+</head>
+
+<body>
+<div class="admin-main">
+    <!--列表-->
+    <div class="layui-box layui-box-table">
+
+        <div class="layui-tool">
+            <a id="add-trigger" class="layui-btn layui-btn-small" href="javascript:;" template="#add-template">
+                <i class="fa fa-plus"></i> 新增
+            </a>
+
+            <a id="delete-trigger" class="layui-btn layui-btn-small" href="javascript:;"
+               data-href="/meter/deleteBy">
+                <i class="fa fa-trash"></i> 删除
+            </a>
+
+            <a id="import-trigger" class="layui-btn layui-btn-small" href="javascript:;">
+                <i class="fa fa-upload"></i> 导入数据
+            </a>
+            <a id="export-trigger" class="layui-btn layui-btn-small" href="javascript:;">
+                <i class="fa fa-download"></i> 导出数据
+            </a>
+        </div>
+
+        <div class="layui-box  layui-box-scroll">
+           <table class="mdl-data-table" id="example" role="grid" aria-describedby="metertable_info" cellspacing="0" width="100%">
+				<thead>
+					<tr role="row">
+						<th>序号</th>
+						<th>表号</th>
+						<th>口径</th>
+						<th>区域</th>
+						<th>地址</th>
+						<th>正向累计</th>
+						<th>反向累计</th>
+						<th>流量</th>
+						<th>瞬时</th>
+						<th>压力</th>
+						<th>时间</th>
+						<th>类型</th>
+						<th>频率</th>
+					</tr>
+				</thead>
+				<tbody id="meterdata">
+
+				<tr role="row" class="odd"><td class="sorting_1">1</td><td>1607030018</td><td>200</td><td>A区</td><td><a href="meter.jsp?id=1607030018&amp;area=A区&amp;address=光电学院">光电学院</a></td><td>38789.7579</td><td>6259.8328</td><td class="center">32529.925</td><td>11.6172</td><td>0.4</td><td>2017-02-09 14:42:15 167</td><td>流量计</td><td>实时</td></tr><tr role="row" class="even"><td class="sorting_1">2</td><td>1608030001</td><td>200</td><td>A区</td><td><a href="meter.jsp?id=1608030001&amp;area=A区&amp;address=大校门">大校门</a></td><td>121856.3479</td><td>0.0178</td><td class="center">121856.330</td><td>44.087</td><td>0.36</td><td>2017-02-09 14:42:02 108</td><td>流量计</td><td>实时</td></tr><tr role="row" class="odd"><td class="sorting_1">3</td><td>1607030043</td><td>200</td><td>A区</td><td><a href="meter.jsp?id=1607030043&amp;area=A区&amp;address=老协沿线">老协沿线</a></td><td>41237.1833</td><td>1132.5126</td><td class="center">40104.671</td><td>15.311</td><td>0.38</td><td>2017-02-09 14:41:57 162</td><td>流量计</td><td>实时</td></tr><tr role="row" class="even"><td class="sorting_1">4</td><td>1606030002</td><td>200</td><td>A区</td><td><a href="meter.jsp?id=1606030002&amp;area=A区&amp;address=九舍">九舍</a></td><td>22.892</td><td>108.682</td><td class="center">-85.790</td><td>0</td><td>0.48</td><td>2017-02-09 14:41:53 216</td><td>流量计</td><td>实时</td></tr><tr role="row" class="odd"><td class="sorting_1">5</td><td>1607030044</td><td>200</td><td>A区</td><td><a href="meter.jsp?id=1607030044&amp;area=A区&amp;address=松林坡配电房">松林坡配电房</a></td><td>450.1032</td><td>32304.1461</td><td class="center">-31854.043</td><td>-5.3916</td><td>0.47</td><td>2017-02-09 14:41:53 050</td><td>流量计</td><td>实时</td></tr><tr role="row" class="even"><td class="sorting_1">6</td><td>1607030029</td><td>200</td><td>B区</td><td><a href="meter.jsp?id=1607030029&amp;area=B区&amp;address=3栋">3栋</a></td><td>15228.4163</td><td>0.0073</td><td class="center">15228.409</td><td>0.6353</td><td>0.5</td><td>2017-02-09 14:41:36 107</td><td>流量计</td><td>实时</td></tr><tr role="row" class="odd"><td class="sorting_1">7</td><td>1607030026</td><td>200</td><td>A区</td><td><a href="meter.jsp?id=1607030026&amp;area=A区&amp;address=附中沿线">附中沿线</a></td><td>32657.9113</td><td>37.0174</td><td class="center">32620.894</td><td>10.8662</td><td>0.37</td><td>2017-02-09 14:41:32 160</td><td>流量计</td><td>实时</td></tr><tr role="row" class="even"><td class="sorting_1">8</td><td>1607900018</td><td>100</td><td>B区</td><td><a href="meter.jsp?id=1607900018&amp;area=B区&amp;address=红楼">红楼</a> <a href="view.jsp?id=1607900018&amp;area=B区&amp;address=红楼"><span class="label label-success">漏损分析</span></a></td><td>10928.1525</td><td>3.024</td><td class="center">10925.129</td><td>0.8915</td><td>0.7</td><td>2017-02-09 14:41:32 048</td><td>水表</td><td>实时</td></tr><tr role="row" class="odd"><td class="sorting_1">9</td><td>1609020016</td><td>150</td><td>B区</td><td><a href="meter.jsp?id=1609020016&amp;area=B区&amp;address=AB通道楼">AB通道楼</a> <a href="view.jsp?id=1609020016&amp;area=B区&amp;address=AB通道楼"><span class="label label-success">漏损分析</span></a></td><td>3182.1104</td><td>30.2231</td><td class="center">3151.887</td><td>1.6836</td><td>0.52</td><td>2017-02-09 14:41:32 011</td><td>水表</td><td>实时</td></tr><tr role="row" class="even"><td class="sorting_1">10</td><td>1607900025</td><td>100</td><td>B区</td><td><a href="meter.jsp?id=1607900025&amp;area=B区&amp;address=建筑城规学院">建筑城规学院</a> <a href="view.jsp?id=1607900025&amp;area=B区&amp;address=建筑城规学院"><span class="label label-success">漏损分析</span></a></td><td>1115.7787</td><td>92.9727</td><td class="center">1022.806</td><td>0.4585</td><td>0.57</td><td>2017-02-09 14:41:30 144</td><td>水表</td><td>实时</td></tr><tr role="row" class="odd"><td class="sorting_1">11</td><td>1607020011</td><td>150</td><td>B区</td><td><a href="meter.jsp?id=1607020011&amp;area=B区&amp;address=老60家">老60家</a> <a href="view.jsp?id=1607020011&amp;area=B区&amp;address=老60家"><span class="label label-success">漏损分析</span></a></td><td>24161.6093</td><td>40.0337</td><td class="center">24121.576</td><td>2.0048</td><td>0.53</td><td>2017-02-09 14:41:27 077</td><td>水表</td><td>实时</td></tr><tr role="row" class="even"><td class="sorting_1">12</td><td>1607030022</td><td>200</td><td>B区</td><td><a href="meter.jsp?id=1607030022&amp;area=B区&amp;address=60家">60家</a></td><td>58179.1556</td><td>408.703</td><td class="center">57770.453</td><td>6.6308</td><td>0.51</td><td>2017-02-09 14:41:26 243</td><td>流量计</td><td>实时</td></tr><tr role="row" class="odd"><td class="sorting_1">13</td><td>1607900036</td><td>100</td><td>B区</td><td><a href="meter.jsp?id=1607900036&amp;area=B区&amp;address=农生大楼">农生大楼</a> <a href="view.jsp?id=1607900036&amp;area=B区&amp;address=农生大楼"><span class="label label-success">漏损分析</span></a></td><td>754.5971</td><td>9.3683</td><td class="center">745.229</td><td>0.2263</td><td>0.6</td><td>2017-02-09 14:41:22 032</td><td>水表</td><td>实时</td></tr><tr role="row" class="even"><td class="sorting_1">14</td><td>1607020001</td><td>150</td><td>A区</td><td><a href="meter.jsp?id=1607020001&amp;area=A区&amp;address=主教">主教</a> <a href="view.jsp?id=1607020001&amp;area=A区&amp;address=主教"><span class="label label-success">漏损分析</span></a></td><td>60108.5515</td><td>4.5079</td><td class="center">60104.044</td><td>17.4839</td><td>0.44</td><td>2017-02-09 14:41:21 049</td><td>水表</td><td>实时</td></tr><tr role="row" class="odd"><td class="sorting_1">15</td><td>1607030008</td><td>200</td><td>B区</td><td><a href="meter.jsp?id=1607030008&amp;area=B区&amp;address=建筑系">建筑系</a></td><td>2139.3037</td><td>45080.9671</td><td class="center">-42941.663</td><td>-10.6639</td><td>0.57</td><td>2017-02-09 14:41:16 246</td><td>流量计</td><td>实时</td></tr><tr role="row" class="even"><td class="sorting_1">16</td><td>1607020007</td><td>150</td><td>B区</td><td><a href="meter.jsp?id=1607020007&amp;area=B区&amp;address=30家">30家</a></td><td>197534.6586</td><td>3.7996</td><td class="center">197530.859</td><td>23.4589</td><td>0.53</td><td>2017-02-09 14:41:16 210</td><td>流量计</td><td>实时</td></tr><tr role="row" class="odd"><td class="sorting_1">17</td><td>1608040001</td><td>250</td><td>A区</td><td><a href="meter.jsp?id=1608040001&amp;area=A区&amp;address=柏树林">柏树林</a></td><td>22121.6739</td><td>0.0604</td><td class="center">22121.614</td><td>0</td><td>0.59</td><td>2017-02-09 14:41:15 220</td><td>流量计</td><td>实时</td></tr><tr role="row" class="even"><td class="sorting_1">18</td><td>1606030003</td><td>200</td><td>A区</td><td><a href="meter.jsp?id=1606030003&amp;area=A区&amp;address=校医院">校医院</a></td><td>1110.9436</td><td>27970.3944</td><td class="center">-26859.451</td><td>-1.9128</td><td>0.56</td><td>2017-02-09 14:41:13 008</td><td>流量计</td><td>实时</td></tr><tr role="row" class="odd"><td class="sorting_1">19</td><td>1607020012</td><td>150</td><td>A区</td><td><a href="meter.jsp?id=1607020012&amp;area=A区&amp;address=汉小">汉小</a></td><td>345.3665</td><td>1261.4892</td><td class="center">-916.123</td><td>-2.3446</td><td>0.47</td><td>2017-02-09 14:41:10 075</td><td>流量计</td><td>实时</td></tr><tr role="row" class="even"><td class="sorting_1">20</td><td>1605030001</td><td>200</td><td>B区</td><td><a href="meter.jsp?id=1605030001&amp;area=B区&amp;address=房地产学院">房地产学院</a></td><td>25864.3043</td><td>8067.5703</td><td class="center">17796.734</td><td>-2.8089</td><td>0.51</td><td>2017-02-09 14:40:57 122</td><td>流量计</td><td>实时</td></tr><tr role="row" class="odd"><td class="sorting_1">21</td><td>1607020005</td><td>150</td><td>A区</td><td><a href="meter.jsp?id=1607020005&amp;area=A区&amp;address=二舍">二舍</a></td><td>9198.2152</td><td>3592.8536</td><td class="center">5605.362</td><td>0.8233</td><td>0.49</td><td>2017-02-09 14:40:56 050</td><td>流量计</td><td>实时</td></tr><tr role="row" class="even"><td class="sorting_1">22</td><td>1607030034</td><td>200</td><td>A区</td><td><a href="meter.jsp?id=1607030034&amp;area=A区&amp;address=一舍">一舍</a></td><td>46668.8693</td><td>1715.1962</td><td class="center">44953.673</td><td>14.1821</td><td>0.41</td><td>2017-02-09 14:40:47 168</td><td>流量计</td><td>实时</td></tr><tr role="row" class="odd"><td class="sorting_1">23</td><td>1607020009</td><td>150</td><td>B区</td><td><a href="meter.jsp?id=1607020009&amp;area=B区&amp;address=二综">二综</a></td><td>31364.8261</td><td>1036.8057</td><td class="center">30328.020</td><td>5.1854</td><td>0.59</td><td>2017-02-09 14:40:46 041</td><td>流量计</td><td>实时</td></tr><tr role="row" class="even"><td class="sorting_1">24</td><td>1607030042</td><td>200</td><td>A区</td><td><a href="meter.jsp?id=1607030042&amp;area=A区&amp;address=松林坡四方井">松林坡四方井</a></td><td>43908.1154</td><td>0.7201</td><td class="center">43907.395</td><td>14.0984</td><td>0.73</td><td>2017-02-09 14:40:45 005</td><td>流量计</td><td>实时</td></tr><tr role="row" class="odd"><td class="sorting_1">25</td><td>1607900021</td><td>100</td><td>A区</td><td><a href="meter.jsp?id=1607900021&amp;area=A区&amp;address=综合楼">综合楼</a> <a href="view.jsp?id=1607900021&amp;area=A区&amp;address=综合楼"><span class="label label-success">漏损分析</span></a></td><td>10165.5648</td><td>0.023</td><td class="center">10165.542</td><td>5.3334</td><td>0.38</td><td>2017-02-09 14:40:44 224</td><td>水表</td><td>实时</td></tr></tbody>
+			</table>
+        </div>
+
+    </div>
+
+    <!--分页-->
+    <div id="pager" class="layui-box layui-box-pager"></div>
+
+</div>
+
+<!--查询结果模版-->
+
+<!--新增数据模版-->
+<script id="add-template" type="text/html">
+    <form id="add-form" class="layui-form" action="/meter/add">
+        <div class="layui-form-item">
+            <label class="layui-form-label">厂商</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="firmId" lay-verify="required" placeholder="厂商"
+                       autocomplete="off">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">表号</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="meterNo" lay-verify="required" placeholder="表号"
+                       autocomplete="off">
+            </div>
+            <div class="layui-form-mid layui-word-aux">M0001</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">型号</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="typeCode" lay-verify="required" placeholder="型号"
+                       autocomplete="off">
+            </div>
+            <div class="layui-form-mid layui-word-aux">型号</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">口径</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="caliber" lay-verify="required" placeholder="口径"
+                       autocomplete="off">
+            </div>
+            <div class="layui-form-mid layui-word-aux">口径</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">软件版本</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="version" lay-verify="required" placeholder="软件版本"
+                       autocomplete="off">
+            </div>
+            <div class="layui-form-mid layui-word-aux">软件版本</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">通信模块号</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="moduleNo" lay-verify="required" placeholder="通信模块号"
+                       autocomplete="off">
+            </div>
+            <div class="layui-form-mid layui-word-aux">通信模块号</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">频率</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="rate" lay-verify="required" placeholder="频率"
+                       autocomplete="off">
+            </div>
+            <div class="layui-form-mid layui-word-aux">频率</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">用途</label>
+            <div class="layui-input-inline">
+                <input type="text" name="purpose" placeholder="用途" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">出厂时间</label>
+            <div class="layui-input-inline">
+                <input type="text" name="releaseDate" placeholder="出厂时间" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">坐标</label>
+            <div class="layui-input-inline layui-input-short">
+                <input type="text" name="lng" placeholder="经度" autocomplete="off" class="layui-input layui-inline">
+            </div>
+            <div class="layui-input-inline layui-input-short">
+                <input type="text" name="lat" placeholder="纬度" autocomplete="off" class="layui-input layui-inline">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">安装地址</label>
+            <div class="layui-input-inline layui-input-long">
+                <input type="text" name="address" placeholder="安装地址" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <div class="layui-input-inline">
+                <button class="layui-btn layui-btn-small" lay-submit lay-filter="save-trigger">
+                    <i class="fa fa-save"></i> 保存
+                </button>
+                <button type="button" class="layui-btn layui-btn-primary layui-btn-small back-trigger">
+                    <i class="fa fa-reply"></i> 返回
+                </button>
+            </div>
+        </div>
+
+    </form>
+
+</script>
+
+<!--修改数据模版-->
+<script id="update-template" type="text/html">
+    <form id="update-form" class="layui-form" action="/meter/update">
+
+        <div class="layui-hide">
+            <input type="hidden" name="meterId" value="{{=d.meterId}}">
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">厂商</label>
+            <div class="layui-form-mid">{{=d.firmId}}</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">表号</label>
+            <div class="layui-form-mid">{{=d.meterNo}}</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">型号</label>
+            <div class="layui-form-mid">{{=d.typeCode}}</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">口径</label>
+            <div class="layui-form-mid">{{=d.caliber}}</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">软件版本</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="version" value="{{=d.version}}"
+                       lay-verify="required" placeholder="软件版本" autocomplete="off">
+            </div>
+            <div class="layui-form-mid layui-word-aux">软件版本</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">通信模块号</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="moduleNo" value="{{=d.moduleNo}}"
+                       lay-verify="required" placeholder="通信模块号" autocomplete="off">
+            </div>
+            <div class="layui-form-mid layui-word-aux">通信模块号</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">频率</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="rate" value="{{=d.rate}}"
+                       lay-verify="required" placeholder="频率" autocomplete="off">
+            </div>
+            <div class="layui-form-mid layui-word-aux">频率</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">用途</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="purpose" value="{{=d.purpose}}"
+                 placeholder="用途" autocomplete="off">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">坐标</label>
+            <div class="layui-input-inline layui-input-short">
+                <input class="layui-input" type="text" name="lng" value="{{=d.lng}}"
+                       placeholder="经度" autocomplete="off">
+            </div>
+            <div class="layui-input-inline layui-input-short">
+                <input class="layui-input" type="text" name="lat" value="{{=d.lat}}"
+                       placeholder="纬度" autocomplete="off">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">安装地址</label>
+            <div class="layui-input-inline layui-input-long">
+                <input class="layui-input" type="text" name="address" value="{{=d.address}}"
+                       placeholder="安装地址" autocomplete="off">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">出厂时间</label>
+            <div class="layui-form-mid">{{=d.releaseDate}}</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <div class="layui-input-inline">
+                <button class="layui-btn layui-btn-small" lay-submit lay-filter="save-trigger">
+                    <i class="fa fa-save"></i> 保存
+                </button>
+                <button type="button" class="layui-btn layui-btn-primary layui-btn-small back-trigger">
+                    <i class="fa fa-reply"></i> 返回
+                </button>
+            </div>
+        </div>
+    </form>
+</script>
+
+<!--详情数据模版-->
+<script id="detail-template" type="text/html">
+    <form id="detail-form" class="layui-form">
+        <div class="layui-form-item">
+            <label class="layui-form-label">厂商</label>
+            <div class="layui-form-mid">{{=d.firmId}}</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">表号</label>
+            <div class="layui-form-mid">{{=d.meterNo}}</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">型号</label>
+            <div class="layui-form-mid">{{=d.typeCode}}</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">口径</label>
+            <div class="layui-form-mid">{{=d.caliber}}</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">软件版本</label>
+            <div class="layui-form-mid">{{=d.version}}</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">通信模块号</label>
+            <div class="layui-form-mid">{{=d.moduleNo}}</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">频率</label>
+            <div class="layui-form-mid">{{=d.rate}}</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">用途</label>
+            <div class="layui-form-mid">{{=d.purpose}}</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">出厂时间</label>
+            <div class="layui-form-mid">{{=d.releaseDate}}</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">坐标</label>
+            <div class="layui-form-mid">{{=d.lng}},{{=d.lat}}</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">安装地址</label>
+            <div class="layui-form-mid">{{=d.address}}</div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"></label>
+            <div class="layui-input-inline">
+                <button type="button" class="layui-btn layui-btn-primary layui-btn-small back-trigger">
+                    <i class="fa fa-reply"></i> 返回
+                </button>
+            </div>
+        </div>
+    </form>
+</script>
+
+<script type="text/javascript" src="/static/layui/layui.js"></script>
+<script type="text/javascript" src="/static/js/firm/meter.js"></script>
+
+<script type="text/javascript" language="javascript" src="/static/debug/jquery-1.12.4.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="/static/debug/jquery.dataTables.min.js">
+	</script>
+	<script type="text/javascript" language="javascript" src="/static/debug/dataTables.material.min.js">
+	</script>
+	<script type="text/javascript" language="javascript" class="init">
+	$(document).ready(function() {
+		$('#example').DataTable( {
+			columnDefs: [
+				{
+					targets: [ 0,1,2],
+					className: 'mdl-data-table__cell--non-numeric'
+				}
+			]
+		} );
+	} );
+	</script>
+</body>
+
+</html>

@@ -57,6 +57,11 @@
         "title": "实时数据",
         "icon": "fa-dashboard fa-fw",
         "href": "/pages/firm/view.html"
+      	},
+      	{
+        "title": "表格测试页面",
+        "icon": "fa-dashboard fa-fw",
+        "href": "/pages/firm/debug.html"
       	}
     ]
   },
