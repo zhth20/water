@@ -16,9 +16,8 @@ import com.loyalove.water.common.model.Result;
 import com.loyalove.water.pojo.MeterPO;
 import com.loyalove.water.query.firm.MeterQuery;
 import com.loyalove.water.web.controller.BaseController;
+import com.loyalove.water.web.util.ExcelExportUtil;
 import com.loyalove.water.web.util.ExcelParsing;
-import org.apache.poi.ss.usermodel.Font;
-import org.apache.poi.xssf.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,10 +27,10 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -116,79 +115,40 @@ public class MeterController extends BaseController {
 	
 	@RequestMapping(value = "export.json")
 	public Result export(HttpServletRequest request,HttpServletResponse response, MeterPO meterPO) {
-		String fileName;
 		try {
 			List<MeterPO> meterPOs = meterBiz.queryMetersByConditions(meterPO);
-			String path = request.getSession().getServletContext().getRealPath("");
-			fileName = "表具导出数据.xlsx";
-			String filePath = path + fileName.trim();
-			//导出数据到excel
-			exportToExcel(meterPOs, filePath);
+            LinkedHashMap<String, Object> header =  header();
+            List<LinkedHashMap<String, Object>> dataList = new ArrayList<>();
+            for(int i=0;i<meterPOs.size();i++){
+                LinkedHashMap<String, Object> data = new LinkedHashMap<String, Object>();
+                data.put(String.valueOf(i),meterPOs.get(i));
+                dataList.add(data);
+            }
+            ExcelExportUtil.exportsExcel(request,response,dataList,header,"表具导出数据");
 		} catch (Exception e) {
 			return Result.getResultFail("导出失败");
 		}
-		return Result.getResultSuccess("导出成功", "/" + fileName);
+		return Result.getResultSuccess("导出成功");
 	}
-	
-	private void exportToExcel(List<MeterPO> infos, String file) throws IOException {
-		final String[] tableHeader = { "厂商", "表号", "口径", "型号", "类别", "通讯模块", "软件版本", "频率", "备注", "出厂时间", "安装时间",
-										"安装地址", "隶属客户" };
-		// 1、创建一个webbook，对应一个Excel文件
-		XSSFWorkbook wb = new XSSFWorkbook();
-		// 2、在webbook中添加一个sheet,对应Excel文件中的sheet
-		XSSFSheet sheet = wb.createSheet("失败数据一");
-		//  3、在sheet中添加表头第0行,注意老版本poi对Excel的行数列数有限制short
-		XSSFRow row = sheet.createRow(0);
-		// 4、创建单元格，并设置值表头 设置表头居中
-		XSSFCellStyle headStyle = wb.createCellStyle();
-		headStyle.setAlignment(XSSFCellStyle.ALIGN_CENTER); // 创建一个居中格式
-		Font headFont = wb.createFont();
-		headFont.setBoldweight(Font.BOLDWEIGHT_BOLD);
-		headStyle.setFont(headFont);
-		for (int i = 0; i < tableHeader.length; i++) {
-			XSSFCell cell = row.createCell((short) i, 1);
-			cell.setCellValue(tableHeader[i]);
-			cell.setCellStyle(headStyle);
-		}
-		//设置单元格字体样式
-		Font ztFont = wb.createFont();
-		ztFont.setColor(Font.COLOR_RED);
-		//创建单元格样式
-		XSSFCellStyle ztStyle = wb.createCellStyle();
-		ztStyle.setFont(ztFont);
-		// 5、写入实体数据 实际应用中这些数据从数据库得到
-		for (int i = 0; i < infos.size(); i++) {
-			row = sheet.createRow(i + 1);
-			MeterPO info = infos.get(i);
-			//创建单元格，并设置值
-			row.createCell((short) 0, 1).setCellValue(info.getFirmName());
-			row.createCell((short) 1, 1).setCellValue(info.getMeterNo());
-			row.createCell((short) 2, 1).setCellValue(info.getCaliber());
-			row.createCell((short) 3, 1).setCellValue(info.getTypeCode());
-			row.createCell((short) 4, 1).setCellValue(info.getPurpose());
-			row.createCell((short) 5, 1).setCellValue(info.getModuleNo());
-			row.createCell((short) 6, 1).setCellValue(info.getVersion());
-			row.createCell((short) 7, 1).setCellValue(info.getRate());
-			row.createCell((short) 8, 1).setCellValue(info.getMemo());
-			row.createCell((short) 9, 1).setCellValue(info.getReleaseDate());
-			row.createCell((short) 10, 1).setCellValue(info.getCreateTime());
-			row.createCell((short) 11, 1).setCellValue(info.getAddress());
-			row.createCell((short) 12, 1).setCellValue(info.getCustomer());
-		}
-		
-		// 6、将文件存到指定位置
-		FileOutputStream fout = null;
-		try {
-			fout = new FileOutputStream(file);
-			wb.write(fout);
-		} catch (Exception e) {
-			logger.error("上传文件出现异常，异常信息是：{}", e);
-		} finally {
-			if (fout != null) {
-				fout.close();
-			}
-		}
-	}
+
+    private LinkedHashMap<String, Object> header() {
+        LinkedHashMap<String, Object> linkedHashMap= new LinkedHashMap<String, Object>();
+        linkedHashMap.put("1","厂商");
+        linkedHashMap.put("2","表号");
+        linkedHashMap.put("3","口径");
+        linkedHashMap.put("4","型号");
+        linkedHashMap.put("5","类别");
+        linkedHashMap.put("6","通讯模块");
+        linkedHashMap.put("7","软件版本");
+        linkedHashMap.put("8","频率");
+        linkedHashMap.put("9","备注");
+        linkedHashMap.put("10","出厂时间");
+        linkedHashMap.put("11","安装时间");
+        linkedHashMap.put("12","安装地址");
+        linkedHashMap.put("13","隶属客户");
+        return  linkedHashMap;
+    }
+
 	
 	private List<MeterPO> generateDetailOrder(List<String[]> list) throws ParseException {
 		List<MeterPO> meterPOs = new ArrayList<>();
