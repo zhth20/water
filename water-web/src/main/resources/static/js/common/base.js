@@ -79,16 +79,8 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl', 'unders
         });
 
         //保存按钮事件
-        form.on('submit(save-trigger)', function (data) {
-            var formId = '#' + $(data.form).attr('id');
-            switch (formId) {
-                case self.elems.addForm :
-                    self.add();
-                    break;
-                case self.elems.updateForm :
-                    self.update();
-                    break;
-            }
+        form.on('submit(save-trigger)', function(data){
+            self.saveTrigger(data);
             return false;
         });
 
@@ -249,11 +241,25 @@ layui.define(['icheck', 'laypage', 'layer', 'form', 'laydate', 'laytpl', 'unders
             });
     }
 
+    Base.fn.saveTrigger = function (data) {
+        var self = this;
+        var formId = '#' + $(data.form).attr('id');
+        switch (formId) {
+            case self.elems.addForm :
+                self.add();
+                break;
+            case self.elems.updateForm :
+                self.update();
+                break;
+        }
+        return false;
+    }
+
     //跳转到指定页数数据
     Base.fn.toPage = function (num) {
         var self = this;
         num && $(self.elems.queryForm).find('input[name=pageNumber]').val(num);
-        self.query();
+        $(self.elems.queryForm)[0] && self.query();
     }
 
     //获取当前页数
