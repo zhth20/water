@@ -71,8 +71,9 @@ public class CadParseUtil {
 			System.out.println(simpleA.getX() + " + (" + map.getX() +"-" +fixA.getX() + ")/" + x);
 			System.out.println(simpleA.getY() + " + (" + map.getY() +"-" +fixA.getY() + ")/" + y);
 		}*/
+		/*
 		map.setX(simpleA.getX() + (map.getX() - fixA.getX())/x);
-		map.setY(simpleA.getY() + (map.getY() - fixA.getY())/y);
+		map.setY(simpleA.getY() + (map.getY() - fixA.getY())/y);*/
 		
 		return map;
 	}
