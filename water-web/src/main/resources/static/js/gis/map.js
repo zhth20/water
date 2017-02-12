@@ -91,3 +91,32 @@ layui.use(['CustomMap', 'element',
 
     new Line();
 });
+
+function EditCad() {
+	this.initialize();
+	this.result = data.result;//Line.fn.add种的data.result
+	this.data = [];
+}
+
+EditCad.prototype.initialize = function () {
+	this.fa = $("input.input-a").val();
+	this.ma = $("input.input-map-a").val();
+	this.fb = $("input.input-b").val();
+	this.mb = $("input.input-map-b").val();
+	
+	this.d = $("input.input-d").val();
+	this.h = $("input.input-h").val();
+	
+	setX((fixB.getX()-fixA.getX())/(simpleB.getX()-simpleA.getX()));
+	setY((fixB.getY()-fixA.getY())/(simpleB.getY()-simpleA.getY()));
+	
+}
+EditCad.prototype.render = function () {
+	this.initialize();
+	result.forEach(function(e){  
+		map.setX(ma.x + (e.x - fa.x)/x);
+		map.setY(ma.y + (e.y - fa.y)/y);
+		data.push(new BMap.Point(e.x,e.y));
+	});
+}
+
