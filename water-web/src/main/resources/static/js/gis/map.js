@@ -43,6 +43,12 @@ layui.use(['CustomMap', 'element',
         };
         var Bmap = layui.CustomMap;
         var map = new Bmap('map-content', customer);
+        $('#add-point-a').on('click', function(){
+
+        });
+        $('#add-point-b').on('click', function(){
+
+        });
     }
 
     Line.fn.initUpload = function () {
