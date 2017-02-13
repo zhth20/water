@@ -88,7 +88,7 @@ layui.use(['CustomMap', 'element',
     Line.fn.initData = function () {
     	var self = this;
     	var convertData = function (s) {
-    	    var p,e = s.split(",");
+    	    var p = {},e = s.split(",");
     	    p.x = parseFloat(e[0]);
     	    p.y = parseFloat(e[1]);
     	    return p;
@@ -109,10 +109,10 @@ layui.use(['CustomMap', 'element',
     Line.fn.render = function () {
     	var self = this;
     	self.initialize();
-    	self.data.forEach(function(l){  
+    	self.data.forEach(function(item){
     		var l = [];
-    		l.forEach(function(e){
-    			var p;
+            item.forEach(function(e){
+    			var p = {};
     			p.x = self.ma.x + (e.x - self.fa.x)/self.x;
     			p.x = self.ma.y + (e.y - self.fa.y)/self.y;
     			p.d = self.d;
