@@ -80,10 +80,48 @@ layui.use(['CustomMap', 'element',
                 layer.close(self.configs.pageIndex);
                 self.configs.initFlag = true;
                 //返回的解析结果
+                self.data = data.result;
                 console.log(data.result);
             });
     }
+    
+    Line.fn.initData = function () {
+    	var self = this;
+    	var convertData = function (s) {
+    	    var p,e = s.split(",");
+    	    p.x = parseFloat(e[0]);
+    	    p.y = parseFloat(e[1]);
+    	    return p;
+    	};
+    	
+    	self.fa = convertData($("input.input-a").val());
+    	self.ma = convertData($("input.input-map-a").val());
+    	self.fb = convertData($("input.input-b").val());
+    	self.mb = convertData($("input.input-map-b").val());
+    	
+    	self.d = parseFloat($("input.input-d").val());
+    	self.h = parseFloat($("input.input-h").val());
+    	
+    	self.x = (fb.x-fa.x)/(mb.x-ma.x);
+    	self.y = (fb.y-fa.y)/(mb.y-ma.y);
 
+    }
+    Line.fn.render = function () {
+    	var self = this;
+    	self.initialize();
+    	self.data.forEach(function(l){  
+    		var l = [];
+    		l.forEach(function(e){
+    			var p;
+    			p.x = self.ma.x + (e.x - self.fa.x)/self.x;
+    			p.x = self.ma.y + (e.y - self.fa.y)/self.y;
+    			p.d = self.d;
+    			p.h = self.h;
+    			l.push(p);
+    		});
+    		self.result.push(l);
+    	});
+    }
     Line.fn.ready = function () {
         this.initMap();
         this.initUpload();
@@ -91,32 +129,3 @@ layui.use(['CustomMap', 'element',
 
     new Line();
 });
-
-function EditCad() {
-	this.initialize();
-	this.result = data.result;//Line.fn.add种的data.result
-	this.data = [];
-}
-
-EditCad.prototype.initialize = function () {
-	this.fa = $("input.input-a").val();
-	this.ma = $("input.input-map-a").val();
-	this.fb = $("input.input-b").val();
-	this.mb = $("input.input-map-b").val();
-	
-	this.d = $("input.input-d").val();
-	this.h = $("input.input-h").val();
-	
-	setX((fixB.getX()-fixA.getX())/(simpleB.getX()-simpleA.getX()));
-	setY((fixB.getY()-fixA.getY())/(simpleB.getY()-simpleA.getY()));
-	
-}
-EditCad.prototype.render = function () {
-	this.initialize();
-	result.forEach(function(e){  
-		map.setX(ma.x + (e.x - fa.x)/x);
-		map.setY(ma.y + (e.y - fa.y)/y);
-		data.push(new BMap.Point(e.x,e.y));
-	});
-}
-
